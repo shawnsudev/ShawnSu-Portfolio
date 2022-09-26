@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import Skills from "./skills";
 
 const Home: NextPage = () => {
   return (
@@ -52,6 +53,8 @@ const Home: NextPage = () => {
           </a>
         </div>
       </main>
+
+      <Skills />
 
       <footer className={styles.footer}>
         <a
