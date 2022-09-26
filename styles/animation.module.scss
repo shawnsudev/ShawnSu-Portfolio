@@ -35,6 +35,7 @@
 @keyframes rubberbanding {
   45% {
     transform: scale(1.3, 0.75);
+    color:aqua;
   }
   55% {
     transform: scale(0.85, 1.3);

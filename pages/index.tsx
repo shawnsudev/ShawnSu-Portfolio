@@ -18,6 +18,39 @@ const Home: NextPage = () => {
     }
   };
 
+  const awaitTimeout = (delay: number) =>
+    new Promise((resolve) => setTimeout(resolve, delay));
+
+  // const removeRubberband = () => {
+  //   char.classList.remove(animation.rubberband);
+  // };
+
+  const rubberbandIn = async (chars: NodeListOf<Element>) => {
+    console.log("running!");
+
+    for (let char of chars) {
+      console.log(char);
+      //
+      char.classList.add(animation.rubberband);
+      await awaitTimeout(100);
+      // char.addEventListener("animationend", () => {
+      //   char.classList.remove(animation.rubberband);
+      // });
+      // await awaitTimeout(100);
+    }
+    await awaitTimeout(2000);
+    for (let char of chars) {
+      // char.addEventListener("animationend", () => {
+        char.classList.remove(animation.rubberband);
+      // });
+    }
+  };
+
+  const runRubberbandIn = () => {
+    if (process.browser) {
+      rubberbandIn(document.querySelectorAll("h1 span"));
+    }
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -86,6 +119,8 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer>
+
+      {runRubberbandIn()}
     </div>
   );
 };
