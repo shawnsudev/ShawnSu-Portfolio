@@ -1,4 +1,4 @@
-import { Grid, GridItem, Progress } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Progress, SimpleGrid, Text } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
@@ -18,21 +18,41 @@ const Skills: NextPage = () => {
   });
 
   return (
-    <Grid>
-      {skills.map((skill) => (
-        <GridItem>
-          <label>{skill.name}</label>
-          <Progress
-            id="frontends"
-            colorScheme={skill.colorScheme}
-            value={skill.value}
-            hasStripe={true}
-            isAnimated={true}
-            size="xs"
-          />
-        </GridItem>
-      ))}
-    </Grid>
+    <div>
+      {/* Title */}
+      <Text as="h2" fontSize="lg" fontWeight="900">
+        Skills
+      </Text>
+      <SimpleGrid columns={2} spacing={5}>
+        {/* Text  */}
+
+        {/* <Flex shrink={2}> */}
+          <Text>
+            My skills including frontend, backend, Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Dolores possimus officia dignissimos
+            impedit, tempora exercitationem? Iure eaque quo amet reiciendis
+            magnam. Autem officiis delectus quod dolore quasi quas odit iusto.
+          </Text>
+        {/* </Flex> */}
+
+        {/* Progress Bars */}
+        <Grid>
+          {skills.map((skill) => (
+            <GridItem>
+              <label>{skill.name}</label>
+              <Progress
+                id="frontends"
+                colorScheme={skill.colorScheme}
+                value={skill.value}
+                hasStripe={true}
+                isAnimated={true}
+                size="xs"
+              />
+            </GridItem>
+          ))}
+        </Grid>
+      </SimpleGrid>
+    </div>
   );
 };
 
