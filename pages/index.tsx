@@ -4,10 +4,14 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Skills from "./skills";
 import animation from "../styles/animation.module.scss";
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    runRubberbandIn();
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +21,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h1 className={`${styles.title} rubberband-group`}>
           <span onMouseEnter={rubberband}>W</span>
           <span onMouseEnter={rubberband}>e</span>
           <span onMouseEnter={rubberband}>l</span>
@@ -78,8 +82,6 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer>
-
-      {runRubberbandIn()}
     </div>
   );
 };

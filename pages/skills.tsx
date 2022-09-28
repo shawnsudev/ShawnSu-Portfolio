@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { rubberband } from "../utils/animation";
+import { rubberband, runRubberbandIn } from "../utils/animation";
 
 const Skills: NextPage = () => {
   // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
@@ -22,15 +22,13 @@ const Skills: NextPage = () => {
   ]);
 
   useEffect(() => {
-    if (process.browser) {
-      // verify client/browser environment
-    }
-  });
+    runRubberbandIn();
+  }, []);
 
   return (
     <div>
       {/* Title */}
-      <Text as="h2" fontSize="50px" fontWeight="900">
+      <Text as="h2" className="rubberband-group" fontSize="50px" fontWeight="900">
         {/* Skills & Experience */}
         {"Skills".split("").map((L) => (
           <span onMouseEnter={rubberband}>{L}</span>
@@ -41,16 +39,12 @@ const Skills: NextPage = () => {
         ))}
       </Text>
       <SimpleGrid columns={2} spacing={5}>
-        {/* Text  */}
-
-        {/* <Flex shrink={2}> */}
         <Text>
           My skills including frontend, backend, Lorem ipsum dolor sit amet
           consectetur adipisicing elit. Dolores possimus officia dignissimos
           impedit, tempora exercitationem? Iure eaque quo amet reiciendis
           magnam. Autem officiis delectus quod dolore quasi quas odit iusto.
         </Text>
-        {/* </Flex> */}
 
         {/* Progress Bars */}
         <Grid>
