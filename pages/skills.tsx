@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { rubberband } from "../utils/animation";
 
 const Skills: NextPage = () => {
-  const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
+  // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
   const [skills, setSkills] = useState([
     { name: "Frontend", value: 80, colorScheme: "purple" },
     { name: "Backend", value: 60, colorScheme: "cyan" },
@@ -32,7 +32,11 @@ const Skills: NextPage = () => {
       {/* Title */}
       <Text as="h2" fontSize="50px" fontWeight="900">
         {/* Skills & Experience */}
-        {pageTitle.map((L) => (
+        {"Skills".split("").map((L) => (
+          <span onMouseEnter={rubberband}>{L}</span>
+        ))}{" "}
+        <span onMouseEnter={rubberband}>&</span>{" "}
+        {"Experience".split("").map((L) => (
           <span onMouseEnter={rubberband}>{L}</span>
         ))}
       </Text>
