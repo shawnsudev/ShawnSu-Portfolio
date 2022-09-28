@@ -6,6 +6,7 @@ import Skills from "./skills";
 import animation from "../styles/animation.module.scss";
 import { MouseEvent, useEffect } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
+import Projects from "./projects";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -67,6 +68,8 @@ const Home: NextPage = () => {
           </a>
         </div>
       </main>
+
+      <Projects />
 
       <Skills />
 
