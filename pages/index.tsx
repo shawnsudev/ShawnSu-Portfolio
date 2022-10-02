@@ -7,6 +7,7 @@ import animation from "../styles/animation.module.scss";
 import { MouseEvent, useEffect } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import Projects from "./projects";
+import Contact from "./contact";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -72,6 +73,8 @@ const Home: NextPage = () => {
       <Projects />
 
       <Skills />
+
+      <Contact />
 
       <footer className={styles.footer}>
         <a
