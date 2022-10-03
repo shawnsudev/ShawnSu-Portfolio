@@ -23,6 +23,8 @@ import { useEffect, useState } from "react";
 import { rubberband } from "../utils/animation";
 
 const Contact: NextPage = () => {
+  // May have to add message status (i.e. idle, pending, success, failure etc.)
+
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState({
     name: "",
@@ -33,12 +35,13 @@ const Contact: NextPage = () => {
   });
 
   useEffect(() => {
+    console.log("😅 useEffect running!")
     console.log(isError);
-    if (isError) console.log("something is wrong!");
-    else console.log("everything is in order");
+    // if (isError) console.log("something is wrong!");
+    // else console.log("everything is in order");
 
     console.log(message);
-  });
+  }, [isError, message]);
 
   return (
     <div>
@@ -65,7 +68,11 @@ const Contact: NextPage = () => {
                 type="text"
                 placeholder="Name"
                 variant="filled"
-                onChange={(e) => (message.name = e.target.value)}
+                onChange={(e) => {
+                  const newMessage = message;
+                  newMessage.name = e.target.value;
+                  setMessage(newMessage);
+                }}
               />
             </InputGroup>
 
@@ -73,7 +80,11 @@ const Contact: NextPage = () => {
               type="text"
               placeholder="Company"
               variant="filled"
-              onChange={(e) => (message.company = e.target.value)}
+              onChange={(e) => {
+                const newMessage = message;
+                newMessage.company = e.target.value;
+                setMessage(newMessage);
+              }}
             />
           </SimpleGrid>
 
@@ -83,7 +94,11 @@ const Contact: NextPage = () => {
               type="email"
               placeholder="Email"
               variant="filled"
-              onChange={(e) => (message.email = e.target.value)}
+              onChange={(e) => {
+                const newMessage = message;
+                newMessage.email = e.target.value;
+                setMessage(newMessage);
+              }}
             />
           </InputGroup>
 
@@ -93,7 +108,11 @@ const Contact: NextPage = () => {
               type="text"
               placeholder="Subject"
               variant="filled"
-              onChange={(e) => (message.subject = e.target.value)}
+              onChange={(e) => {
+                const newMessage = message;
+                newMessage.subject = e.target.value;
+                setMessage(newMessage);
+              }}
             />
           </InputGroup>
 
@@ -103,19 +122,24 @@ const Contact: NextPage = () => {
               type="textarea"
               placeholder="Message"
               variant="filled"
-              onChange={(e) => (message.message = e.target.value)}
+              onChange={(e) => {
+                const newMessage = message;
+                newMessage.message = e.target.value;
+                setMessage(newMessage);
+              }}
             />
           </InputGroup>
 
           <Button
             maxWidth="25vw"
             onClick={(e) => {
-              if (
+              const allRequiredFieldsAreValid =
                 message.name &&
                 message.email &&
                 message.subject &&
-                message.message
-              ) {
+                message.message;
+              
+              if (allRequiredFieldsAreValid) {
                 setIsError(false);
               } else {
                 setIsError(true);
