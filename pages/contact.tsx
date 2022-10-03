@@ -1,6 +1,10 @@
 import {
   Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
   Button,
+  CloseButton,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -33,7 +37,7 @@ const Contact: NextPage = () => {
     if (isError) console.log("something is wrong!");
     else console.log("everything is in order");
 
-    console.log(message)
+    console.log(message);
   });
 
   return (
@@ -121,13 +125,25 @@ const Contact: NextPage = () => {
           >
             Submit
           </Button>
-        </Stack>
 
-        {isError ? (
-          <Alert status="error">Please fill in all the fields with '*'</Alert>
-        ) : (
-          <></>
-        )}
+          {isError ? (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle mr={2}>Missing fields!</AlertTitle>
+              <AlertDescription>
+                Please fill in all required fields marked with '*'
+              </AlertDescription>
+              <CloseButton position="absolute" right="8px" top="8px" />
+            </Alert>
+          ) : (
+            <Alert status="success">
+              <AlertIcon />
+              <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
+              <AlertDescription></AlertDescription>
+              <CloseButton position="absolute" right="8px" top="8px" />
+            </Alert>
+          )}
+        </Stack>
       </FormControl>
     </div>
   );
