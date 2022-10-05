@@ -17,6 +17,7 @@ import {
   SimpleGrid,
   Stack,
 } from "@chakra-ui/react";
+import { truncateSync } from "fs";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { rubberband } from "../utils/animation";
@@ -32,15 +33,37 @@ const Contact: NextPage = () => {
   };
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState(initMessage);
+  const [messageDisplay, setMessageDisplay] = useState(<></>);
+  const [submitted, setSubmitted] = useState(false);
+  const errorMessage = (
+    <Alert status="error">
+      <AlertIcon />
+      <AlertTitle mr={2}>Missing fields!</AlertTitle>
+      <AlertDescription>
+        Please fill in all required fields marked with '*'
+      </AlertDescription>
+      <CloseButton position="absolute" right="8px" top="8px" />
+    </Alert>
+  );
+  const successMessage = (
+    <Alert status="success">
+      <AlertIcon />
+      <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
+      <AlertDescription></AlertDescription>
+      <CloseButton position="absolute" right="8px" top="8px" />
+    </Alert>
+  );
 
   useEffect(() => {
     console.log("😅 useEffect running!");
     console.log(isError);
     // if (isError) console.log("something is wrong!");
     // else console.log("everything is in order");
-
     console.log(message);
-  }, [isError, message]);
+
+    if (submitted) setMessageDisplay(isError ? errorMessage : successMessage);
+    else setMessageDisplay(<></>)
+  }, [isError, message, submitted]);
 
   return (
     <div>
@@ -145,28 +168,15 @@ const Contact: NextPage = () => {
                 setIsError(true);
                 console.log("⛔️", "not all the fields are filled");
               }
+
+              setSubmitted(true);
+              setTimeout(() => setSubmitted(false), 10000);
             }}
           >
             Submit
           </Button>
 
-          {isError ? (
-            <Alert status="error">
-              <AlertIcon />
-              <AlertTitle mr={2}>Missing fields!</AlertTitle>
-              <AlertDescription>
-                Please fill in all required fields marked with '*'
-              </AlertDescription>
-              <CloseButton position="absolute" right="8px" top="8px" />
-            </Alert>
-          ) : (
-            <Alert status="success">
-              <AlertIcon />
-              <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
-              <AlertDescription></AlertDescription>
-              <CloseButton position="absolute" right="8px" top="8px" />
-            </Alert>
-          )}
+          {messageDisplay}
         </Stack>
       </FormControl>
     </div>
