@@ -16,7 +16,6 @@ import {
   InputLeftElement,
   SimpleGrid,
   Stack,
-  useEditable,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
@@ -24,18 +23,18 @@ import { rubberband } from "../utils/animation";
 
 const Contact: NextPage = () => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
-
-  const [isError, setIsError] = useState(false);
-  const [message, setMessage] = useState({
+  const initMessage = {
     name: "",
     company: "",
     email: "",
     subject: "",
     message: "",
-  });
+  };
+  const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState(initMessage);
 
   useEffect(() => {
-    console.log("😅 useEffect running!")
+    console.log("😅 useEffect running!");
     console.log(isError);
     // if (isError) console.log("something is wrong!");
     // else console.log("everything is in order");
@@ -68,8 +67,9 @@ const Contact: NextPage = () => {
                 type="text"
                 placeholder="Name"
                 variant="filled"
+                value={message.name}
                 onChange={(e) => {
-                  const newMessage = message;
+                  const newMessage = { ...message };
                   newMessage.name = e.target.value;
                   setMessage(newMessage);
                 }}
@@ -81,7 +81,7 @@ const Contact: NextPage = () => {
               placeholder="Company"
               variant="filled"
               onChange={(e) => {
-                const newMessage = message;
+                const newMessage = { ...message };
                 newMessage.company = e.target.value;
                 setMessage(newMessage);
               }}
@@ -95,7 +95,7 @@ const Contact: NextPage = () => {
               placeholder="Email"
               variant="filled"
               onChange={(e) => {
-                const newMessage = message;
+                const newMessage = { ...message };
                 newMessage.email = e.target.value;
                 setMessage(newMessage);
               }}
@@ -109,7 +109,7 @@ const Contact: NextPage = () => {
               placeholder="Subject"
               variant="filled"
               onChange={(e) => {
-                const newMessage = message;
+                const newMessage = { ...message };
                 newMessage.subject = e.target.value;
                 setMessage(newMessage);
               }}
@@ -123,7 +123,7 @@ const Contact: NextPage = () => {
               placeholder="Message"
               variant="filled"
               onChange={(e) => {
-                const newMessage = message;
+                const newMessage = { ...message };
                 newMessage.message = e.target.value;
                 setMessage(newMessage);
               }}
@@ -138,7 +138,7 @@ const Contact: NextPage = () => {
                 message.email &&
                 message.subject &&
                 message.message;
-              
+
               if (allRequiredFieldsAreValid) {
                 setIsError(false);
               } else {
