@@ -55,6 +55,22 @@ const Contact: NextPage = () => {
     </Alert>
   );
 
+  const container = {
+    hidden: { y: 100, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        delayChildren: 1,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+  const item = {
+    hidden: { y: 100, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 1.2 } },
+  };
+
   useEffect(() => {
     console.log("😅 useEffect running!");
     console.log(isError);
@@ -67,121 +83,129 @@ const Contact: NextPage = () => {
   }, [isError, message, submitted]);
 
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 1, ease: "easeOut", duration: 1 }}
-    >
-      <Heading
-        as="h2"
-        className="rubberband-group"
-        fontSize="50px"
-        fontWeight="900"
-      >
-        {"Contact".split("").map((L) => (
-          <span onMouseEnter={rubberband}>{L}</span>
-        ))}{" "}
-        {"me".split("").map((L) => (
-          <span onMouseEnter={rubberband}>{L}</span>
-        ))}
-      </Heading>
+    <motion.div variants={container} initial="hidden" animate="show">
+      <motion.div variants={item}>
+        <Heading
+          as="h2"
+          className="rubberband-group"
+          fontSize="50px"
+          fontWeight="900"
+        >
+          {"Contact".split("").map((L) => (
+            <span onMouseEnter={rubberband}>{L}</span>
+          ))}{" "}
+          {"me".split("").map((L) => (
+            <span onMouseEnter={rubberband}>{L}</span>
+          ))}
+        </Heading>
+      </motion.div>
 
       <FormControl>
         <Stack spacing={2}>
           <SimpleGrid columns={2} spacing={2}>
+            <motion.div variants={item}>
+              <InputGroup>
+                <InputLeftElement color="red.300" children="*" />
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  variant="filled"
+                  value={message.name}
+                  onChange={(e) => {
+                    const newMessage = { ...message };
+                    newMessage.name = e.target.value;
+                    setMessage(newMessage);
+                  }}
+                />
+              </InputGroup>
+            </motion.div>
+            <motion.div variants={item}>
+              <Input
+                type="text"
+                placeholder="Company"
+                variant="filled"
+                onChange={(e) => {
+                  const newMessage = { ...message };
+                  newMessage.company = e.target.value;
+                  setMessage(newMessage);
+                }}
+              />
+            </motion.div>
+          </SimpleGrid>
+
+          <motion.div variants={item}>
             <InputGroup>
               <InputLeftElement color="red.300" children="*" />
               <Input
-                type="text"
-                placeholder="Name"
+                type="email"
+                placeholder="Email"
                 variant="filled"
-                value={message.name}
                 onChange={(e) => {
                   const newMessage = { ...message };
-                  newMessage.name = e.target.value;
+                  newMessage.email = e.target.value;
                   setMessage(newMessage);
                 }}
               />
             </InputGroup>
+          </motion.div>
 
-            <Input
-              type="text"
-              placeholder="Company"
-              variant="filled"
-              onChange={(e) => {
-                const newMessage = { ...message };
-                newMessage.company = e.target.value;
-                setMessage(newMessage);
+          <motion.div variants={item}>
+            <InputGroup>
+              <InputLeftElement color="red.300" children="*" />
+              <Input
+                type="text"
+                placeholder="Subject"
+                variant="filled"
+                onChange={(e) => {
+                  const newMessage = { ...message };
+                  newMessage.subject = e.target.value;
+                  setMessage(newMessage);
+                }}
+              />
+            </InputGroup>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <InputGroup>
+              <InputLeftElement color="red.300" children="*" />
+              <Input
+                type="textarea"
+                placeholder="Message"
+                variant="filled"
+                onChange={(e) => {
+                  const newMessage = { ...message };
+                  newMessage.message = e.target.value;
+                  setMessage(newMessage);
+                }}
+              />
+            </InputGroup>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Button
+              maxWidth="25vw"
+              onClick={(e) => {
+                const allRequiredFieldsAreValid =
+                  message.name &&
+                  message.email &&
+                  message.subject &&
+                  message.message;
+
+                if (allRequiredFieldsAreValid) {
+                  setIsError(false);
+                } else {
+                  setIsError(true);
+                  console.log("⛔️", "not all the fields are filled");
+                }
+
+                setSubmitted(true);
+                setTimeout(() => setSubmitted(false), 10000);
               }}
-            />
-          </SimpleGrid>
-
-          <InputGroup>
-            <InputLeftElement color="red.300" children="*" />
-            <Input
-              type="email"
-              placeholder="Email"
-              variant="filled"
-              onChange={(e) => {
-                const newMessage = { ...message };
-                newMessage.email = e.target.value;
-                setMessage(newMessage);
-              }}
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <InputLeftElement color="red.300" children="*" />
-            <Input
-              type="text"
-              placeholder="Subject"
-              variant="filled"
-              onChange={(e) => {
-                const newMessage = { ...message };
-                newMessage.subject = e.target.value;
-                setMessage(newMessage);
-              }}
-            />
-          </InputGroup>
-
-          <InputGroup>
-            <InputLeftElement color="red.300" children="*" />
-            <Input
-              type="textarea"
-              placeholder="Message"
-              variant="filled"
-              onChange={(e) => {
-                const newMessage = { ...message };
-                newMessage.message = e.target.value;
-                setMessage(newMessage);
-              }}
-            />
-          </InputGroup>
-
-          <Button
-            maxWidth="25vw"
-            onClick={(e) => {
-              const allRequiredFieldsAreValid =
-                message.name &&
-                message.email &&
-                message.subject &&
-                message.message;
-
-              if (allRequiredFieldsAreValid) {
-                setIsError(false);
-              } else {
-                setIsError(true);
-                console.log("⛔️", "not all the fields are filled");
-              }
-
-              setSubmitted(true);
-              setTimeout(() => setSubmitted(false), 10000);
-            }}
-          >
-            Submit
-          </Button>
-
-          {messageDisplay}
+            >
+              Submit
+            </Button>
+          </motion.div>
+          <motion.div variants={item}>{messageDisplay}</motion.div>
         </Stack>
       </FormControl>
     </motion.div>
