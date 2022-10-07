@@ -21,6 +21,7 @@ import { truncateSync } from "fs";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { rubberband } from "../utils/animation";
+import { motion } from "framer-motion";
 
 const Contact: NextPage = () => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -62,11 +63,15 @@ const Contact: NextPage = () => {
     console.log(message);
 
     if (submitted) setMessageDisplay(isError ? errorMessage : successMessage);
-    else setMessageDisplay(<></>)
+    else setMessageDisplay(<></>);
   }, [isError, message, submitted]);
 
   return (
-    <div>
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 1, ease: "easeOut", duration: 1 }}
+    >
       <Heading
         as="h2"
         className="rubberband-group"
@@ -179,7 +184,7 @@ const Contact: NextPage = () => {
           {messageDisplay}
         </Stack>
       </FormControl>
-    </div>
+    </motion.div>
   );
 };
 
