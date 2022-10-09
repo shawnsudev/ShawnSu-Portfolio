@@ -19,9 +19,9 @@ import {
 } from "@chakra-ui/react";
 import { truncateSync } from "fs";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { rubberband } from "../utils/animation";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Contact: NextPage = () => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -54,26 +54,42 @@ const Contact: NextPage = () => {
       <CloseButton position="absolute" right="8px" top="8px" />
     </Alert>
   );
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.5 });
 
   const container = {
     hidden: { y: 100, opacity: 0 },
     show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        delayChildren: 1,
-        staggerChildren: 0.3,
-      },
+      y: isInView ? 0 : 100,
+      opacity: isInView ? 1 : 0,
+      // y: 0,
+      // opacity: 1,
+      transition: isInView
+        ? {
+            delayChildren: 1,
+            staggerChildren: 0.3,
+          }
+        : {},
     },
   };
   const item = {
     hidden: { y: 100, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 1.2 } },
+    show: {
+      y: isInView ? 0 : 100,
+      opacity: isInView ? 1 : 0,
+      transition: { ease: "easeOut", duration: 1 },
+    },
+
+    // show: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 1 } },
   };
 
   useEffect(() => {
-    console.log("😅 useEffect running!");
-    console.log(isError);
+    console.log("isInView:", isInView);
+  }, [isInView]);
+
+  useEffect(() => {
+    // console.log("😅 useEffect running!");
+    // console.log(isError);
     // if (isError) console.log("something is wrong!");
     // else console.log("everything is in order");
     console.log(message);
@@ -83,7 +99,7 @@ const Contact: NextPage = () => {
   }, [isError, message, submitted]);
 
   return (
-    <motion.div variants={container} initial="hidden" animate="show">
+    <motion.div ref={ref} variants={container} initial="hidden" animate="show">
       <motion.div variants={item}>
         <Heading
           as="h2"
@@ -91,11 +107,15 @@ const Contact: NextPage = () => {
           fontSize="50px"
           fontWeight="900"
         >
-          {"Contact".split("").map((L) => (
-            <span onMouseEnter={rubberband}>{L}</span>
+          {"Contact".split("").map((L, i) => (
+            <span key={i} onMouseEnter={rubberband}>
+              {L}
+            </span>
           ))}{" "}
-          {"me".split("").map((L) => (
-            <span onMouseEnter={rubberband}>{L}</span>
+          {"me".split("").map((L, i) => (
+            <span key={i + 100} onMouseEnter={rubberband}>
+              {L}
+            </span>
           ))}
         </Heading>
       </motion.div>
