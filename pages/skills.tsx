@@ -28,14 +28,25 @@ const Skills: NextPage = () => {
   return (
     <div>
       {/* Title */}
-      <Text as="h2" className="rubberband-group" fontSize="50px" fontWeight="900">
+      <Text
+        as="h2"
+        className="rubberband-group"
+        fontSize="50px"
+        fontWeight="900"
+      >
         {/* Skills & Experience */}
-        {"Skills".split("").map((L) => (
-          <span onMouseEnter={rubberband}>{L}</span>
+        {"Skills".split("").map((L, i) => (
+          <span key={"s" + i} onMouseEnter={rubberband}>
+            {L}
+          </span>
         ))}{" "}
-        <span onMouseEnter={rubberband}>&</span>{" "}
-        {"Experience".split("").map((L) => (
-          <span onMouseEnter={rubberband}>{L}</span>
+        <span key="&" onMouseEnter={rubberband}>
+          &
+        </span>{" "}
+        {"Experience".split("").map((L, i) => (
+          <span key={"e" + i} onMouseEnter={rubberband}>
+            {L}
+          </span>
         ))}
       </Text>
       <SimpleGrid columns={2} spacing={5}>
@@ -48,8 +59,8 @@ const Skills: NextPage = () => {
 
         {/* Progress Bars */}
         <Grid>
-          {skills.map((skill) => (
-            <GridItem>
+          {skills.map((skill, i) => (
+            <GridItem key={"gr" + i}>
               <label>{skill.name}</label>
               <Progress
                 id="frontends"

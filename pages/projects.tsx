@@ -11,8 +11,8 @@ const Projects: NextPage = () => {
         // fontSize="50px"
         // fontWeight="900"
       >
-        {"Projects".split("").map((L) => (
-          <span onMouseEnter={rubberband}>{L}</span>
+        {"Projects".split("").map((L, i) => (
+          <span key={"p" + i} onMouseEnter={rubberband}>{L}</span>
         ))}
       </Heading>
       {/* Personal Projects */}

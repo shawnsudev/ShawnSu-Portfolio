@@ -62,8 +62,6 @@ const Contact: NextPage = () => {
     show: {
       y: isInView ? 0 : 100,
       opacity: isInView ? 1 : 0,
-      // y: 0,
-      // opacity: 1,
       transition: isInView
         ? {
             delayChildren: 1,
@@ -79,8 +77,6 @@ const Contact: NextPage = () => {
       opacity: isInView ? 1 : 0,
       transition: { ease: "easeOut", duration: 1 },
     },
-
-    // show: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 1 } },
   };
 
   useEffect(() => {
@@ -113,7 +109,7 @@ const Contact: NextPage = () => {
             </span>
           ))}{" "}
           {"me".split("").map((L, i) => (
-            <span key={i + 100} onMouseEnter={rubberband}>
+            <span key={"a" + i} onMouseEnter={rubberband}>
               {L}
             </span>
           ))}
