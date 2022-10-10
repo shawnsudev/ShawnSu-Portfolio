@@ -4,15 +4,17 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Skills from "./skills";
 import animation from "../styles/animation.module.scss";
-import { MouseEvent, useEffect } from "react";
+import { createRef, MouseEvent, useEffect, useRef } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import Projects from "./projects";
 import Contact from "./contact";
 
 const Home: NextPage = () => {
-  useEffect(() => {
-    runRubberbandIn();
-  }, []);
+  // useEffect(() => {
+  //   runRubberbandIn();
+  // }, []);
+
+  const inViewRef = useRef(null);
 
   return (
     <div className={styles.container}>
@@ -74,7 +76,7 @@ const Home: NextPage = () => {
 
       <Skills />
 
-      <Contact />
+      <Contact ref={inViewRef} />
 
       <footer className={styles.footer}>
         <a

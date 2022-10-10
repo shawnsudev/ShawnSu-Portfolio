@@ -21,9 +21,9 @@ const Skills: NextPage = () => {
     { name: "NextJS", value: 40, colorScheme: "yellow" },
   ]);
 
-  useEffect(() => {
-    runRubberbandIn();
-  }, []);
+  // useEffect(() => {
+  //   runRubberbandIn();
+  // }, []);
 
   return (
     <div>
