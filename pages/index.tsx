@@ -10,12 +10,6 @@ import Projects from "./projects";
 import Contact from "./contact";
 
 const Home: NextPage = () => {
-  // useEffect(() => {
-  //   runRubberbandIn();
-  // }, []);
-
-  const inViewRef = useRef(null);
-
   return (
     <div className={styles.container}>
       <Head>
@@ -76,7 +70,7 @@ const Home: NextPage = () => {
 
       <Skills />
 
-      <Contact ref={inViewRef} />
+      <Contact />
 
       <footer className={styles.footer}>
         <a

@@ -22,7 +22,7 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
 
-const Contact: NextPage = forwardRef((props, ref) => {
+const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
   const initMessage = {
     name: "",
@@ -53,7 +53,7 @@ const Contact: NextPage = forwardRef((props, ref) => {
       <CloseButton position="absolute" right="8px" top="8px" />
     </Alert>
   );
-  // const ref = useRef(null);
+  const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
   const container = {
@@ -95,8 +95,13 @@ const Contact: NextPage = forwardRef((props, ref) => {
 
   return (
     <>
-      <motion.div>
-        <motion.div>
+      <motion.div
+        ref={ref}
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item}>
           <Heading
             as="h2"
             className="rubberband-group"
@@ -234,6 +239,6 @@ const Contact: NextPage = forwardRef((props, ref) => {
       </motion.div>
     </>
   );
-});
+}
 
 export default Contact;
