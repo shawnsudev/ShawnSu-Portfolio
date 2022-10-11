@@ -8,8 +8,44 @@ import { createRef, MouseEvent, useEffect, useRef } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import Projects from "./projects";
 import Contact from "./contact";
+import { motion, useInView } from "framer-motion";
 
 const Home: NextPage = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3 });
+  const rubberbandContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: isInView ? 1 : 0,
+      transition: isInView
+        ? {
+            delayChildren: 1,
+            staggerChildren: 0.08,
+          }
+        : {},
+    },
+  };
+  const rubberbandItem = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: isInView ? 1 : 0,
+      // scale: isInView ? [1, 1.3, 0.85, 1.1, 0.9, 1.05, 1] : 1,
+      scale: isInView ? 1 : 1.2,
+      display: "inline-block",
+      transition: {
+        // ease: "easeOut",
+        // duration: 0.5,
+        // times: [0, 0.1, 0.2, 0.5, 0.6, 0.7, 1],
+        type: "spring",
+        damping: 5,
+        stiffness: 600,
+        // restDelta: 0.001,
+      },
+    },
+    // animate:{{}}
+  };
+  const title = ["Hi", "I'm Shawn,", "newly minted Web Dev"];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,51 +55,30 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={`${styles.title} rubberband-group`}>
-          <span onMouseEnter={rubberband}>W</span>
-          <span onMouseEnter={rubberband}>e</span>
-          <span onMouseEnter={rubberband}>l</span>
-          <span onMouseEnter={rubberband}>c</span>
-          <span onMouseEnter={rubberband}>o</span>
-          <span onMouseEnter={rubberband}>m</span>
-          <span onMouseEnter={rubberband}>e</span> to{" "}
-          <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <motion.div
+          ref={ref}
+          variants={rubberbandContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <h1 className={`${styles.title} rubberband-group`}>
+            {title.map((line, idx) => (
+              <p key={"line" + idx}>
+                {line.split("").map((L, i) =>
+                  L === " " ? (
+                    " "
+                  ) : (
+                    <motion.span variants={rubberbandItem}>
+                      <span key={"hello" + i} onMouseEnter={rubberband}>
+                        {L}
+                      </span>
+                    </motion.span>
+                  )
+                )}
+              </p>
+            ))}
+          </h1>
+        </motion.div>
       </main>
 
       <Projects />
