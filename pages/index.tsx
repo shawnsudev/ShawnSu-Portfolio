@@ -68,10 +68,8 @@ const Home: NextPage = () => {
                   L === " " ? (
                     " "
                   ) : (
-                    <motion.span variants={rubberbandItem}>
-                      <span key={"hello" + i} onMouseEnter={rubberband}>
-                        {L}
-                      </span>
+                    <motion.span key={"hello" + i} variants={rubberbandItem}>
+                      <span onMouseEnter={rubberband}>{L}</span>
                     </motion.span>
                   )
                 )}
