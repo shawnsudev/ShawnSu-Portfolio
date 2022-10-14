@@ -1,12 +1,14 @@
 import { Link } from "@chakra-ui/react";
 import { NextPage } from "next";
 import * as NextLink from "next/link";
+import Logo from "./logo";
 
 const Navbar: NextPage = () => {
   return (
     <>
+      <Logo />
       <NextLink href="/home" passHref>
-        <Link>Home</Link>
+        <Link color="teal.400">Home</Link>
       </NextLink>
       <NextLink href="/about" passHref>
         <Link>About</Link>
