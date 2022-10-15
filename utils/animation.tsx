@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import animation from "../styles/animation.module.scss";
 
 export const rubberband = (e: MouseEvent) => {
