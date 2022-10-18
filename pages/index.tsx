@@ -32,8 +32,8 @@ const Home: NextPage = () => {
     hidden: { opacity: 0 },
     show: {
       opacity: isInView ? 1 : 0,
-      // scale: isInView ? 1 : 1.2,
-      scale: isInView ? 1.2 : 1,
+      scale: isInView ? 1 : 1.2,
+      // scale: isInView ? 1.2 : 1,
       display: "inline-block",
       transition: {
         type: "spring",
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
       },
     },
   };
-  const title = ["Hi", "I'm Shawn,", "newly minted Web Dev"];
+  const title = ["Hi", "I'm Shawn,", "new Web Developer"];
 
   return (
     <div className={styles.container}>
@@ -67,6 +67,10 @@ const Home: NextPage = () => {
                 {line.split("").map((L, i) =>
                   L === " " ? (
                     " "
+                  ) : L === "S" ? (
+                    <motion.span key={"hello" + i} variants={rubberbandItem}>
+                      <span className={styles.logo2} onMouseEnter={rubberband}>{L}</span>
+                    </motion.span>
                   ) : (
                     <motion.span key={"hello" + i} variants={rubberbandItem}>
                       <span onMouseEnter={rubberband}>{L}</span>

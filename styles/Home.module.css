@@ -108,6 +108,13 @@
   margin-left: 0.5rem;
 }
 
+.logo2 {
+  font-size: 6rem;
+  font-weight: bold;
+  color: violet;
+  text-shadow: 0.85rem 0 lime;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

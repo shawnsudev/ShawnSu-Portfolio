@@ -96,7 +96,7 @@ const Contact: NextPage = (props) => {
 
   return (
     <>
-    <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
+      <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
 
       <motion.div
         ref={ref}
@@ -215,6 +215,6 @@ const Contact: NextPage = (props) => {
       </motion.div>
     </>
   );
-}
+};
 
 export default Contact;
