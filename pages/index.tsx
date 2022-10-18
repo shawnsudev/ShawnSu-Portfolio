@@ -9,7 +9,9 @@ import { rubberband, runRubberbandIn } from "../utils/animation";
 import Projects from "./projects";
 import Contact from "./contact";
 import { motion, useInView } from "framer-motion";
-import Navbar from "./navbar";
+import Navbar from "../components/Navbar";
+import About from "./about";
+import PageTitle from "../components/PageTitle";
 
 const Home: NextPage = () => {
   const ref = useRef(null);
@@ -30,20 +32,15 @@ const Home: NextPage = () => {
     hidden: { opacity: 0 },
     show: {
       opacity: isInView ? 1 : 0,
-      // scale: isInView ? [1, 1.3, 0.85, 1.1, 0.9, 1.05, 1] : 1,
-      scale: isInView ? 1 : 1.2,
+      // scale: isInView ? 1 : 1.2,
+      scale: isInView ? 1.2 : 1,
       display: "inline-block",
       transition: {
-        // ease: "easeOut",
-        // duration: 0.5,
-        // times: [0, 0.1, 0.2, 0.5, 0.6, 0.7, 1],
         type: "spring",
         damping: 5,
         stiffness: 600,
-        // restDelta: 0.001,
       },
     },
-    // animate:{{}}
   };
   const title = ["Hi", "I'm Shawn,", "newly minted Web Dev"];
 
@@ -64,7 +61,7 @@ const Home: NextPage = () => {
           initial="hidden"
           animate="show"
         >
-          <h1 className={`${styles.title} rubberband-group`}>
+          <h1 className={`${styles.title}`}>
             {title.map((line, idx) => (
               <p key={"line" + idx}>
                 {line.split("").map((L, i) =>
@@ -81,6 +78,8 @@ const Home: NextPage = () => {
           </h1>
         </motion.div>
       </main>
+
+      <About />
 
       <Projects />
 

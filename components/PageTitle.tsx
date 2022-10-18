@@ -1,66 +1,78 @@
-import { PropsOf, Text } from "@chakra-ui/react";
+import { Heading, PropsOf, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { NextPage } from "next";
-import { MutableRefObject } from "react";
+import { ForwardedRef, forwardRef, MutableRefObject, useEffect } from "react";
 import { rubberband } from "../utils/animation";
+import { v4 as uuidv4 } from "uuid";
 
 type NextPagePropsWithTransition = NextPage & {
   pageTitle: string[];
-  ref: MutableRefObject<null>;
+  // ref: MutableRefObject<null>;
   isInView: boolean;
 };
 
-const PageTitle = ({ pageTitle, ref, isInView }: NextPagePropsWithTransition) => {
-  const rubberbandContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.08,
-          }
-        : {},
-    },
-  };
-  const rubberbandItem = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      scale: isInView ? 1 : 1.2,
-      display: "inline-block",
-      transition: {
-        type: "spring",
-        damping: 5,
-        stiffness: 600,
+const PageTitle = forwardRef(
+  (
+    { pageTitle, isInView }: NextPagePropsWithTransition,
+    ref: ForwardedRef<null>
+  ) => {
+    const fadeinRubberbandContainer = {
+      hidden: { opacity: 0 },
+      show: {
+        opacity: isInView ? 1 : 0,
+        // scale: 1.5,
+        transition: isInView
+          ? {
+              delayChildren: 1,
+              staggerChildren: 0.08,
+            }
+          : {},
       },
-    },
-  };
+    };
+    const fadeinRubberbandItem = {
+      hidden: { opacity: 0, scale: 1.2 },
+      show: {
+        opacity: isInView ? 1 : 0,
+        scale: isInView && 1,
+        display: "inline-block",
+        transition: {
+          type: "spring",
+          damping: 5,
+          stiffness: 600,
+        },
+      },
+    };
 
-  return (
-    <motion.div
-      ref={ref}
-      variants={rubberbandContainer}
-      initial="hidden"
-      animate="show"
-    >
-      <Text as="h2" className="rubberband-group">
-        {pageTitle.map((line, idx) => (
-          <p key={"line" + idx}>
-            {line.split("").map((L, i) =>
-              L === " " ? (
-                " "
-              ) : (
-                <motion.span key={"hello" + i} variants={rubberbandItem}>
-                  <span onMouseEnter={rubberband}>{L}</span>
-                </motion.span>
-              )
-            )}
-          </p>
-        ))}
-      </Text>
-      {/* ;<h1 className={`${styles.title} rubberband-group`}></h1> */}
-    </motion.div>
-  );
-};
+    useEffect(()=>{
+      console.log("isInView of PageTitle:", isInView)
+    },[isInView])
+
+    return (
+      <div ref={ref}>
+        <motion.div
+          variants={fadeinRubberbandContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <Heading as="h2">
+            {pageTitle.map((line) => (
+              <p key={uuidv4()}>
+                {line.split("").map((L) =>
+                  L === " " ? (
+                    " "
+                  ) : (
+                    <motion.span key={uuidv4()} variants={fadeinRubberbandItem}>
+                      <span onMouseEnter={rubberband}>{L}</span>
+                    </motion.span>
+                  )
+                )}
+              </p>
+            ))}
+          </Heading>
+          {/* ;<h1 className={`${styles.title} rubberband-group`}></h1> */}
+        </motion.div>
+      </div>
+    );
+  }
+);
 export default PageTitle;

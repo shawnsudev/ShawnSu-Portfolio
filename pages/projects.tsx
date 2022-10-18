@@ -2,6 +2,7 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import { NextPage } from "next";
 import { useRef } from "react";
+import PageTitle from "../components/PageTitle";
 import { rubberband } from "../utils/animation";
 
 const Projects: NextPage = () => {
@@ -28,21 +29,18 @@ const Projects: NextPage = () => {
       transition: { ease: "easeOut", duration: 1 },
     },
   };
+  const pageTitle = ["My Projects"];
 
   return (
     <Box>
-      <Heading
-        as="h2"
-        className="rubberband-group"
-        // fontSize="50px"
-        // fontWeight="900"
-      >
+      <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
+      {/* <Heading as="h2" className="rubberband-group">
         {"Projects".split("").map((L, i) => (
           <span key={"p" + i} onMouseEnter={rubberband}>
             {L}
           </span>
         ))}
-      </Heading>
+      </Heading> */}
 
       {/* Personal Projects */}
       <motion.div

@@ -11,6 +11,7 @@ import {
 import { motion, useInView } from "framer-motion";
 import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
+import PageTitle from "../components/PageTitle";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 
 const Skills: NextPage = (props) => {
@@ -47,30 +48,43 @@ const Skills: NextPage = (props) => {
     },
   };
 
+  // const ref = useRef(null);
+  // const isInView = useInView(ref, { amount: 0.3 });
+  const rubberbandContainer = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: isInView ? 1 : 0,
+      transition: isInView
+        ? {
+            delayChildren: 1,
+            staggerChildren: 0.08,
+          }
+        : {},
+    },
+  };
+  const rubberbandItem = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: isInView ? 1 : 0,
+      // scale: isInView ? 1 : 1.2,
+      scale: isInView ? 1 : 1.2,
+      display: "inline-block",
+      transition: {
+        type: "spring",
+        damping: 5,
+        stiffness: 600,
+      },
+    },
+  };
+
   return (
     <div>
       {/* Title */}
-      <Text
-        as="h2"
-        className="rubberband-group"
-        fontSize="50px"
-        fontWeight="900"
-      >
-        {/* Skills & Experience */}
-        {"Skills".split("").map((L, i) => (
-          <span key={"s" + i} onMouseEnter={rubberband}>
-            {L}
-          </span>
-        ))}{" "}
-        <span key="&" onMouseEnter={rubberband}>
-          &
-        </span>{" "}
-        {"Experience".split("").map((L, i) => (
-          <span key={"e" + i} onMouseEnter={rubberband}>
-            {L}
-          </span>
-        ))}
-      </Text>
+      <PageTitle
+        ref={ref}
+        isInView={isInView}
+        pageTitle={["Skills", "&", "Experiences"]}
+      />
 
       <motion.div
         ref={ref}

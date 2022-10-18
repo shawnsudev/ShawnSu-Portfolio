@@ -21,6 +21,7 @@ import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
+import PageTitle from "../components/PageTitle";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -78,9 +79,9 @@ const Contact: NextPage = (props) => {
     },
   };
 
-  useEffect(() => {
-    console.log("isInView:", isInView);
-  }, [isInView]);
+  // useEffect(() => {
+  //   console.log("isInView:", isInView);
+  // }, [isInView]);
 
   useEffect(() => {
     // console.log("😅 useEffect running!");
@@ -95,32 +96,7 @@ const Contact: NextPage = (props) => {
 
   return (
     <>
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.div variants={item}>
-          <Heading
-            as="h2"
-            className="rubberband-group"
-            fontSize="50px"
-            fontWeight="900"
-          >
-            {"Contact".split("").map((L, i) => (
-              <span key={i} onMouseEnter={rubberband}>
-                {L}
-              </span>
-            ))}{" "}
-            {"me".split("").map((L, i) => (
-              <span key={"a" + i} onMouseEnter={rubberband}>
-                {L}
-              </span>
-            ))}
-          </Heading>
-        </motion.div>
-      </motion.div>
+    <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
 
       <motion.div
         ref={ref}
