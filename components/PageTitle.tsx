@@ -33,7 +33,7 @@ const PageTitle = forwardRef(
       hidden: { opacity: 0, scale: 1.2 },
       show: {
         opacity: isInView ? 1 : 0,
-        scale: isInView && 1,
+        scale: isInView ? 1 : 1.2,
         display: "inline-block",
         transition: {
           type: "spring",
@@ -43,9 +43,9 @@ const PageTitle = forwardRef(
       },
     };
 
-    useEffect(()=>{
-      console.log("isInView of PageTitle:", isInView)
-    },[isInView])
+    useEffect(() => {
+      console.log("isInView of PageTitle:", isInView);
+    }, [isInView]);
 
     return (
       <div ref={ref}>
