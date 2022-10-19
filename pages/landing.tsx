@@ -53,27 +53,46 @@ const Landing: NextPage = () => {
         initial="hidden"
         animate="show"
       >
-        <Heading as="h1" size="4xl">
-          {title.map((line, idx) => (
-            <p key={"line" + idx}>
-              {line.split("").map((L, i) =>
-                L === " " ? (
-                  " "
-                ) : L === "S" ? (
-                  <motion.span key={"hello" + i} variants={rubberbandItem}>
-                    <span className={styles.logo2} onMouseEnter={rubberband}>
-                      {L}
-                    </span>
-                  </motion.span>
-                ) : (
-                  <motion.span key={"hello" + i} variants={rubberbandItem}>
-                    <span onMouseEnter={rubberband}>{L}</span>
-                  </motion.span>
-                )
-              )}
-            </p>
-          ))}
-        </Heading>
+        <Box
+          _before={{
+            content: `"<h1>"`,
+            color: "silver",
+            fontFamily: "'Fasthand', cursive",
+            fontWeight: "light",
+            position: "relative",
+            right: "2rem",
+          }}
+          _after={{
+            content: `"</h1>"`,
+            color: "silver",
+            fontFamily: "Pacifico, sans-serif",
+            fontWeight: "light",
+            position: "relative",
+            right: "2rem",
+          }}
+        >
+          <Heading as="h1" size="4xl">
+            {title.map((line, idx) => (
+              <p key={"line" + idx}>
+                {line.split("").map((L, i) =>
+                  L === " " ? (
+                    " "
+                  ) : L === "S" ? (
+                    <motion.span key={"hello" + i} variants={rubberbandItem}>
+                      <span className={styles.logo2} onMouseEnter={rubberband}>
+                        {L}
+                      </span>
+                    </motion.span>
+                  ) : (
+                    <motion.span key={"hello" + i} variants={rubberbandItem}>
+                      <span onMouseEnter={rubberband}>{L}</span>
+                    </motion.span>
+                  )
+                )}
+              </p>
+            ))}
+          </Heading>
+        </Box>
       </motion.div>
     </Box>
   );
