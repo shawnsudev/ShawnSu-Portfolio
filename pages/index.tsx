@@ -12,38 +12,10 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
+import Landing from "./landing";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 const Home: NextPage = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3 });
-  const rubberbandContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.08,
-          }
-        : {},
-    },
-  };
-  const rubberbandItem = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      scale: isInView ? 1 : 1.2,
-      // scale: isInView ? 1.2 : 1,
-      display: "inline-block",
-      transition: {
-        type: "spring",
-        damping: 5,
-        stiffness: 600,
-      },
-    },
-  };
-  const title = ["Hi", "I'm Shawn,", "new Web Developer"];
-
   return (
     <div className={styles.container}>
       <Head>
@@ -52,57 +24,55 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar></Navbar>
+      <Grid
+        h="100%"
+        templateRows="repeat(1, 1fr)"
+        templateColumns="repeat(10, 1fr)"
+        gap={4}
+      >
+        <GridItem rowSpan={10} colSpan={2} bg="gray">
+          <Navbar />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <Landing />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <About />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <Projects />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <Skills />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <Contact />
+        </GridItem>
+        <GridItem colSpan={8} bg="papayawhip">
+          <footer className={styles.footer}>
+            <a
+              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Powered by{" "}
+              <span className={styles.logo}>
+                <Image
+                  src="/vercel.svg"
+                  alt="Vercel Logo"
+                  width={72}
+                  height={16}
+                />
+              </span>
+            </a>
+          </footer>
+        </GridItem>
+      </Grid>
 
-      <main className={styles.main}>
-        <motion.div
-          ref={ref}
-          variants={rubberbandContainer}
-          initial="hidden"
-          animate="show"
-        >
-          <h1 className={`${styles.title}`}>
-            {title.map((line, idx) => (
-              <p key={"line" + idx}>
-                {line.split("").map((L, i) =>
-                  L === " " ? (
-                    " "
-                  ) : L === "S" ? (
-                    <motion.span key={"hello" + i} variants={rubberbandItem}>
-                      <span className={styles.logo2} onMouseEnter={rubberband}>{L}</span>
-                    </motion.span>
-                  ) : (
-                    <motion.span key={"hello" + i} variants={rubberbandItem}>
-                      <span onMouseEnter={rubberband}>{L}</span>
-                    </motion.span>
-                  )
-                )}
-              </p>
-            ))}
-          </h1>
-        </motion.div>
-      </main>
-
-      <About />
-
+      {/* <About />
       <Projects />
-
       <Skills />
-
-      <Contact />
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Contact /> */}
     </div>
   );
 };
