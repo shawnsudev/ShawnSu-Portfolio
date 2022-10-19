@@ -60,15 +60,15 @@ const Landing: NextPage = () => {
             fontFamily: "'Fasthand', cursive",
             fontWeight: "light",
             position: "relative",
-            right: "2rem",
+            right: "1.5rem",
           }}
           _after={{
             content: `"</h1>"`,
             color: "silver",
-            fontFamily: "Pacifico, sans-serif",
+            fontFamily: "'Fasthand', cursive",
             fontWeight: "light",
             position: "relative",
-            right: "2rem",
+            right: "1.5rem",
           }}
         >
           <Heading as="h1" size="4xl">
