@@ -3,6 +3,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Box,
   Button,
   CloseButton,
   Flex,
@@ -16,12 +17,14 @@ import {
   InputLeftElement,
   SimpleGrid,
   Stack,
+  StylesProvider,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
+import styles from "../styles/Home.module.css";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -95,7 +98,7 @@ const Contact: NextPage = (props) => {
   }, [isError, message, submitted]);
 
   return (
-    <>
+    <Box className={styles.main}>
       <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
 
       <motion.div
@@ -213,7 +216,7 @@ const Contact: NextPage = (props) => {
           </Stack>
         </FormControl>
       </motion.div>
-    </>
+    </Box>
   );
 };
 

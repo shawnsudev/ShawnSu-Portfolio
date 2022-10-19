@@ -1,8 +1,9 @@
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { NextPage } from "next";
 import { RefAttributes, useRef } from "react";
 import PageTitle from "../components/PageTitle";
+import styles from "../styles/Home.module.css";
 
 const About: NextPage = () => {
   const ref = useRef(null)
@@ -10,7 +11,7 @@ const About: NextPage = () => {
   const pageTitle = ["About me", "Page"];
 
   return (
-    <>
+    <Box className={styles.main}>
       <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
       <Text as="p">
         I had been a business/English tutor for international tertiary students
@@ -26,7 +27,7 @@ const About: NextPage = () => {
         Calisthenics exercising, and playing highly challenging soulslike video
         games.
       </Text>
-    </>
+    </Box>
   );
 };
 export default About;

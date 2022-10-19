@@ -46,7 +46,7 @@ const Landing: NextPage = () => {
   const title = ["Hello", "I'm Shawn,", "new web developer"];
 
   return (
-    <Box className={styles.main}>
+    <Box className={styles.landing}>
       <motion.div
         ref={ref}
         variants={rubberbandContainer}

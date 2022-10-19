@@ -33,22 +33,22 @@ const Home: NextPage = () => {
         <GridItem rowSpan={10} colSpan={2} bg="gray">
           <Navbar />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <Landing />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <About />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <Projects />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <Skills />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <Contact />
         </GridItem>
-        <GridItem colSpan={8} bg="papayawhip">
+        <GridItem colSpan={8} bg="lightgray">
           <footer className={styles.footer}>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

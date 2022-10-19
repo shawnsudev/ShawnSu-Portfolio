@@ -13,6 +13,7 @@ import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import PageTitle from "../components/PageTitle";
 import { rubberband, runRubberbandIn } from "../utils/animation";
+import styles from "../styles/Home.module.css";
 
 const Skills: NextPage = (props) => {
   // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
@@ -78,7 +79,7 @@ const Skills: NextPage = (props) => {
   };
 
   return (
-    <div>
+     <Box className={styles.main}>
       {/* Title */}
       <PageTitle
         ref={ref}
@@ -122,7 +123,7 @@ const Skills: NextPage = (props) => {
           </motion.div>
         </SimpleGrid>
       </motion.div>
-    </div>
+    </Box>
   );
 };
 export default Skills;

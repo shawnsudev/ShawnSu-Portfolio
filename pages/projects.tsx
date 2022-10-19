@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { useRef } from "react";
 import PageTitle from "../components/PageTitle";
 import { rubberband } from "../utils/animation";
+import styles from "../styles/Home.module.css";
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -32,7 +33,7 @@ const Projects: NextPage = () => {
   const pageTitle = ["My Projects"];
 
   return (
-    <Box>
+    <Box className={styles.main}>
       <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
       {/* <Heading as="h2" className="rubberband-group">
         {"Projects".split("").map((L, i) => (
