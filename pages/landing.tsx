@@ -13,6 +13,7 @@ import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
 import { Box, Heading } from "@chakra-ui/react";
+import BoxWithTags from "../components/BoxWithTags";
 
 const Landing: NextPage = () => {
   const ref = useRef(null);
@@ -53,24 +54,7 @@ const Landing: NextPage = () => {
         initial="hidden"
         animate="show"
       >
-        <Box
-          _before={{
-            content: `"<h1>"`,
-            color: "silver",
-            fontFamily: "'Fasthand', cursive",
-            fontWeight: "light",
-            position: "relative",
-            right: "1.5rem",
-          }}
-          _after={{
-            content: `"</h1>"`,
-            color: "silver",
-            fontFamily: "'Fasthand', cursive",
-            fontWeight: "light",
-            position: "relative",
-            right: "1.5rem",
-          }}
-        >
+        <BoxWithTags content="h1" right="1.5rem">
           <Heading as="h1" size="4xl">
             {title.map((line, idx) => (
               <p key={"line" + idx}>
@@ -92,7 +76,7 @@ const Landing: NextPage = () => {
               </p>
             ))}
           </Heading>
-        </Box>
+        </BoxWithTags>
       </motion.div>
     </Box>
   );
