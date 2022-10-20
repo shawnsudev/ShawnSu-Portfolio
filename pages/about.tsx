@@ -2,12 +2,13 @@ import { Box, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { NextPage } from "next";
 import { RefAttributes, useRef } from "react";
+import Continue from "../components/Continue";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 
 const About: NextPage = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { amount: 0.3 })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { amount: 0.3 });
   const pageTitle = ["About me", "Page"];
 
   return (
@@ -27,6 +28,8 @@ const About: NextPage = () => {
         Calisthenics exercising, and playing highly challenging soulslike video
         games.
       </Text>
+      
+      <Continue />
     </Box>
   );
 };

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import PageTitle from "../components/PageTitle";
 import { rubberband } from "../utils/animation";
 import styles from "../styles/Home.module.css";
+import Continue from "../components/Continue";
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -82,6 +83,8 @@ const Projects: NextPage = () => {
           </Flex>
         </Box>
       </motion.div>
+
+      <Continue />
     </Box>
   );
 };

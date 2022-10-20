@@ -14,6 +14,7 @@ import About from "./about";
 import PageTitle from "../components/PageTitle";
 import { Box, Heading } from "@chakra-ui/react";
 import BoxWithTags from "../components/BoxWithTags";
+import Continue from "../components/Continue";
 
 const Landing: NextPage = () => {
   const ref = useRef(null);
@@ -77,6 +78,9 @@ const Landing: NextPage = () => {
             ))}
           </Heading>
         </BoxWithTags>
+        <BoxWithTags content="p"></BoxWithTags>
+
+        <Continue />
       </motion.div>
     </Box>
   );
