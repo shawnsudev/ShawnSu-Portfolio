@@ -31,7 +31,7 @@ const BoxWithTags = ({
         fontWeight: "light",
         position: "relative",
         right: right ? right : "1.5rem",
-        bottom: bottom ? bottom : "0rem",
+        bottom: bottom ? `-${bottom}` : "0rem",
       }}
     >
       {children}

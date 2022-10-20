@@ -12,7 +12,7 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import BoxWithTags from "../components/BoxWithTags";
 import Continue from "../components/Continue";
 
@@ -49,39 +49,55 @@ const Landing: NextPage = () => {
 
   return (
     <Box className={styles.landing}>
-      <motion.div
-        ref={ref}
-        variants={rubberbandContainer}
-        initial="hidden"
-        animate="show"
-      >
-        <BoxWithTags content="h1" right="1.5rem">
-          <Heading as="h1" size="4xl">
-            {title.map((line, idx) => (
-              <p key={"line" + idx}>
-                {line.split("").map((L, i) =>
-                  L === " " ? (
-                    " "
-                  ) : L === "S" ? (
-                    <motion.span key={"hello" + i} variants={rubberbandItem}>
-                      <span className={styles.logo2} onMouseEnter={rubberband}>
-                        {L}
-                      </span>
-                    </motion.span>
-                  ) : (
-                    <motion.span key={"hello" + i} variants={rubberbandItem}>
-                      <span onMouseEnter={rubberband}>{L}</span>
-                    </motion.span>
-                  )
-                )}
-              </p>
-            ))}
-          </Heading>
-        </BoxWithTags>
-        <BoxWithTags content="p"></BoxWithTags>
+      <Box>
+        <motion.div
+          ref={ref}
+          variants={rubberbandContainer}
+          initial="hidden"
+          animate="show"
+        >
+          <BoxWithTags content="h1" right="1.5rem">
+            <Heading as="h1" size="4xl">
+              {title.map((line, idx) => (
+                <p key={"line" + idx}>
+                  {line.split("").map((L, i) =>
+                    L === " " ? (
+                      " "
+                    ) : L === "S" ? (
+                      <motion.span key={"hello" + i} variants={rubberbandItem}>
+                        <span
+                          className={styles.logo2}
+                          onMouseEnter={rubberband}
+                        >
+                          {L}
+                        </span>
+                      </motion.span>
+                    ) : (
+                      <motion.span key={"hello" + i} variants={rubberbandItem}>
+                        <span onMouseEnter={rubberband}>{L}</span>
+                      </motion.span>
+                    )
+                  )}
+                </p>
+              ))}
+            </Heading>
+          </BoxWithTags>
+        </motion.div>
 
-        <Continue />
-      </motion.div>
+        <BoxWithTags content="p">
+          <Text as="p" color="slate" size="2xl">
+            New Front-end / React.JS Developer
+          </Text>
+        </BoxWithTags>
+
+        <BoxWithTags content="button">
+          <Box>
+            <Button>Check Out My Portfolio</Button>
+          </Box>
+        </BoxWithTags>
+      </Box>
+
+      <Continue />
     </Box>
   );
 };

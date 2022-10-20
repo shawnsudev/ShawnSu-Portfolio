@@ -14,6 +14,7 @@ import About from "./about";
 import PageTitle from "../components/PageTitle";
 import Landing from "./landing";
 import { Grid, GridItem } from "@chakra-ui/react";
+import BoxWithTags from "../components/BoxWithTags";
 
 const Home: NextPage = () => {
   return (
@@ -68,11 +69,6 @@ const Home: NextPage = () => {
           </footer>
         </GridItem>
       </Grid>
-
-      {/* <About />
-      <Projects />
-      <Skills />
-      <Contact /> */}
     </div>
   );
 };
