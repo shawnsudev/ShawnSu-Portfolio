@@ -29,9 +29,15 @@ const Home: NextPage = () => {
         h="100%"
         templateRows="repeat(1, 1fr)"
         templateColumns="repeat(10, 1fr)"
-        gap={4}
+        gap={0}
       >
-        <GridItem rowSpan={10} colSpan={2} bg="gray">
+        <GridItem
+          minWidth="8rem"
+          maxWidth="12rem"
+          rowSpan={10}
+          colSpan={2}
+          bg="gray"
+        >
           <Navbar />
         </GridItem>
         <GridItem colSpan={8} bg="mintcream">
