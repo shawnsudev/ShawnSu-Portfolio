@@ -34,7 +34,7 @@ const PageTitle = forwardRef(
       show: {
         opacity: isInView ? 1 : 0,
         scale: isInView ? 1 : 1.2,
-        // display: "inline-block",
+        display: "inline-block",
         transition: {
           type: "spring",
           damping: 5,
