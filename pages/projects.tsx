@@ -11,25 +11,37 @@ import BoxWithTags from "../components/BoxWithTags";
 const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  const container = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.3,
-          }
-        : {},
-    },
-  };
+  // const container = {
+  //   show: {
+  //     transition: isInView
+  //       ? {
+  //           delayChildren: 1,
+  //           staggerChildren: 0.3,
+  //         }
+  //       : {},
+  //   },
+  // };
+  // const item = {
+  //   hidden: { y: 100, opacity: 0 },
+  //   show: {
+  //     y: isInView ? 0 : 100,
+  //     opacity: isInView ? 1 : 0,
+  //     transition: {
+  //       ease: "easeOut",
+  //       duration: 1,
+  //     },
+  //   },
+  // };
+
   const item = {
     hidden: { y: 100, opacity: 0 },
     show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: { ease: "easeOut", duration: 1 },
+      y: 0,
+      opacity: 1,
+      transition: {
+        ease: "easeOut",
+        duration: 1,
+      },
     },
   };
   const pageTitle = ["My Projects"];
@@ -44,9 +56,10 @@ const Projects: NextPage = () => {
       <BoxWithTags content="grid">
         <motion.div
           ref={ref}
-          variants={container}
+          // variants={container}
           initial="hidden"
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, amount: 1 }}
         >
           <Box>
             <Heading as="h3">Personal Projects</Heading>
@@ -59,23 +72,15 @@ const Projects: NextPage = () => {
               </motion.div>
             </Flex>
           </Box>
-        </motion.div>
 
-        {/* School Projects */}
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
           <Box>
-            <Heading as="h3">School Projects</Heading>
+            <Heading as="h3">Group Projects</Heading>
             <Flex justify="space-around">
               <motion.div variants={item}>
-                <Heading as="h4">project 1</Heading>
+                <Heading as="h4">Sudoku</Heading>
               </motion.div>
               <motion.div variants={item}>
-                <Heading as="h4">project 2</Heading>
+                <Heading as="h4">Game of Life</Heading>
               </motion.div>
             </Flex>
           </Box>
