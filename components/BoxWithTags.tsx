@@ -17,20 +17,20 @@ const BoxWithTags = ({
     <Box
       _before={{
         content: `"<${content}>"`,
-        color: "silver",
+        color: "lightgray",
         fontFamily: "'Fasthand', cursive",
         fontWeight: "light",
         position: "relative",
-        right: right ? right : "1.5rem",
+        right: right ? right : "1rem",
         bottom: bottom ? bottom : "0rem",
       }}
       _after={{
         content: `"</${content}>"`,
-        color: "silver",
+        color: "lightgray",
         fontFamily: "'Fasthand', cursive",
         fontWeight: "light",
         position: "relative",
-        right: right ? right : "1.5rem",
+        right: right ? right : "1rem",
         bottom: bottom ? `-${bottom}` : "0rem",
       }}
     >

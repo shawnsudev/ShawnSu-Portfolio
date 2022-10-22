@@ -6,6 +6,7 @@ import PageTitle from "../components/PageTitle";
 import { rubberband } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
+import BoxWithTags from "../components/BoxWithTags";
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -35,54 +36,51 @@ const Projects: NextPage = () => {
 
   return (
     <Box className={styles.main}>
-      <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
-      {/* <Heading as="h2" className="rubberband-group">
-        {"Projects".split("").map((L, i) => (
-          <span key={"p" + i} onMouseEnter={rubberband}>
-            {L}
-          </span>
-        ))}
-      </Heading> */}
+      <BoxWithTags content="h2">
+        <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
+      </BoxWithTags>
 
       {/* Personal Projects */}
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <Box>
-          <Heading as="h3">Personal Projects</Heading>
-          <Flex justify="space-around">
-            <motion.div variants={item}>
-              <Heading as="h4">Sudoku</Heading>
-            </motion.div>
-            <motion.div variants={item}>
-              <Heading as="h4">Game of Life</Heading>
-            </motion.div>
-          </Flex>
-        </Box>
-      </motion.div>
+      <BoxWithTags content="grid">
+        <motion.div
+          ref={ref}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <Box>
+            <Heading as="h3">Personal Projects</Heading>
+            <Flex justify="space-around">
+              <motion.div variants={item}>
+                <Heading as="h4">Sudoku</Heading>
+              </motion.div>
+              <motion.div variants={item}>
+                <Heading as="h4">Game of Life</Heading>
+              </motion.div>
+            </Flex>
+          </Box>
+        </motion.div>
 
-      {/* School Projects */}
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <Box>
-          <Heading as="h3">School Projects</Heading>
-          <Flex justify="space-around">
-            <motion.div variants={item}>
-              <Heading as="h4">project 1</Heading>
-            </motion.div>
-            <motion.div variants={item}>
-              <Heading as="h4">project 2</Heading>
-            </motion.div>
-          </Flex>
-        </Box>
-      </motion.div>
+        {/* School Projects */}
+        <motion.div
+          ref={ref}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <Box>
+            <Heading as="h3">School Projects</Heading>
+            <Flex justify="space-around">
+              <motion.div variants={item}>
+                <Heading as="h4">project 1</Heading>
+              </motion.div>
+              <motion.div variants={item}>
+                <Heading as="h4">project 2</Heading>
+              </motion.div>
+            </Flex>
+          </Box>
+        </motion.div>
+      </BoxWithTags>
 
       <Continue />
     </Box>

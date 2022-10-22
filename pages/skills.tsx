@@ -15,6 +15,7 @@ import PageTitle from "../components/PageTitle";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
+import BoxWithTags from "../components/BoxWithTags";
 
 const Skills: NextPage = (props) => {
   // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
@@ -82,11 +83,13 @@ const Skills: NextPage = (props) => {
   return (
     <Box className={styles.main}>
       {/* Title */}
-      <PageTitle
-        ref={ref}
-        isInView={isInView}
-        pageTitle={["Skills", "&", "Experiences"]}
-      />
+      <BoxWithTags content="h2">
+        <PageTitle
+          ref={ref}
+          isInView={isInView}
+          pageTitle={["Skills", "&", "Experiences"]}
+        />
+      </BoxWithTags>
 
       <motion.div
         ref={ref}
@@ -95,33 +98,38 @@ const Skills: NextPage = (props) => {
         animate="show"
       >
         <SimpleGrid columns={2} spacing={5}>
-          <motion.div variants={item}>
-            <Text>
-              My skills including frontend, backend, Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Dolores possimus officia dignissimos
-              impedit, tempora exercitationem? Iure eaque quo amet reiciendis
-              magnam. Autem officiis delectus quod dolore quasi quas odit iusto.
-            </Text>
-          </motion.div>
+          <BoxWithTags content="p">
+            <motion.div variants={item}>
+              <Text>
+                My skills including frontend, backend, Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Dolores possimus officia
+                dignissimos impedit, tempora exercitationem? Iure eaque quo amet
+                reiciendis magnam. Autem officiis delectus quod dolore quasi
+                quas odit iusto.
+              </Text>
+            </motion.div>
+          </BoxWithTags>
 
           {/* Progress Bars */}
-          <motion.div variants={item}>
-            <Grid>
-              {skills.map((skill, i) => (
-                <GridItem key={"gr" + i}>
-                  <label>{skill.name}</label>
-                  <Progress
-                    id="frontends"
-                    colorScheme={skill.colorScheme}
-                    value={skill.value}
-                    hasStripe={true}
-                    isAnimated={true}
-                    size="xs"
-                  />
-                </GridItem>
-              ))}
-            </Grid>
-          </motion.div>
+          <BoxWithTags content="data">
+            <motion.div variants={item}>
+              <Grid>
+                {skills.map((skill, i) => (
+                  <GridItem key={"gr" + i}>
+                    <label>{skill.name}</label>
+                    <Progress
+                      id="frontends"
+                      colorScheme={skill.colorScheme}
+                      value={skill.value}
+                      hasStripe={true}
+                      isAnimated={true}
+                      size="xs"
+                    />
+                  </GridItem>
+                ))}
+              </Grid>
+            </motion.div>
+          </BoxWithTags>
         </SimpleGrid>
       </motion.div>
 

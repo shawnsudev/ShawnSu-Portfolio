@@ -25,6 +25,7 @@ import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
+import BoxWithTags from "../components/BoxWithTags";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -99,123 +100,127 @@ const Contact: NextPage = (props) => {
 
   return (
     <Box className={styles.main}>
-      <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
+      <BoxWithTags content="h2">
+        <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
+      </BoxWithTags>
 
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
-        <FormControl>
-          <Stack spacing={2}>
-            <SimpleGrid columns={2} spacing={2}>
+      <BoxWithTags content="form">
+        <motion.div
+          ref={ref}
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <FormControl>
+            <Stack spacing={2}>
+              <SimpleGrid columns={2} spacing={2}>
+                <motion.div variants={item}>
+                  <InputGroup>
+                    <InputLeftElement color="red.300" children="*" />
+                    <Input
+                      type="text"
+                      placeholder="Name"
+                      variant="filled"
+                      value={message.name}
+                      onChange={(e) => {
+                        const newMessage = { ...message };
+                        newMessage.name = e.target.value;
+                        setMessage(newMessage);
+                      }}
+                    />
+                  </InputGroup>
+                </motion.div>
+                <motion.div variants={item}>
+                  <Input
+                    type="text"
+                    placeholder="Company"
+                    variant="filled"
+                    onChange={(e) => {
+                      const newMessage = { ...message };
+                      newMessage.company = e.target.value;
+                      setMessage(newMessage);
+                    }}
+                  />
+                </motion.div>
+              </SimpleGrid>
+
               <motion.div variants={item}>
                 <InputGroup>
                   <InputLeftElement color="red.300" children="*" />
                   <Input
-                    type="text"
-                    placeholder="Name"
+                    type="email"
+                    placeholder="Email"
                     variant="filled"
-                    value={message.name}
                     onChange={(e) => {
                       const newMessage = { ...message };
-                      newMessage.name = e.target.value;
+                      newMessage.email = e.target.value;
                       setMessage(newMessage);
                     }}
                   />
                 </InputGroup>
               </motion.div>
+
               <motion.div variants={item}>
-                <Input
-                  type="text"
-                  placeholder="Company"
-                  variant="filled"
-                  onChange={(e) => {
-                    const newMessage = { ...message };
-                    newMessage.company = e.target.value;
-                    setMessage(newMessage);
-                  }}
-                />
+                <InputGroup>
+                  <InputLeftElement color="red.300" children="*" />
+                  <Input
+                    type="text"
+                    placeholder="Subject"
+                    variant="filled"
+                    onChange={(e) => {
+                      const newMessage = { ...message };
+                      newMessage.subject = e.target.value;
+                      setMessage(newMessage);
+                    }}
+                  />
+                </InputGroup>
               </motion.div>
-            </SimpleGrid>
 
-            <motion.div variants={item}>
-              <InputGroup>
-                <InputLeftElement color="red.300" children="*" />
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  variant="filled"
-                  onChange={(e) => {
-                    const newMessage = { ...message };
-                    newMessage.email = e.target.value;
-                    setMessage(newMessage);
+              <motion.div variants={item}>
+                <InputGroup>
+                  <InputLeftElement color="red.300" children="*" />
+                  <Input
+                    type="textarea"
+                    placeholder="Message"
+                    variant="filled"
+                    onChange={(e) => {
+                      const newMessage = { ...message };
+                      newMessage.message = e.target.value;
+                      setMessage(newMessage);
+                    }}
+                  />
+                </InputGroup>
+              </motion.div>
+
+              <motion.div variants={item}>
+                <Button
+                  maxWidth="25vw"
+                  onClick={(e) => {
+                    const allRequiredFieldsAreValid =
+                      message.name &&
+                      message.email &&
+                      message.subject &&
+                      message.message;
+
+                    if (allRequiredFieldsAreValid) {
+                      setIsError(false);
+                    } else {
+                      setIsError(true);
+                      console.log("⛔️", "not all the fields are filled");
+                    }
+
+                    setSubmitted(true);
+                    setTimeout(() => setSubmitted(false), 10000);
                   }}
-                />
-              </InputGroup>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <InputGroup>
-                <InputLeftElement color="red.300" children="*" />
-                <Input
-                  type="text"
-                  placeholder="Subject"
-                  variant="filled"
-                  onChange={(e) => {
-                    const newMessage = { ...message };
-                    newMessage.subject = e.target.value;
-                    setMessage(newMessage);
-                  }}
-                />
-              </InputGroup>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <InputGroup>
-                <InputLeftElement color="red.300" children="*" />
-                <Input
-                  type="textarea"
-                  placeholder="Message"
-                  variant="filled"
-                  onChange={(e) => {
-                    const newMessage = { ...message };
-                    newMessage.message = e.target.value;
-                    setMessage(newMessage);
-                  }}
-                />
-              </InputGroup>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <Button
-                maxWidth="25vw"
-                onClick={(e) => {
-                  const allRequiredFieldsAreValid =
-                    message.name &&
-                    message.email &&
-                    message.subject &&
-                    message.message;
-
-                  if (allRequiredFieldsAreValid) {
-                    setIsError(false);
-                  } else {
-                    setIsError(true);
-                    console.log("⛔️", "not all the fields are filled");
-                  }
-
-                  setSubmitted(true);
-                  setTimeout(() => setSubmitted(false), 10000);
-                }}
-              >
-                Submit
-              </Button>
-            </motion.div>
-            <motion.div variants={item}>{messageDisplay}</motion.div>
-          </Stack>
-        </FormControl>
-      </motion.div>
+                >
+                  Submit
+                </Button>
+              </motion.div>
+              <motion.div variants={item}>{messageDisplay}</motion.div>
+            </Stack>
+          </FormControl>
+        </motion.div>
+      </BoxWithTags>
     </Box>
   );
 };

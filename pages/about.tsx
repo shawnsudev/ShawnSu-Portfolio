@@ -1,7 +1,8 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { NextPage } from "next";
 import { RefAttributes, useRef } from "react";
+import BoxWithTags from "../components/BoxWithTags";
 import Continue from "../components/Continue";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
@@ -13,22 +14,37 @@ const About: NextPage = () => {
 
   return (
     <Box className={styles.main}>
-      <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
-      <Text as="p">
-        I had been a business/English tutor for international tertiary students
-        since 2013 until the Pandemic, during which I retrained to be a Frontend
-        Web Developer. I have a passion for learning new technologies and
-        applying them to create fluid and modern web UX for users.
-      </Text>
-      <Text as="p">
-        Well-organised, detail-oriented, independent thinker/problem-solver.
-      </Text>
-      <Text as="p">
-        My personal interests include reading non-fiction books, Yoga and
-        Calisthenics exercising, and playing highly challenging soulslike video
-        games.
-      </Text>
-      
+      <BoxWithTags content="section" right="3rem" bottom="7rem">
+        <Box>
+          <BoxWithTags content="h2">
+            <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
+          </BoxWithTags>
+
+          <SimpleGrid columns={2} spacing={5}>
+            <BoxWithTags content="p">
+              <Text as="p">
+                I had been a business/English tutor for international tertiary
+                students since 2013 until the Pandemic, during which I retrained
+                to be a Frontend Web Developer. I have a passion for learning
+                new technologies and applying them to create fluid and modern
+                web UX for users.
+              </Text>
+            </BoxWithTags>
+            <BoxWithTags content="p">
+              <Text as="p">
+                Well-organised, detail-oriented, independent
+                thinker/problem-solver.
+                <br />
+                <br />
+                My personal interests include reading non-fiction books, Yoga
+                and Calisthenics exercising, and playing highly challenging
+                soulslike video games.
+              </Text>
+            </BoxWithTags>
+          </SimpleGrid>
+        </Box>
+      </BoxWithTags>
+
       <Continue />
     </Box>
   );
