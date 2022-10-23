@@ -62,10 +62,6 @@ const Contact: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
-  // useEffect(() => {
-  //   console.log("isInView:", isInView);
-  // }, [isInView]);
-
   useEffect(() => {
     // console.log("😅 useEffect running!");
     // console.log(isError);
@@ -78,7 +74,7 @@ const Contact: NextPage = (props) => {
   }, [isError, message, submitted]);
 
   return (
-    <Box className={styles.main}>
+    <Box id="contact" className={styles.main}>
       <BoxWithTags content="h2">
         <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
       </BoxWithTags>

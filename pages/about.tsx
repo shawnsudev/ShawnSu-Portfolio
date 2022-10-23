@@ -17,7 +17,7 @@ const About: NextPage = () => {
   const pageTitle = ["About me", "Page"];
 
   return (
-    <Box className={styles.main}>
+    <Box id="about" className={styles.main}>
       <BoxWithTags content="section" right="3rem" bottom="7rem">
         <Box>
           <BoxWithTags content="h2">

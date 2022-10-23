@@ -10,19 +10,19 @@ const Navbar: NextPage = () => {
         <Logo />
         <VStack divider={<StackDivider />} spacing={4} width="100%">
           <Text></Text>
-          <NextLink href="/home" passHref>
+          <NextLink href="/#landing" passHref>
             <Link color="teal.400">Home</Link>
           </NextLink>
-          <NextLink href="/about" passHref>
+          <NextLink href="/#about" passHref>
             <Link>About</Link>
           </NextLink>
-          <NextLink href="/projects" passHref>
+          <NextLink href="/#projects" passHref>
             <Link>Projects</Link>
           </NextLink>
-          <NextLink href="/skills" passHref>
+          <NextLink href="/#skills" passHref>
             <Link>Skills</Link>
           </NextLink>
-          <NextLink href="/contact" passHref>
+          <NextLink href="/#contact" passHref>
             <Link>Contact</Link>
           </NextLink>
           <Text></Text>

@@ -82,7 +82,7 @@ const Skills: NextPage = (props) => {
   };
 
   return (
-    <Box className={styles.main}>
+    <Box id="skills" className={styles.main}>
       {/* Title */}
       <BoxWithTags content="h2">
         <PageTitle

@@ -49,7 +49,7 @@ const Landing: NextPage = () => {
   const title = ["Hello", "I'm Shawn,", "new web developer"];
 
   return (
-    <Box className={styles.landing}>
+    <Box id="landing" className={styles.landing}>
       <Box>
         <motion.div
           ref={ref}

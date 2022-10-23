@@ -46,7 +46,7 @@ const Projects: NextPage = () => {
   const pageTitle = ["My Projects"];
 
   return (
-    <Box className={styles.main}>
+    <Box id="projects" className={styles.main}>
       <BoxWithTags content="h2">
         <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
       </BoxWithTags>
