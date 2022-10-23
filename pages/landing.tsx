@@ -13,7 +13,7 @@ import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
-import BoxWithTags from "../components/BoxWithTags";
+import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
@@ -57,7 +57,7 @@ const Landing: NextPage = () => {
           initial="hidden"
           animate="show"
         >
-          <BoxWithTags content="h1" right="1.5rem">
+          <DecorativeTag content="h1" right="1.5rem">
             <Heading as="h1" size="4xl">
               {title.map((line, idx) => (
                 <p key={"line" + idx}>
@@ -82,25 +82,25 @@ const Landing: NextPage = () => {
                 </p>
               ))}
             </Heading>
-          </BoxWithTags>
+          </DecorativeTag>
         </motion.div>
 
         <FadeInContainer once={false}>
-          <BoxWithTags content="p">
+          <DecorativeTag content="p">
             <FadeInItem>
               <Text as="p" color="slate" size="2xl">
                 New Front-end / React.JS Developer
               </Text>
             </FadeInItem>
-          </BoxWithTags>
+          </DecorativeTag>
 
-          <BoxWithTags content="button">
+          <DecorativeTag content="button">
             <FadeInItem>
               <Box>
                 <Button>Check Out My Portfolio</Button>
               </Box>
             </FadeInItem>
-          </BoxWithTags>
+          </DecorativeTag>
         </FadeInContainer>
       </Box>
 

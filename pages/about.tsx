@@ -2,7 +2,7 @@ import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { NextPage } from "next";
 import { RefAttributes, useRef } from "react";
-import BoxWithTags from "../components/BoxWithTags";
+import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import {
   FadeInContainer,
@@ -18,15 +18,15 @@ const About: NextPage = () => {
 
   return (
     <Box id="about" className={styles.main}>
-      <BoxWithTags content="section" right="3rem" bottom="7rem">
+      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
         <Box>
-          <BoxWithTags content="h2">
+          <DecorativeTag content="h2">
             <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
-          </BoxWithTags>
+          </DecorativeTag>
 
           <FadeInContainer>
             <SimpleGrid columns={2} spacing={5}>
-              <BoxWithTags content="p">
+              <DecorativeTag content="p">
                 <FadeInItem>
                   <Text as="p">
                     I had been a business/English tutor for international
@@ -36,9 +36,9 @@ const About: NextPage = () => {
                     create fluid and modern web UX for users.
                   </Text>
                 </FadeInItem>
-              </BoxWithTags>
+              </DecorativeTag>
 
-              <BoxWithTags content="p">
+              <DecorativeTag content="p">
                 <FadeInItem>
                   <Text as="p">
                     Well-organised, detail-oriented, independent
@@ -50,11 +50,11 @@ const About: NextPage = () => {
                     challenging soulslike video games.
                   </Text>
                 </FadeInItem>
-              </BoxWithTags>
+              </DecorativeTag>
             </SimpleGrid>
           </FadeInContainer>
         </Box>
-      </BoxWithTags>
+      </DecorativeTag>
 
       <Continue />
     </Box>

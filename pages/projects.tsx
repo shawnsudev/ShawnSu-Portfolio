@@ -6,7 +6,7 @@ import PageTitle from "../components/PageTitle";
 import { rubberband } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
-import BoxWithTags from "../components/BoxWithTags";
+import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Projects: NextPage = () => {
@@ -47,13 +47,13 @@ const Projects: NextPage = () => {
 
   return (
     <Box id="projects" className={styles.main}>
-      <BoxWithTags content="h2">
+      <DecorativeTag content="h2">
         <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
-      </BoxWithTags>
+      </DecorativeTag>
 
-      {/* Personal Projects */}
-      <BoxWithTags content="grid">
+      <DecorativeTag content="grid">
         <FadeInContainer>
+          {/* Personal Projects */}
           <Box>
             <Heading as="h3">Personal Projects</Heading>
             <Flex justify="space-around">
@@ -66,8 +66,9 @@ const Projects: NextPage = () => {
             </Flex>
           </Box>
 
+          {/* Class Projects */}
           <Box>
-            <Heading as="h3">Group Projects</Heading>
+            <Heading as="h3">Class Projects</Heading>
             <Flex justify="space-around">
               <FadeInItem>
                 <Heading as="h4">project 1</Heading>
@@ -84,7 +85,7 @@ const Projects: NextPage = () => {
             </Flex>
           </Box>
         </FadeInContainer>
-      </BoxWithTags>
+      </DecorativeTag>
 
       <Continue />
     </Box>
