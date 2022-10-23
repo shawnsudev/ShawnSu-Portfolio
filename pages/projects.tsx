@@ -11,16 +11,14 @@ import BoxWithTags from "../components/BoxWithTags";
 const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  // const container = {
-  //   show: {
-  //     transition: isInView
-  //       ? {
-  //           delayChildren: 1,
-  //           staggerChildren: 0.3,
-  //         }
-  //       : {},
-  //   },
-  // };
+  const container = {
+    show: {
+      transition: {
+        delayChildren: 1,
+        staggerChildren: 0.3,
+      },
+    },
+  };
   // const item = {
   //   hidden: { y: 100, opacity: 0 },
   //   show: {
@@ -56,10 +54,10 @@ const Projects: NextPage = () => {
       <BoxWithTags content="grid">
         <motion.div
           ref={ref}
-          // variants={container}
+          variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
         >
           <Box>
             <Heading as="h3">Personal Projects</Heading>
