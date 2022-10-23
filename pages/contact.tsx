@@ -26,6 +26,7 @@ import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 import BoxWithTags from "../components/BoxWithTags";
+import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -61,28 +62,6 @@ const Contact: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
-  const container = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.3,
-          }
-        : {},
-    },
-  };
-  const item = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: { ease: "easeOut", duration: 1 },
-    },
-  };
-
   // useEffect(() => {
   //   console.log("isInView:", isInView);
   // }, [isInView]);
@@ -105,16 +84,11 @@ const Contact: NextPage = (props) => {
       </BoxWithTags>
 
       <BoxWithTags content="form">
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          animate="show"
-        >
+        <FadeInContainer>
           <FormControl>
             <Stack spacing={2}>
               <SimpleGrid columns={2} spacing={2}>
-                <motion.div variants={item}>
+                <FadeInItem>
                   <InputGroup>
                     <InputLeftElement color="red.300" children="*" />
                     <Input
@@ -129,8 +103,8 @@ const Contact: NextPage = (props) => {
                       }}
                     />
                   </InputGroup>
-                </motion.div>
-                <motion.div variants={item}>
+                </FadeInItem>
+                <FadeInItem>
                   <Input
                     type="text"
                     placeholder="Company"
@@ -141,10 +115,10 @@ const Contact: NextPage = (props) => {
                       setMessage(newMessage);
                     }}
                   />
-                </motion.div>
+                </FadeInItem>
               </SimpleGrid>
 
-              <motion.div variants={item}>
+              <FadeInItem>
                 <InputGroup>
                   <InputLeftElement color="red.300" children="*" />
                   <Input
@@ -158,9 +132,9 @@ const Contact: NextPage = (props) => {
                     }}
                   />
                 </InputGroup>
-              </motion.div>
+              </FadeInItem>
 
-              <motion.div variants={item}>
+              <FadeInItem>
                 <InputGroup>
                   <InputLeftElement color="red.300" children="*" />
                   <Input
@@ -174,9 +148,9 @@ const Contact: NextPage = (props) => {
                     }}
                   />
                 </InputGroup>
-              </motion.div>
+              </FadeInItem>
 
-              <motion.div variants={item}>
+              <FadeInItem>
                 <InputGroup>
                   <InputLeftElement color="red.300" children="*" />
                   <Input
@@ -190,9 +164,9 @@ const Contact: NextPage = (props) => {
                     }}
                   />
                 </InputGroup>
-              </motion.div>
+              </FadeInItem>
 
-              <motion.div variants={item}>
+              <FadeInItem>
                 <Button
                   maxWidth="25vw"
                   onClick={(e) => {
@@ -215,11 +189,11 @@ const Contact: NextPage = (props) => {
                 >
                   Submit
                 </Button>
-              </motion.div>
-              <motion.div variants={item}>{messageDisplay}</motion.div>
+              </FadeInItem>
+              <FadeInItem>{messageDisplay}</FadeInItem>
             </Stack>
           </FormControl>
-        </motion.div>
+        </FadeInContainer>
       </BoxWithTags>
     </Box>
   );

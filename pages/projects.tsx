@@ -7,6 +7,7 @@ import { rubberband } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import BoxWithTags from "../components/BoxWithTags";
+import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -52,37 +53,37 @@ const Projects: NextPage = () => {
 
       {/* Personal Projects */}
       <BoxWithTags content="grid">
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <FadeInContainer>
           <Box>
             <Heading as="h3">Personal Projects</Heading>
             <Flex justify="space-around">
-              <motion.div variants={item}>
+              <FadeInItem>
                 <Heading as="h4">Sudoku</Heading>
-              </motion.div>
-              <motion.div variants={item}>
+              </FadeInItem>
+              <FadeInItem>
                 <Heading as="h4">Game of Life</Heading>
-              </motion.div>
+              </FadeInItem>
             </Flex>
           </Box>
 
           <Box>
             <Heading as="h3">Group Projects</Heading>
             <Flex justify="space-around">
-              <motion.div variants={item}>
-                <Heading as="h4">Sudoku</Heading>
-              </motion.div>
-              <motion.div variants={item}>
-                <Heading as="h4">Game of Life</Heading>
-              </motion.div>
+              <FadeInItem>
+                <Heading as="h4">project 1</Heading>
+              </FadeInItem>
+              <FadeInItem>
+                <Heading as="h4">project 2</Heading>
+              </FadeInItem>
+              <FadeInItem>
+                <Heading as="h4">project 3</Heading>
+              </FadeInItem>
+              <FadeInItem>
+                <Heading as="h4">project 4</Heading>
+              </FadeInItem>
             </Flex>
           </Box>
-        </motion.div>
+        </FadeInContainer>
       </BoxWithTags>
 
       <Continue />

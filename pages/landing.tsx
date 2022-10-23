@@ -15,6 +15,7 @@ import PageTitle from "../components/PageTitle";
 import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import BoxWithTags from "../components/BoxWithTags";
 import Continue from "../components/Continue";
+import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Landing: NextPage = () => {
   const ref = useRef(null);
@@ -84,17 +85,23 @@ const Landing: NextPage = () => {
           </BoxWithTags>
         </motion.div>
 
-        <BoxWithTags content="p">
-          <Text as="p" color="slate" size="2xl">
-            New Front-end / React.JS Developer
-          </Text>
-        </BoxWithTags>
+        <FadeInContainer once={false}>
+          <BoxWithTags content="p">
+            <FadeInItem>
+              <Text as="p" color="slate" size="2xl">
+                New Front-end / React.JS Developer
+              </Text>
+            </FadeInItem>
+          </BoxWithTags>
 
-        <BoxWithTags content="button">
-          <Box>
-            <Button>Check Out My Portfolio</Button>
-          </Box>
-        </BoxWithTags>
+          <BoxWithTags content="button">
+            <FadeInItem>
+              <Box>
+                <Button>Check Out My Portfolio</Button>
+              </Box>
+            </FadeInItem>
+          </BoxWithTags>
+        </FadeInContainer>
       </Box>
 
       <Continue />

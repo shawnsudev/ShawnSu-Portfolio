@@ -23,7 +23,7 @@ const PageTitle = forwardRef(
         // scale: 1.5,
         transition: isInView
           ? {
-              delayChildren: 1,
+              delayChildren: 0.5,
               staggerChildren: 0.08,
             }
           : {},

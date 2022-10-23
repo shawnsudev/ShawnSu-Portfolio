@@ -16,6 +16,7 @@ import { rubberband, runRubberbandIn } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import BoxWithTags from "../components/BoxWithTags";
+import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Skills: NextPage = (props) => {
   // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
@@ -91,15 +92,10 @@ const Skills: NextPage = (props) => {
         />
       </BoxWithTags>
 
-      <motion.div
-        ref={ref}
-        variants={container}
-        initial="hidden"
-        animate="show"
-      >
+      <FadeInContainer>
         <SimpleGrid columns={2} spacing={5}>
           <BoxWithTags content="p">
-            <motion.div variants={item}>
+            <FadeInItem>
               <Text>
                 My skills including frontend, backend, Lorem ipsum dolor sit
                 amet consectetur adipisicing elit. Dolores possimus officia
@@ -107,12 +103,12 @@ const Skills: NextPage = (props) => {
                 reiciendis magnam. Autem officiis delectus quod dolore quasi
                 quas odit iusto.
               </Text>
-            </motion.div>
+            </FadeInItem>
           </BoxWithTags>
 
           {/* Progress Bars */}
           <BoxWithTags content="data">
-            <motion.div variants={item}>
+            <FadeInItem>
               <Grid>
                 {skills.map((skill, i) => (
                   <GridItem key={"gr" + i}>
@@ -128,10 +124,10 @@ const Skills: NextPage = (props) => {
                   </GridItem>
                 ))}
               </Grid>
-            </motion.div>
+            </FadeInItem>
           </BoxWithTags>
         </SimpleGrid>
-      </motion.div>
+      </FadeInContainer>
 
       <Continue />
     </Box>
