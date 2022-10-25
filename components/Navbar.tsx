@@ -1,6 +1,6 @@
 import { Box, Link, StackDivider, Text, VStack } from "@chakra-ui/react";
 import { NextPage } from "next";
-import * as NextLink from "next/link";
+import NextLink from "next/link";
 import Logo from "./Logo";
 
 const Navbar: NextPage = () => {

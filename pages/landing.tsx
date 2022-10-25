@@ -26,7 +26,7 @@ const Landing: NextPage = () => {
       opacity: isInView ? 1 : 0,
       transition: isInView
         ? {
-            delayChildren: 1,
+            delayChildren: 0.5,
             staggerChildren: 0.08,
           }
         : {},
