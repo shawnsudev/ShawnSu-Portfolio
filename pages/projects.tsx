@@ -8,41 +8,12 @@ import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
+import Card from "../components/Card";
+import {personalProjects} from "../data/projects.json"
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  const container = {
-    show: {
-      transition: {
-        delayChildren: 1,
-        staggerChildren: 0.3,
-      },
-    },
-  };
-  // const item = {
-  //   hidden: { y: 100, opacity: 0 },
-  //   show: {
-  //     y: isInView ? 0 : 100,
-  //     opacity: isInView ? 1 : 0,
-  //     transition: {
-  //       ease: "easeOut",
-  //       duration: 1,
-  //     },
-  //   },
-  // };
-
-  const item = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        ease: "easeOut",
-        duration: 1,
-      },
-    },
-  };
   const pageTitle = ["My Projects"];
 
   return (
@@ -54,6 +25,17 @@ const Projects: NextPage = () => {
       <DecorativeTag content="grid">
         <FadeInContainer>
           {/* Personal Projects */}
+          <Box>
+            <Heading as="h3">New Personal Projects</Heading>
+            <Flex justify={"space-around"}>
+              {personalProjects.map((project) => (
+                <FadeInItem>
+                  <Card card={project} />
+                </FadeInItem>
+              ))}
+            </Flex>
+          </Box>
+
           <Box>
             <Heading as="h3">Personal Projects</Heading>
             <Flex justify="space-around">
