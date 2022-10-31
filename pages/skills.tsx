@@ -83,52 +83,53 @@ const Skills: NextPage = (props) => {
 
   return (
     <Box id="skills" className={styles.main}>
-      {/* Title */}
-      <BoxWithTags content="h2">
-        <PageTitle
-          ref={ref}
-          isInView={isInView}
-          pageTitle={["Skills", "&", "Experiences"]}
-        />
+      <BoxWithTags content="section" right="3rem" bottom="7rem">
+        {/* Title */}
+        <BoxWithTags content="h2">
+          <PageTitle
+            ref={ref}
+            isInView={isInView}
+            pageTitle={["Skills", "&", "Experiences"]}
+          />
+        </BoxWithTags>
+
+        <FadeInContainer>
+          <SimpleGrid columns={2} spacing={5}>
+            <BoxWithTags content="p">
+              <FadeInItem>
+                <Text>
+                  My skills including frontend, backend, Lorem ipsum dolor sit
+                  amet consectetur adipisicing elit. Dolores possimus officia
+                  dignissimos impedit, tempora exercitationem? Iure eaque quo
+                  amet reiciendis magnam. Autem officiis delectus quod dolore
+                  quasi quas odit iusto.
+                </Text>
+              </FadeInItem>
+            </BoxWithTags>
+
+            {/* Progress Bars */}
+            <BoxWithTags content="data">
+              <FadeInItem>
+                <Grid>
+                  {skills.map((skill, i) => (
+                    <GridItem key={"gr" + i}>
+                      <label>{skill.name}</label>
+                      <Progress
+                        id="frontends"
+                        colorScheme={skill.colorScheme}
+                        value={skill.value}
+                        hasStripe={true}
+                        isAnimated={true}
+                        size="xs"
+                      />
+                    </GridItem>
+                  ))}
+                </Grid>
+              </FadeInItem>
+            </BoxWithTags>
+          </SimpleGrid>
+        </FadeInContainer>
       </BoxWithTags>
-
-      <FadeInContainer>
-        <SimpleGrid columns={2} spacing={5}>
-          <BoxWithTags content="p">
-            <FadeInItem>
-              <Text>
-                My skills including frontend, backend, Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Dolores possimus officia
-                dignissimos impedit, tempora exercitationem? Iure eaque quo amet
-                reiciendis magnam. Autem officiis delectus quod dolore quasi
-                quas odit iusto.
-              </Text>
-            </FadeInItem>
-          </BoxWithTags>
-
-          {/* Progress Bars */}
-          <BoxWithTags content="data">
-            <FadeInItem>
-              <Grid>
-                {skills.map((skill, i) => (
-                  <GridItem key={"gr" + i}>
-                    <label>{skill.name}</label>
-                    <Progress
-                      id="frontends"
-                      colorScheme={skill.colorScheme}
-                      value={skill.value}
-                      hasStripe={true}
-                      isAnimated={true}
-                      size="xs"
-                    />
-                  </GridItem>
-                ))}
-              </Grid>
-            </FadeInItem>
-          </BoxWithTags>
-        </SimpleGrid>
-      </FadeInContainer>
-
       <Continue />
     </Box>
   );
