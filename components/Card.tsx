@@ -37,16 +37,21 @@ const Card = ({ card, w }: CardProps) => {
         margin="1rem auto"
         position={"relative"}
         top="6rem"
+        bg="white"
+        border=".7rem solid white"
+        borderRadius="1rem"
+        boxShadow="-0.5rem 0.5rem .5rem lightgray, 0.5rem 0.5rem .5rem lightgray"
       />
       <Box
         w={w}
-        border="1px solid lightgray"
-        borderRadius="1rem"
+        // border="1px solid lightgray"
+        borderRadius=".5rem"
+        bg="white"
         padding="2rem"
         textAlign={"center"}
-        boxShadow=".5rem .5rem .5rem lightgray"
+        boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
       >
-        <Box h="3rem"/>
+        <Box h="3rem" />
         <NextLink href={card.link} passHref>
           <LinkOverlay>
             <Heading as="h4" size="md" margin="1rem">
