@@ -1,18 +1,17 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 
-type BoxWithTagsProps = BoxProps & {
+type DecorativeTagProps = BoxProps & {
   content: string;
-  right?: string;
-  bottom?: string;
+  hExpand?: string;
+  vExpand?: string;
 };
 
-const BoxWithTags = ({
+const DecorativeTag = ({
   children,
   content,
-  right,
-  bottom,
-}: BoxWithTagsProps) => {
-
+  hExpand,
+  vExpand,
+}: DecorativeTagProps) => {
   return (
     <Box
       _before={{
@@ -21,8 +20,8 @@ const BoxWithTags = ({
         fontFamily: "'Fasthand', cursive",
         fontWeight: "light",
         position: "relative",
-        right: right ? right : "1rem",
-        bottom: bottom ? bottom : "0rem",
+        right: hExpand ? hExpand : "1rem",
+        bottom: vExpand ? vExpand : "0rem",
       }}
       _after={{
         content: `"</${content}>"`,
@@ -30,8 +29,8 @@ const BoxWithTags = ({
         fontFamily: "'Fasthand', cursive",
         fontWeight: "light",
         position: "relative",
-        right: right ? right : "1rem",
-        bottom: bottom ? `-${bottom}` : "0rem",
+        right: hExpand ? hExpand : "1rem",
+        bottom: vExpand ? `-${vExpand}` : "0rem",
       }}
     >
       {children}
@@ -39,4 +38,4 @@ const BoxWithTags = ({
   );
 };
 
-export default BoxWithTags;
+export default DecorativeTag;

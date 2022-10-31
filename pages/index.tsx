@@ -13,8 +13,9 @@ import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
 import Landing from "./landing";
-import { Grid, GridItem } from "@chakra-ui/react";
-import BoxWithTags from "../components/BoxWithTags";
+import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import DecorativeTag from "../components/DecorativeTag";
+import { FadeInContainer } from "../components/FadeInTransition";
 
 const Home: NextPage = () => {
   return (
@@ -28,51 +29,26 @@ const Home: NextPage = () => {
       <Grid
         h="100%"
         templateRows="repeat(1, 1fr)"
-        templateColumns="repeat(10, 1fr)"
+        templateColumns="repeat(20, 1fr)"
         gap={0}
       >
-        <GridItem
-          minWidth="8rem"
-          maxWidth="12rem"
-          rowSpan={10}
-          colSpan={2}
-          bg="gray"
-        >
+        <GridItem w="8rem" rowSpan={10} colSpan={1} bg="gray">
           <Navbar />
         </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <Landing />
-        </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <About />
-        </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <Projects />
-        </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <Skills />
-        </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <Contact />
-        </GridItem>
-        <GridItem colSpan={8} bg="mintcream">
-          <footer className={styles.footer}>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Powered by{" "}
-              <span className={styles.logo}>
-                <Image
-                  src="/vercel.svg"
-                  alt="Vercel Logo"
-                  width={72}
-                  height={16}
-                />
-              </span>
-            </a>
-          </footer>
+
+        {/* Home Page */}
+        <GridItem colSpan={19} bg="mintcream">
+          <DecorativeTag content="html" hExpand="-0.5rem">
+            <DecorativeTag content="body" hExpand="-1rem">
+              <Flex flexDirection={"column"}>
+                <Landing />
+                <About />
+                <Projects />
+                <Skills />
+                <Contact />
+              </Flex>
+            </DecorativeTag>
+          </DecorativeTag>
         </GridItem>
       </Grid>
     </div>

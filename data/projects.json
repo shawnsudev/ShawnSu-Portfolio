@@ -1,0 +1,28 @@
+{
+  "personalProjects": [
+    {
+      "name": "Sudoku",
+      "img": "https://cdn-icons-png.flaticon.com/512/5731/5731711.png",
+      "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
+      "stacks": ["React", "Express", "Docker"],
+      "highlights": ["useEffect", "useReducer", "canvas animation"],
+      "link": "https://sudoku-shawnsu.netlify.app/"
+    },
+    {
+      "name": "Game of Life",
+      "img": "https://play-lh.googleusercontent.com/Ia1Pt7lUxyCpjMYBhurg3hl-s7dx8Mf-uv-vbwRHPjXmnhYTIvtMyDzMfgOZLIE4f1w",
+      "stacks": ["React", ""],
+      "highlights": ["useEffect", "useReducer", "canvas animation"],
+      "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
+      "link": "https://sudoku-shawnsu.netlify.app/"
+    },
+    {
+      "name": "Shawn Su's Portfolio",
+      "img": "https://st3.depositphotos.com/14846838/19149/v/1600/depositphotos_191495842-stock-illustration-professional-icon-of-business-portfolio.jpg",
+      "stacks": ["NextJS", "Framer-motion", "Chakra"],
+      "highlights": ["animation","animation orchestration", "theme-based UI framework", ""],
+      "description": "My personal portfolio site that demostrate my coding skills",
+      "link": "https://sudoku-shawnsu.netlify.app/"
+    }
+  ]
+}

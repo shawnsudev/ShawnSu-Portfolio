@@ -15,7 +15,7 @@ import PageTitle from "../components/PageTitle";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
-import BoxWithTags from "../components/BoxWithTags";
+import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Skills: NextPage = (props) => {
@@ -83,53 +83,55 @@ const Skills: NextPage = (props) => {
 
   return (
     <Box id="skills" className={styles.main}>
-      <BoxWithTags content="section" right="3rem" bottom="7rem">
-        {/* Title */}
-        <BoxWithTags content="h2">
-          <PageTitle
-            ref={ref}
-            isInView={isInView}
-            pageTitle={["Skills", "&", "Experiences"]}
-          />
-        </BoxWithTags>
+      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
+        <Box>
+          {/* Title */}
+          <DecorativeTag content="h2">
+            <PageTitle
+              ref={ref}
+              isInView={isInView}
+              pageTitle={["Skills", "&", "Experiences"]}
+            />
+          </DecorativeTag>
 
-        <FadeInContainer>
-          <SimpleGrid columns={2} spacing={5}>
-            <BoxWithTags content="p">
-              <FadeInItem>
-                <Text>
-                  My skills including frontend, backend, Lorem ipsum dolor sit
-                  amet consectetur adipisicing elit. Dolores possimus officia
-                  dignissimos impedit, tempora exercitationem? Iure eaque quo
-                  amet reiciendis magnam. Autem officiis delectus quod dolore
-                  quasi quas odit iusto.
-                </Text>
-              </FadeInItem>
-            </BoxWithTags>
+          <FadeInContainer>
+            <SimpleGrid columns={2} spacing={5}>
+              <DecorativeTag content="p">
+                <FadeInItem>
+                  <Text>
+                    My skills including frontend, backend, Lorem ipsum dolor sit
+                    amet consectetur adipisicing elit. Dolores possimus officia
+                    dignissimos impedit, tempora exercitationem? Iure eaque quo
+                    amet reiciendis magnam. Autem officiis delectus quod dolore
+                    quasi quas odit iusto.
+                  </Text>
+                </FadeInItem>
+              </DecorativeTag>
 
-            {/* Progress Bars */}
-            <BoxWithTags content="data">
-              <FadeInItem>
-                <Grid>
-                  {skills.map((skill, i) => (
-                    <GridItem key={"gr" + i}>
-                      <label>{skill.name}</label>
-                      <Progress
-                        id="frontends"
-                        colorScheme={skill.colorScheme}
-                        value={skill.value}
-                        hasStripe={true}
-                        isAnimated={true}
-                        size="xs"
-                      />
-                    </GridItem>
-                  ))}
-                </Grid>
-              </FadeInItem>
-            </BoxWithTags>
-          </SimpleGrid>
-        </FadeInContainer>
-      </BoxWithTags>
+              {/* Progress Bars */}
+              <DecorativeTag content="data">
+                <FadeInItem>
+                  <Grid>
+                    {skills.map((skill, i) => (
+                      <GridItem key={"gr" + i}>
+                        <label>{skill.name}</label>
+                        <Progress
+                          id="frontends"
+                          colorScheme={skill.colorScheme}
+                          value={skill.value}
+                          hasStripe={true}
+                          isAnimated={true}
+                          size="xs"
+                        />
+                      </GridItem>
+                    ))}
+                  </Grid>
+                </FadeInItem>
+              </DecorativeTag>
+            </SimpleGrid>
+          </FadeInContainer>
+        </Box>
+      </DecorativeTag>
       <Continue />
     </Box>
   );

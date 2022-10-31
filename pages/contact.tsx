@@ -25,7 +25,7 @@ import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
-import BoxWithTags from "../components/BoxWithTags";
+import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Contact: NextPage = (props) => {
@@ -75,122 +75,130 @@ const Contact: NextPage = (props) => {
 
   return (
     <Box id="contact" className={styles.main}>
-      <BoxWithTags content="h2">
-        <PageTitle ref={ref} pageTitle={["Contact me"]} isInView={isInView} />
-      </BoxWithTags>
+      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
+        <Box>
+          <DecorativeTag content="h2">
+            <PageTitle
+              ref={ref}
+              pageTitle={["Contact me"]}
+              isInView={isInView}
+            />
+          </DecorativeTag>
 
-      <BoxWithTags content="form">
-        <FadeInContainer>
-          <FormControl>
-            <Stack spacing={2}>
-              <SimpleGrid columns={2} spacing={2}>
-                <FadeInItem>
-                  <InputGroup>
-                    <InputLeftElement color="red.300" children="*" />
-                    <Input
-                      type="text"
-                      placeholder="Name"
-                      variant="filled"
-                      value={message.name}
-                      onChange={(e) => {
-                        const newMessage = { ...message };
-                        newMessage.name = e.target.value;
-                        setMessage(newMessage);
+          <DecorativeTag content="form">
+            <FadeInContainer>
+              <FormControl>
+                <Stack spacing={2}>
+                  <SimpleGrid columns={2} spacing={2}>
+                    <FadeInItem>
+                      <InputGroup>
+                        <InputLeftElement color="red.300" children="*" />
+                        <Input
+                          type="text"
+                          placeholder="Name"
+                          variant="filled"
+                          value={message.name}
+                          onChange={(e) => {
+                            const newMessage = { ...message };
+                            newMessage.name = e.target.value;
+                            setMessage(newMessage);
+                          }}
+                        />
+                      </InputGroup>
+                    </FadeInItem>
+                    <FadeInItem>
+                      <Input
+                        type="text"
+                        placeholder="Company"
+                        variant="filled"
+                        onChange={(e) => {
+                          const newMessage = { ...message };
+                          newMessage.company = e.target.value;
+                          setMessage(newMessage);
+                        }}
+                      />
+                    </FadeInItem>
+                  </SimpleGrid>
+
+                  <FadeInItem>
+                    <InputGroup>
+                      <InputLeftElement color="red.300" children="*" />
+                      <Input
+                        type="email"
+                        placeholder="Email"
+                        variant="filled"
+                        onChange={(e) => {
+                          const newMessage = { ...message };
+                          newMessage.email = e.target.value;
+                          setMessage(newMessage);
+                        }}
+                      />
+                    </InputGroup>
+                  </FadeInItem>
+
+                  <FadeInItem>
+                    <InputGroup>
+                      <InputLeftElement color="red.300" children="*" />
+                      <Input
+                        type="text"
+                        placeholder="Subject"
+                        variant="filled"
+                        onChange={(e) => {
+                          const newMessage = { ...message };
+                          newMessage.subject = e.target.value;
+                          setMessage(newMessage);
+                        }}
+                      />
+                    </InputGroup>
+                  </FadeInItem>
+
+                  <FadeInItem>
+                    <InputGroup>
+                      <InputLeftElement color="red.300" children="*" />
+                      <Input
+                        type="textarea"
+                        placeholder="Message"
+                        variant="filled"
+                        onChange={(e) => {
+                          const newMessage = { ...message };
+                          newMessage.message = e.target.value;
+                          setMessage(newMessage);
+                        }}
+                      />
+                    </InputGroup>
+                  </FadeInItem>
+
+                  <FadeInItem>
+                    <Button
+                      maxWidth="25vw"
+                      onClick={(e) => {
+                        const allRequiredFieldsAreValid =
+                          message.name &&
+                          message.email &&
+                          message.subject &&
+                          message.message;
+
+                        if (allRequiredFieldsAreValid) {
+                          setIsError(false);
+                        } else {
+                          setIsError(true);
+                          console.log("⛔️", "not all the fields are filled");
+                        }
+
+                        setSubmitted(true);
+                        setTimeout(() => setSubmitted(false), 10000);
                       }}
-                    />
-                  </InputGroup>
-                </FadeInItem>
-                <FadeInItem>
-                  <Input
-                    type="text"
-                    placeholder="Company"
-                    variant="filled"
-                    onChange={(e) => {
-                      const newMessage = { ...message };
-                      newMessage.company = e.target.value;
-                      setMessage(newMessage);
-                    }}
-                  />
-                </FadeInItem>
-              </SimpleGrid>
-
-              <FadeInItem>
-                <InputGroup>
-                  <InputLeftElement color="red.300" children="*" />
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    variant="filled"
-                    onChange={(e) => {
-                      const newMessage = { ...message };
-                      newMessage.email = e.target.value;
-                      setMessage(newMessage);
-                    }}
-                  />
-                </InputGroup>
-              </FadeInItem>
-
-              <FadeInItem>
-                <InputGroup>
-                  <InputLeftElement color="red.300" children="*" />
-                  <Input
-                    type="text"
-                    placeholder="Subject"
-                    variant="filled"
-                    onChange={(e) => {
-                      const newMessage = { ...message };
-                      newMessage.subject = e.target.value;
-                      setMessage(newMessage);
-                    }}
-                  />
-                </InputGroup>
-              </FadeInItem>
-
-              <FadeInItem>
-                <InputGroup>
-                  <InputLeftElement color="red.300" children="*" />
-                  <Input
-                    type="textarea"
-                    placeholder="Message"
-                    variant="filled"
-                    onChange={(e) => {
-                      const newMessage = { ...message };
-                      newMessage.message = e.target.value;
-                      setMessage(newMessage);
-                    }}
-                  />
-                </InputGroup>
-              </FadeInItem>
-
-              <FadeInItem>
-                <Button
-                  maxWidth="25vw"
-                  onClick={(e) => {
-                    const allRequiredFieldsAreValid =
-                      message.name &&
-                      message.email &&
-                      message.subject &&
-                      message.message;
-
-                    if (allRequiredFieldsAreValid) {
-                      setIsError(false);
-                    } else {
-                      setIsError(true);
-                      console.log("⛔️", "not all the fields are filled");
-                    }
-
-                    setSubmitted(true);
-                    setTimeout(() => setSubmitted(false), 10000);
-                  }}
-                >
-                  Submit
-                </Button>
-              </FadeInItem>
-              <FadeInItem>{messageDisplay}</FadeInItem>
-            </Stack>
-          </FormControl>
-        </FadeInContainer>
-      </BoxWithTags>
+                    >
+                      Submit
+                    </Button>
+                  </FadeInItem>
+                  <FadeInItem>{messageDisplay}</FadeInItem>
+                </Stack>
+              </FormControl>
+            </FadeInContainer>
+          </DecorativeTag>
+        </Box>
+      </DecorativeTag>
     </Box>
   );
 };
