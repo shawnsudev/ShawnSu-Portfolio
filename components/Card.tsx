@@ -29,7 +29,7 @@ type CardProps = BoxProps & { card: CardData };
 
 const Card = ({ card, w }: CardProps) => {
   return (
-    <LinkBox as="div">
+    <Box position="relative" top="-3rem">
       <Image
         src={card.img}
         alt={`Image of ${card.name}`}
@@ -41,45 +41,48 @@ const Card = ({ card, w }: CardProps) => {
         border=".7rem solid white"
         borderRadius="1rem"
         boxShadow="-0.5rem 0.5rem .5rem lightgray, 0.5rem 0.5rem .5rem lightgray"
+        zIndex="2"
       />
-      <Box
-        w={w}
-        // border="1px solid lightgray"
-        borderRadius=".5rem"
-        bg="white"
-        padding="2rem"
-        textAlign={"center"}
-        boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
-      >
-        <Box h="3rem" />
-        <NextLink href={card.link} passHref>
-          <LinkOverlay>
-            <Heading as="h4" size="md" margin="1rem">
-              {card.name}
-            </Heading>
-          </LinkOverlay>
-        </NextLink>
-        <VStack spacing="1rem" textAlign="left" align="left">
-          <Text>{card.description}</Text>
-          <Box>
-            Stack:{" "}
-            <HStack spacing=".3rem" wrap="wrap">
-              {card.stacks.map((stack) => (
-                <Tag bg="lime">{stack}</Tag>
-              ))}
-            </HStack>
-          </Box>
-          <Box>
-            Learning highlights:{" "}
-            <HStack spacing=".3rem" wrap="wrap">
-              {card.highlights.map((hl) => (
-                <Tag>{hl}</Tag>
-              ))}
-            </HStack>
-          </Box>
-        </VStack>
-      </Box>
-    </LinkBox>
+      <LinkBox as="div">
+        <Box
+          w={w}
+          // border="1px solid lightgray"
+          borderRadius=".5rem"
+          bg="white"
+          padding="2rem"
+          textAlign={"center"}
+          boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
+        >
+          <Box h="3rem" />
+          <NextLink href={card.link} passHref>
+            <LinkOverlay>
+              <Heading as="h4" size="md" margin="1rem">
+                {card.name}
+              </Heading>
+            </LinkOverlay>
+          </NextLink>
+          <VStack spacing="1rem" textAlign="left" align="left">
+            <Text>{card.description}</Text>
+            <Box>
+              Stack:{" "}
+              <HStack spacing=".3rem" wrap="wrap">
+                {card.stacks.map((stack) => (
+                  <Tag bg="lime">{stack}</Tag>
+                ))}
+              </HStack>
+            </Box>
+            <Box>
+              Learning highlights:{" "}
+              <HStack spacing=".3rem" wrap="wrap">
+                {card.highlights.map((hl) => (
+                  <Tag>{hl}</Tag>
+                ))}
+              </HStack>
+            </Box>
+          </VStack>
+        </Box>
+      </LinkBox>
+    </Box>
   );
 };
 
