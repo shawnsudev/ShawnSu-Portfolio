@@ -30,6 +30,14 @@ type CardProps = BoxProps & { card: CardData };
 const Card = ({ card, w }: CardProps) => {
   return (
     <LinkBox as="div">
+      <Image
+        src={card.img}
+        alt={`Image of ${card.name}`}
+        w="10rem"
+        margin="1rem auto"
+        position={"relative"}
+        top="6rem"
+      />
       <Box
         w={w}
         border="1px solid lightgray"
@@ -38,12 +46,7 @@ const Card = ({ card, w }: CardProps) => {
         textAlign={"center"}
         boxShadow=".5rem .5rem .5rem lightgray"
       >
-        <Image
-          src={card.img}
-          alt={`Image of ${card.name}`}
-          w="10rem"
-          margin="1rem auto"
-        />
+        <Box h="3rem"/>
         <NextLink href={card.link} passHref>
           <LinkOverlay>
             <Heading as="h4" size="md" margin="1rem">
