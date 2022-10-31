@@ -20,7 +20,7 @@
       "name": "Shawn Su's Portfolio",
       "img": "https://st3.depositphotos.com/14846838/19149/v/1600/depositphotos_191495842-stock-illustration-professional-icon-of-business-portfolio.jpg",
       "stacks": ["NextJS", "Framer-motion", "Chakra"],
-      "highlights": ["animation", "theme-based UI framework", ""],
+      "highlights": ["animation","animation orchestration", "theme-based UI framework", ""],
       "description": "My personal portfolio site that demostrate my coding skills",
       "link": "https://sudoku-shawnsu.netlify.app/"
     }

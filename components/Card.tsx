@@ -1,12 +1,20 @@
 import {
   Box,
   BoxProps,
+  Flex,
   Heading,
+  HStack,
   Image,
   Img,
   Link,
+  LinkBox,
+  LinkOverlay,
+  Spacer,
+  Tag,
   Text,
+  VStack,
 } from "@chakra-ui/react";
+import { resolveHref } from "next/dist/shared/lib/router/router";
 import NextLink from "next/link";
 
 type CardData = {
@@ -19,18 +27,51 @@ type CardData = {
 };
 type CardProps = BoxProps & { card: CardData };
 
-const Card = ({ card }: CardProps) => {
+const Card = ({ card, w }: CardProps) => {
   return (
-    <Box>
-      <Heading>{card.name}</Heading>
-      <Image src={card.img} alt={`Image of ${card.name}`} />
-      <Text>{card.description}</Text>
-      <Text>Stack: {card.stacks}</Text>
-      <Text>Learning highlights: {card.highlights}</Text>
-      <NextLink href={card.link} passHref>
-        <Link color="purple.400">CHECK IT OUT</Link>
-      </NextLink>
-    </Box>
+    <LinkBox as="div">
+      <Box
+        w={w}
+        border="1px solid lightgray"
+        borderRadius="1rem"
+        padding="2rem"
+        textAlign={"center"}
+        boxShadow=".5rem .5rem .5rem lightgray"
+      >
+        <Image
+          src={card.img}
+          alt={`Image of ${card.name}`}
+          w="10rem"
+          margin="1rem auto"
+        />
+        <NextLink href={card.link} passHref>
+          <LinkOverlay>
+            <Heading as="h4" size="md" margin="1rem">
+              {card.name}
+            </Heading>
+          </LinkOverlay>
+        </NextLink>
+        <VStack spacing="1rem" textAlign="left" align="left">
+          <Text>{card.description}</Text>
+          <Box>
+            Stack:{" "}
+            <HStack spacing=".3rem" wrap="wrap">
+              {card.stacks.map((stack) => (
+                <Tag bg="lime">{stack}</Tag>
+              ))}
+            </HStack>
+          </Box>
+          <Box>
+            Learning highlights:{" "}
+            <HStack spacing=".3rem" wrap="wrap">
+              {card.highlights.map((hl) => (
+                <Tag>{hl}</Tag>
+              ))}
+            </HStack>
+          </Box>
+        </VStack>
+      </Box>
+    </LinkBox>
   );
 };
 

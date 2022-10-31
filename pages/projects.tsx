@@ -9,7 +9,9 @@ import Continue from "../components/Continue";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 import Card from "../components/Card";
-import {personalProjects} from "../data/projects.json"
+import projects from "../data/projects.json";
+
+const { personalProjects } = projects;
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -26,11 +28,13 @@ const Projects: NextPage = () => {
         <FadeInContainer>
           {/* Personal Projects */}
           <Box>
-            <Heading as="h3">New Personal Projects</Heading>
+            <Heading as="h3" size="lg">
+              New Personal Projects
+            </Heading>
             <Flex justify={"space-around"}>
               {personalProjects.map((project) => (
                 <FadeInItem>
-                  <Card card={project} />
+                  <Card card={project} w="20rem"/>
                 </FadeInItem>
               ))}
             </Flex>
