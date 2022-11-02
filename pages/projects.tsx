@@ -20,7 +20,7 @@ const Projects: NextPage = () => {
 
   return (
     <Box id="projects" className={styles.main}>
-      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
+      <DecorativeTag content="section" hExpand="2.5rem" vExpand="0rem">
         <Box>
           <DecorativeTag content="h2">
             <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />

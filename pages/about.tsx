@@ -14,7 +14,7 @@ import styles from "../styles/Home.module.css";
 const About: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  const pageTitle = ["About me", "Page"];
+  const pageTitle = ["Me,", "Myself & I"];
 
   return (
     <Box id="about" className={styles.main}>
@@ -29,7 +29,7 @@ const About: NextPage = () => {
               <DecorativeTag content="p">
                 <FadeInItem>
                   <Text as="p">
-                    I had been a business/English tutor for international
+                    I had been a Business/English tutor for international
                     tertiary students since 2013 until the Pandemic, during
                     which I retrained to be a Frontend Web Developer. I have a
                     passion for learning new technologies and applying them to

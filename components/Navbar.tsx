@@ -10,7 +10,7 @@ const Navbar: NextPage = () => {
         <Logo />
         <VStack divider={<StackDivider />} spacing={4} width="100%">
           <Text></Text>
-          <NextLink href="/#landing" passHref>
+          <NextLink href="/" passHref>
             <Link color="teal.400">Home</Link>
           </NextLink>
           <NextLink href="/#about" passHref>

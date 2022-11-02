@@ -90,7 +90,7 @@ const Landing: NextPage = () => {
           <DecorativeTag content="p">
             <FadeInItem>
               <Text as="p" color="slate" size="2xl">
-                New Front-end / React.JS Developer
+                New Frontend / React.JS Developer
               </Text>
             </FadeInItem>
           </DecorativeTag>

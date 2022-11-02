@@ -4,9 +4,11 @@ import {
   // forwardRef,
   Grid,
   GridItem,
+  ListItem,
   Progress,
   SimpleGrid,
   Text,
+  UnorderedList,
 } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import { NextPage } from "next";
@@ -19,67 +21,16 @@ import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const Skills: NextPage = (props) => {
-  // const [pageTitle, setPageTitle] = useState("Skills & Experience".split(""));
   const [skills, setSkills] = useState([
     { name: "Frontend", value: 80, colorScheme: "purple" },
     { name: "Backend", value: 60, colorScheme: "cyan" },
-    { name: "ReactJS", value: 60, colorScheme: "green" },
-    { name: "Typescript", value: 50, colorScheme: "red" },
-    { name: "NextJS", value: 40, colorScheme: "yellow" },
+    { name: "React.js", value: 70, colorScheme: "green" },
+    { name: "Express", value: 50, colorScheme: "messenger" },
+    { name: "Next.js", value: 40, colorScheme: "yellow" },
+    { name: "Typescript", value: 30, colorScheme: "red" },
   ]);
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-
-  const container = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.3,
-          }
-        : {},
-    },
-  };
-  const item = {
-    hidden: { y: 100, opacity: 0 },
-    show: {
-      y: isInView ? 0 : 100,
-      opacity: isInView ? 1 : 0,
-      transition: { ease: "easeOut", duration: 1 },
-    },
-  };
-
-  // const ref = useRef(null);
-  // const isInView = useInView(ref, { amount: 0.3 });
-  const rubberbandContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      transition: isInView
-        ? {
-            delayChildren: 1,
-            staggerChildren: 0.08,
-          }
-        : {},
-    },
-  };
-  const rubberbandItem = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: isInView ? 1 : 0,
-      // scale: isInView ? 1 : 1.2,
-      scale: isInView ? 1 : 1.2,
-      display: "inline-block",
-      transition: {
-        type: "spring",
-        damping: 5,
-        stiffness: 600,
-      },
-    },
-  };
 
   return (
     <Box id="skills" className={styles.main}>
@@ -99,11 +50,30 @@ const Skills: NextPage = (props) => {
               <DecorativeTag content="p">
                 <FadeInItem>
                   <Text>
-                    My skills including frontend, backend, Lorem ipsum dolor sit
-                    amet consectetur adipisicing elit. Dolores possimus officia
-                    dignissimos impedit, tempora exercitationem? Iure eaque quo
-                    amet reiciendis magnam. Autem officiis delectus quod dolore
-                    quasi quas odit iusto.
+                    My main skills include Frontend (React-based) & Backend
+                    development. Some of the libraries, frameworks, cloud
+                    services I frequently use for both personal and school
+                    projects include:
+                    <UnorderedList>
+                      <ListItem>
+                        <Text as="b">Frontend</Text>: React, Next, Vanilla CSS, Vanilla JS, Sass,
+                        Framer-motion, Chakra UI, Ramda, Redux
+                      </ListItem>
+                      <ListItem>
+                        <Text as="b">Backend</Text>: Node, Express, Docker,
+                        Auth0
+                      </ListItem>
+                      <ListItem>
+                        <Text as="b">Cloud services</Text>: Github, Netlify,
+                        Heroku, Vercel,
+                      </ListItem>
+                      <ListItem>
+                        <Text as="b">DEV Tools</Text>: MacOS, VSCode, Vim, Git, Insomnia, Postman
+                      </ListItem>
+                      <ListItem>
+                        <Text as="b">Productivity Tools</Text>: Google Meet, Slack, Notion, Miro, 
+                      </ListItem>
+                    </UnorderedList>
                   </Text>
                 </FadeInItem>
               </DecorativeTag>

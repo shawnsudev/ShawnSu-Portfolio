@@ -64,7 +64,7 @@ const Card = ({ card, w }: CardProps) => {
           <VStack spacing="1rem" textAlign="left" align="left">
             <Text>{card.description}</Text>
             <Box>
-              Stack:{" "}
+              Tech stack:{" "}
               <HStack spacing=".3rem" wrap="wrap">
                 {card.stacks.map((stack) => (
                   <Tag bg="lime">{stack}</Tag>
