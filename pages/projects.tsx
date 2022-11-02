@@ -10,6 +10,8 @@ import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 import Card from "../components/Card";
 import projects from "../data/projects.json";
+import { randomUUID } from "crypto";
+import { v4 as uuidv4 } from "uuid";
 
 const { personalProjects } = projects;
 
@@ -34,8 +36,8 @@ const Projects: NextPage = () => {
                   New Personal Projects
                 </Heading>
                 <Flex justify={"space-around"}>
-                  {personalProjects.map((project) => (
-                    <FadeInItem>
+                  {personalProjects.map((project, i) => (
+                    <FadeInItem key={i}>
                       <Card card={project} w="20rem" />
                     </FadeInItem>
                   ))}
