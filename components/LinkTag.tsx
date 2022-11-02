@@ -7,12 +7,11 @@ import {
   TagLeftIcon,
   Tooltip,
 } from "@chakra-ui/react";
-import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import { SiNextdotjs } from "react-icons/si";
+import React from "react"
 
-type LinkTagProps = BoxProps & {
+export type LinkTagProps = BoxProps & {
   content: string;
-  icon?: ReactJSXElement;
+  icon?: any;
   tooltip?: string;
   colorScheme?: string;
   variant?: string;
@@ -30,7 +29,7 @@ const LinkTag = ({
   return (
     <Tooltip label={tooltip} hasArrow>
       <Tag variant={variant} colorScheme={colorScheme}>
-        {icon ? icon : <TagLeftIcon as={undefined} />}
+        {icon ? React.createElement(icon) : <TagLeftIcon as={undefined} />}
         <TagLabel marginLeft={".5rem"}>
           <Link href={href} isExternal>
             {content}
