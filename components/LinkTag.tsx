@@ -22,15 +22,19 @@ export type LinkTagProps = BoxProps & {
 };
 
 const spanVariant = {
+  initial: {
+    filter: "drop-shadow(0px 0px 0px gray)",
+  },
   hover: {
     y: -3,
     display: "inline-block",
     // scale: 1.05,
-    filter: "drop-shadow(3px 3px 3px gray)",
-    // filter: "saturate(200%)",
-    TransitionEnd: {
-      filter: "drop-shadow(0px 0px 0px gray)",
+    filter: "drop-shadow(2px 2px 2px gray)",
+    // filter: "drop-shadow(3px 3px 3px gray)",
+    transition: {
+      inherit: "none",
     },
+    // filter: "saturate(200%)",
   },
 };
 
@@ -44,13 +48,13 @@ const LinkTag = ({
   key,
 }: LinkTagProps) => {
   return (
-    <Tooltip key={key} label={tooltip} hasArrow>
-      <motion.span whileHover="hover" variants={spanVariant}>
+    <Tooltip key={key} label={tooltip} hasArrow openDelay={1000}>
+      <motion.span initial="initial" whileHover="hover" variants={spanVariant}>
         <Tag variant={variant} colorScheme={colorScheme}>
-          {icon ? React.createElement(icon) : 
-          // <TagLeftIcon as={undefined} />
-          null
-          }
+          {icon
+            ? React.createElement(icon)
+            : // <TagLeftIcon as={undefined} />
+              null}
           <TagLabel marginLeft={".5rem"}>
             <Link href={href} isExternal>
               {content}
