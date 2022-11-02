@@ -72,7 +72,7 @@ const stacks: Stack[] = [
         icon: SiNextdotjs,
         tooltip:
           "Open-source framework enabling React-based web apps with server-side rendering and static-site generation.",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://nextjs.org/",
       },
       {
@@ -87,7 +87,7 @@ const stacks: Stack[] = [
         content: "Framer-motion",
         icon: SiFramer,
         tooltip: "A powerful sproduction-ready motion library for React.",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://www.framer.com/motion/",
       },
       {
@@ -124,7 +124,7 @@ const stacks: Stack[] = [
         icon: SiExpress,
         tooltip:
           "A back end web application framework for building RESTful APIs with Node.js.",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://expressjs.com/",
       },
       {
@@ -140,7 +140,7 @@ const stacks: Stack[] = [
         icon: SiAuth0,
         tooltip:
           "A flexible, drop-in solution to add authentication and authorization services to web apps.",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://auth0.com/",
       },
     ],
@@ -153,7 +153,7 @@ const stacks: Stack[] = [
         icon: SiGithub,
         tooltip:
           "Internet hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project. ",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://github.com/",
       },
       {
@@ -177,7 +177,7 @@ const stacks: Stack[] = [
         icon: SiVercel,
         tooltip:
           "Vercel (formerly known as ZEIT) is a cloud platform that enables developers to host websites and web services that deploy instantly, scale automatically, and require no supervision. ",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://vercel.com/",
       },
     ],
@@ -243,7 +243,7 @@ const stacks: Stack[] = [
         icon: SiGooglemeet,
         tooltip:
           "Google Meet is a video-communication service developed by Google. ",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://meet.google.com/",
       },
       {
@@ -259,7 +259,7 @@ const stacks: Stack[] = [
         icon: SiNotion,
         tooltip:
           "Notion is a project management and note-taking software platform designed to help members of companies or organizations coordinate deadlines, objectives, and assignments for greater efficiency and productivity. ",
-        colorScheme: "blackAlpha",
+        colorScheme: "gray",
         href: "https://www.notion.so/",
       },
       {
