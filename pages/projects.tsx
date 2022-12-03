@@ -44,18 +44,6 @@ const Projects: NextPage = () => {
                 </Flex>
               </Box>
 
-              <Box>
-                <Heading as="h3">Personal Projects</Heading>
-                <Flex justify="space-around">
-                  <FadeInItem>
-                    <Heading as="h4">Sudoku</Heading>
-                  </FadeInItem>
-                  <FadeInItem>
-                    <Heading as="h4">Game of Life</Heading>
-                  </FadeInItem>
-                </Flex>
-              </Box>
-
               {/* Class Projects */}
               <Box>
                 <Heading as="h3">Class Projects</Heading>
