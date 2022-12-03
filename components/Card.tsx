@@ -55,7 +55,7 @@ const Card = ({ card, w }: CardProps) => {
         >
           <Box h="3rem" />
           <NextLink href={card.link} passHref>
-            <LinkOverlay>
+            <LinkOverlay isExternal>
               <Heading as="h4" size="md" margin="1rem">
                 {card.name}
               </Heading>
