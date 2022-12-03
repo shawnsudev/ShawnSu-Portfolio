@@ -13,7 +13,7 @@ import projects from "../data/projects.json";
 import { randomUUID } from "crypto";
 import { v4 as uuidv4 } from "uuid";
 
-const { personalProjects } = projects;
+const { personalProjects, schoolProjects } = projects;
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
@@ -44,10 +44,16 @@ const Projects: NextPage = () => {
                 </Flex>
               </Box>
 
-              {/* Class Projects */}
+              {/* School Projects */}
               <Box>
-                <Heading as="h3">Class Projects</Heading>
+                <Heading as="h3">School Projects</Heading>
                 <Flex justify="space-around">
+                  {schoolProjects.map((project, i) => (
+                    <FadeInItem key={i}>
+                      <Card card={project} w="20rem" />
+                    </FadeInItem>
+                  ))}
+
                   <FadeInItem>
                     <Heading as="h4">project 1</Heading>
                   </FadeInItem>
