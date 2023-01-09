@@ -45,7 +45,7 @@
       "stacks": ["React", ""],
       "highlights": ["useEffect", "useReducer", "canvas animation"],
       "description": "School project",
-      "link": "https://reservationizr-di-shawnsu.netlify.app/"
+      "link": "https://reservationizr-app-wwsdi.vercel.app/"
     }
   ]
 }

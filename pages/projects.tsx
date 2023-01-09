@@ -53,19 +53,6 @@ const Projects: NextPage = () => {
                       <Card card={project} w="20rem" />
                     </FadeInItem>
                   ))}
-
-                  <FadeInItem>
-                    <Heading as="h4">project 1</Heading>
-                  </FadeInItem>
-                  <FadeInItem>
-                    <Heading as="h4">project 2</Heading>
-                  </FadeInItem>
-                  <FadeInItem>
-                    <Heading as="h4">project 3</Heading>
-                  </FadeInItem>
-                  <FadeInItem>
-                    <Heading as="h4">project 4</Heading>
-                  </FadeInItem>
                 </Flex>
               </Box>
             </FadeInContainer>
