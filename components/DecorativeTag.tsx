@@ -2,8 +2,8 @@ import { Box, BoxProps } from "@chakra-ui/react";
 
 type DecorativeTagProps = BoxProps & {
   content: string;
-  hExpand?: string;
-  vExpand?: string;
+  hExpand?: string; // moving the tag horizontally; positive number for moving up, negative for moving down
+  vExpand?: string; // moving the tag vertically; positive number for moving right, negative for moving left
 };
 
 const DecorativeTag = ({

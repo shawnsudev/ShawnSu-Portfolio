@@ -1,32 +1,5 @@
-import {
-  Box,
-  Flex,
-  // forwardRef,
-  Grid,
-  GridItem,
-  Icon,
-  Link,
-  ListItem,
-  Progress,
-  SimpleGrid,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
-  Text,
-  TextProps,
-  Tooltip,
-  UnorderedList,
-} from "@chakra-ui/react";
-import { motion, useInView } from "framer-motion";
-import { NextPage } from "next";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
-import PageTitle from "./PageTitle";
-import { rubberband, runRubberbandIn } from "../utils/animation";
-import styles from "../styles/Home.module.css";
-import Continue from "./Continue";
-import DecorativeTag from "./DecorativeTag";
-import { FadeInContainer, FadeInItem } from "./FadeInTransition";
-import NextLink from "next/link";
+import { Text, TextProps } from "@chakra-ui/react";
+import React from "react";
 import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -47,11 +20,9 @@ import {
   SiMiro,
   SiPostman,
 } from "react-icons/si";
-import { DiVim, DiGit } from "react-icons/di";
-import { VscCircleFilled } from "react-icons/vsc";
+import { DiVim, DiGit, DiMongodb } from "react-icons/di";
 import LinkTag, { LinkTagProps } from "./LinkTag";
 import { IconType } from "react-icons";
-import { AppPropsType } from "next/dist/shared/lib/utils";
 
 type Tool = LinkTagProps & {
   content: string;
@@ -66,6 +37,14 @@ type Tools = {
 };
 
 const tools: Tools = {
+  mongodb: {
+    content: "MongoDB",
+    icon: DiMongodb,
+    tooltip:
+      "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+    colorScheme: "green",
+    href: "https://www.mongodb.com/",
+  },
   react: {
     content: "React",
     icon: FaReact,
@@ -272,21 +251,23 @@ const ToolStack = ({ toolNames }: ToolStackProps) => {
       key={Math.random()}
       lineHeight={"1.75rem"}
     >
-      {stack.map(({ content, icon, tooltip, colorScheme, variant, href }, i) => (
-        // <span key={i}>
-        <>
-          <LinkTag
-            key={i}
-            content={content}
-            icon={icon}
-            tooltip={tooltip}
-            colorScheme={colorScheme}
-            variant={variant}
-            href={href}
-          />{" "}
-        </>
-        // </span>
-      ))}
+      {stack.map(
+        ({ content, icon, tooltip, colorScheme, variant, href }, i) => (
+          // <span key={i}>
+          <>
+            <LinkTag
+              key={i}
+              content={content}
+              icon={icon}
+              tooltip={tooltip}
+              colorScheme={colorScheme}
+              variant={variant}
+              href={href}
+            />{" "}
+          </>
+          // </span>
+        )
+      )}
     </Text>
   );
 };

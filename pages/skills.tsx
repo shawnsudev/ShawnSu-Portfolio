@@ -1,67 +1,27 @@
 import {
   Box,
-  Flex,
-  // forwardRef,
   Grid,
   GridItem,
-  Icon,
-  Link,
   ListItem,
   Progress,
   SimpleGrid,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
   Text,
-  Tooltip,
   UnorderedList,
 } from "@chakra-ui/react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { NextPage } from "next";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import PageTitle from "../components/PageTitle";
-import { rubberband, runRubberbandIn } from "../utils/animation";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
-import NextLink from "next/link";
-import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiFramer,
-  SiChakraui,
-  SiRedux,
-  SiVisualstudio,
-  SiInsomnia,
-  SiAuth0,
-  SiExpress,
-  SiGithub,
-  SiNetlify,
-  SiHeroku,
-  SiVercel,
-  SiGooglemeet,
-  SiSlack,
-  SiNotion,
-  SiMiro,
-  SiPostman,
-} from "react-icons/si";
-import { DiVim, DiGit } from "react-icons/di";
-import { VscCircleFilled } from "react-icons/vsc";
-import LinkTag, { LinkTagProps } from "../components/LinkTag";
 import ToolStack from "../components/ToolStack";
 
 type Stack = {
   name: string;
   tools: string[];
 };
-
-// const newStacks = [
-//   {
-//   name:"Frontend",
-//   tools: ToolStack
-//   }
-// ]
 
 const stacks: Stack[] = [
   {
@@ -70,7 +30,7 @@ const stacks: Stack[] = [
   },
   {
     name: "Backend",
-    tools: ["node", "express", "docker", "auth0"],
+    tools: ["node", "express", "mongodb","docker", "auth0"],
   },
   {
     name: "Cloud Services",

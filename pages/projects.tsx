@@ -33,7 +33,7 @@ const Projects: NextPage = () => {
               {/* Personal Projects */}
               <Box>
                 <Heading as="h3" size="lg">
-                  New Personal Projects
+                  Personal Projects
                 </Heading>
                 <Flex justify={"space-around"}>
                   {personalProjects.map((project, i) => (
