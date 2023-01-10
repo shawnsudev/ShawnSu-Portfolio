@@ -11,7 +11,7 @@ import {
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 
-const About: NextPage = () => {
+const About: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
   const pageTitle = ["Me,", "Myself & I"];
