@@ -1,27 +1,23 @@
 import {
   Box,
   BoxProps,
-  Flex,
   Heading,
   HStack,
   Image,
-  Img,
-  Link,
   LinkBox,
   LinkOverlay,
-  Spacer,
   Tag,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { resolveHref } from "next/dist/shared/lib/router/router";
 import NextLink from "next/link";
+import ToolStack from "./ToolStack";
 
 type CardData = {
   name: string;
   img: string;
   description: string;
-  stacks: string[];
+  tools: string[];
   highlights: string[];
   link: string;
 };
@@ -65,11 +61,7 @@ const Card = ({ card, w }: CardProps) => {
             <Text>{card.description}</Text>
             <Box>
               Tech stack:{" "}
-              <HStack spacing=".3rem" wrap="wrap">
-                {card.stacks.map((stack) => (
-                  <Tag bg="lime">{stack}</Tag>
-                ))}
-              </HStack>
+              <ToolStack toolNames={card.tools} />
             </Box>
             <Box>
               Learning highlights:{" "}
