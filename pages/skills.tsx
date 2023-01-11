@@ -67,7 +67,7 @@ const Skills: NextPage = (props) => {
             <PageTitle
               ref={ref}
               isInView={isInView}
-              pageTitle={["Skills", "&", "Experiences"]}
+              titleTexts={["Skills", "&", "Experiences"]}
             />
           </DecorativeTag>
 

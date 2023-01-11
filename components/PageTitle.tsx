@@ -6,14 +6,14 @@ import { rubberband } from "../utils/animation";
 import { v4 as uuidv4 } from "uuid";
 
 type NextPagePropsWithTransition = NextPage & {
-  pageTitle: string[];
+  titleTexts: string[];
   // ref: MutableRefObject<null>;
   isInView: boolean;
 };
 
 const PageTitle = forwardRef(
   (
-    { pageTitle, isInView }: NextPagePropsWithTransition,
+    { titleTexts, isInView }: NextPagePropsWithTransition,
     ref: ForwardedRef<null>
   ) => {
     const fadeinRubberbandContainer = {
@@ -55,7 +55,7 @@ const PageTitle = forwardRef(
           animate="show"
         >
           <Heading as="h2">
-            {pageTitle.map((line) => (
+            {titleTexts.map((line) => (
               <p key={uuidv4()}>
                 {line.split("").map((L) =>
                   L === " " ? (

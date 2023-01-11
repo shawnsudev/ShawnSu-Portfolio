@@ -18,14 +18,14 @@ const { personalProjects, schoolProjects } = projects;
 const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
-  const pageTitle = ["My Projects"];
+  const pageTitle = ["Portfolio / My Projects",];
 
   return (
     <Box id="projects" className={styles.main}>
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="0rem">
         <Box>
           <DecorativeTag content="h2">
-            <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
+            <PageTitle ref={ref} titleTexts={pageTitle} isInView={isInView} />
           </DecorativeTag>
 
           <DecorativeTag content="grid">

@@ -1,7 +1,7 @@
 {
   "personalProjects": [
     {
-      "name": "Shawn Su's Portfolio",
+      "name": "Portfolio Website",
       "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/945b0225337909.563440870421b.png",
       "tools": [
         "next",
@@ -18,7 +18,7 @@
         ""
       ],
       "focus": "Frontend",
-      "description": "My personal portfolio site that demostrate my coding skills",
+      "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
       "link": "https://sudoku-shawnsu.netlify.app/"
     },
     {

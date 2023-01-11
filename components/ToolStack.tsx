@@ -1,25 +1,8 @@
 import { Text, TextProps } from "@chakra-ui/react";
 import React from "react";
 import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiFramer,
-  SiChakraui,
-  SiRedux,
-  SiVisualstudio,
-  SiInsomnia,
-  SiAuth0,
-  SiExpress,
-  SiGithub,
-  SiNetlify,
-  SiHeroku,
-  SiVercel,
-  SiGooglemeet,
-  SiSlack,
-  SiNotion,
-  SiMiro,
-  SiPostman,
-} from "react-icons/si";
+//prettier-ignore
+import { SiNextdotjs, SiFramer, SiChakraui, SiRedux, SiVisualstudio, SiInsomnia, SiAuth0, SiExpress, SiGithub, SiNetlify, SiHeroku, SiVercel, SiGooglemeet, SiSlack, SiNotion, SiMiro, SiPostman, } from "react-icons/si";
 import { DiVim, DiGit, DiMongodb } from "react-icons/di";
 import LinkTag, { LinkTagProps } from "./LinkTag";
 import { IconType } from "react-icons";
@@ -29,20 +12,22 @@ type Tool = LinkTagProps & {
   icon: IconType;
   tooltip: string;
   colorScheme: string;
+  variant: "subtle" | "solid" | "outline";
   href: string;
 };
-// ** Problem **
-type Tools = {
-  [name: string]: Tool;
-};
+// type Tools = {
+//   [name: string]: Tool;
+// };
 
-const tools: Tools = {
+// I would prefer to store tools data separately as json file but there's a problem with the icon property storing an imported IconType data from React Icon. I don't know yet how to store that in JSON file.
+const tools = {
   mongodb: {
     content: "MongoDB",
     icon: DiMongodb,
     tooltip:
-      "MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
+      "A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.",
     colorScheme: "green",
+    variant: "subtle",
     href: "https://www.mongodb.com/",
   },
   react: {
@@ -51,6 +36,7 @@ const tools: Tools = {
     tooltip:
       "The most popular front-end JS library for building user interfaces based on UI components.",
     colorScheme: "cyan",
+    variant: "subtle",
     href: "https://reactjs.org",
   },
   next: {
@@ -59,6 +45,7 @@ const tools: Tools = {
     tooltip:
       "Open-source framework enabling React-based web apps with server-side rendering and static-site generation.",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://nextjs.org/",
   },
   sass: {
@@ -67,13 +54,15 @@ const tools: Tools = {
     tooltip:
       "The most mature, stable, and powerful professional grade CSS extension language in the world.",
     colorScheme: "pink",
+    variant: "subtle",
     href: "https://sass-lang.com/",
   },
   "framer-motion": {
     content: "Framer-motion",
     icon: SiFramer,
-    tooltip: "A powerful sproduction-ready motion library for React.",
+    tooltip: "A powerful production-ready motion library for React.",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://www.framer.com/motion/",
   },
   "chakra-ui": {
@@ -82,6 +71,7 @@ const tools: Tools = {
     tooltip:
       "A simple, modular, responsive and accessible component library based on React and Emotion.",
     colorScheme: "cyan",
+    variant: "subtle",
     href: "https://chakra-ui.com/",
   },
   redux: {
@@ -90,6 +80,7 @@ const tools: Tools = {
     tooltip:
       "An open-source JS library for managing and centralizing application state. It is most commonly used with libraries such as React or Angular for building user interfaces. ",
     colorScheme: "purple",
+    variant: "subtle",
     href: "https://redux.js.org/",
   },
   node: {
@@ -98,6 +89,7 @@ const tools: Tools = {
     tooltip:
       "An open-source, cross-platform JS runtime environment that runs on high-performance V8 Engine. ",
     colorScheme: "green",
+    variant: "subtle",
     href: "https://nodejs.org/",
   },
   express: {
@@ -106,6 +98,7 @@ const tools: Tools = {
     tooltip:
       "A back end web application framework for building RESTful APIs with Node.js.",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://expressjs.com/",
   },
   docker: {
@@ -114,6 +107,7 @@ const tools: Tools = {
     tooltip:
       "A set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.",
     colorScheme: "blue",
+    variant: "subtle",
     href: "https://www.docker.com/",
   },
   auth0: {
@@ -122,6 +116,7 @@ const tools: Tools = {
     tooltip:
       "A flexible, drop-in solution to add authentication and authorization services to web apps.",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://auth0.com/",
   },
   github: {
@@ -130,6 +125,7 @@ const tools: Tools = {
     tooltip:
       "Internet hosting service for software development and version control using Git. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project. ",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://github.com/",
   },
   netlify: {
@@ -138,6 +134,7 @@ const tools: Tools = {
     tooltip:
       "Netlify is a remote-first cloud computing company that offers a development platform that includes build, deploy, and serverless backend services for web applications and dynamic websites.",
     colorScheme: "cyan",
+    variant: "subtle",
     href: "https://www.netlify.com/",
   },
   heroku: {
@@ -146,6 +143,7 @@ const tools: Tools = {
     tooltip:
       "Heroku is a cloud platform as a service supporting several programming languages. One of the first cloud platforms, Heroku has been in development since June 2007, when it supported only the Ruby programming language, but now supports Java, Node.js, Scala, Clojure, Python, PHP, and Go.",
     colorScheme: "purple",
+    variant: "subtle",
     href: "http://www.heroku.com/",
   },
   vercel: {
@@ -154,6 +152,7 @@ const tools: Tools = {
     tooltip:
       "Vercel (formerly known as ZEIT) is a cloud platform that enables developers to host websites and web services that deploy instantly, scale automatically, and require no supervision. ",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://vercel.com/",
   },
   macos: {
@@ -162,6 +161,7 @@ const tools: Tools = {
     tooltip:
       "A Unix operating system developed and marketed by Apple Inc. since 2001. It is the primary operating system for Apple's Mac computers.",
     colorScheme: "yellow",
+    variant: "subtle",
     href: "https://www.apple.com/nz/macos/ventura/",
   },
   vscode: {
@@ -170,6 +170,7 @@ const tools: Tools = {
     tooltip:
       "A free, powerful, lightweight code editor for Windows, macOS and Linux.",
     colorScheme: "blue",
+    variant: "subtle",
     href: "https://code.visualstudio.com/",
   },
   vim: {
@@ -178,6 +179,7 @@ const tools: Tools = {
     tooltip:
       "A highly configurable text editor built to make creating and changing any kind of text very efficient.",
     colorScheme: "green",
+    variant: "subtle",
     href: "https://en.wikipedia.org/wiki/Vim_(text_editor)",
   },
   git: {
@@ -186,6 +188,7 @@ const tools: Tools = {
     tooltip:
       "Git is free and open source software for distributed version control: tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. ",
     colorScheme: "orange",
+    variant: "subtle",
     href: "https://git-scm.com/",
   },
   insomnia: {
@@ -194,6 +197,7 @@ const tools: Tools = {
     tooltip:
       "Insomnia is an open-source, cross-platform API client for GraphQL, REST, WebSockets and gRPC. ",
     colorScheme: "purple",
+    variant: "subtle",
     href: "https://insomnia.rest/",
   },
   postman: {
@@ -202,6 +206,7 @@ const tools: Tools = {
     tooltip:
       "Postman is an API platform for developers to design, build, test and iterate their APIs. As of April 2022, Postman reports having more than 20 million registered users and 75,000 open APIs, which it says constitutes the world's largest public API hub.",
     colorScheme: "orange",
+    variant: "subtle",
     href: "https://www.postman.com/",
   },
   "google-meet": {
@@ -210,6 +215,7 @@ const tools: Tools = {
     tooltip:
       "Google Meet is a video-communication service developed by Google. ",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://meet.google.com/",
   },
   slack: {
@@ -218,6 +224,7 @@ const tools: Tools = {
     tooltip:
       "Slack is essentially a chat room for your whole company, designed to replace email as your primary method of communication and sharing. ",
     colorScheme: "purple",
+    variant: "subtle",
     href: "https://slack.com/",
   },
   notion: {
@@ -226,6 +233,7 @@ const tools: Tools = {
     tooltip:
       "Notion is a project management and note-taking software platform designed to help members of companies or organizations coordinate deadlines, objectives, and assignments for greater efficiency and productivity. ",
     colorScheme: "gray",
+    variant: "subtle",
     href: "https://www.notion.so/",
   },
   miro: {
@@ -234,6 +242,7 @@ const tools: Tools = {
     tooltip:
       "Miro is the online collaborative whiteboard platform that enables distributed teams to work effectively together, from brainstorming with digital sticky notes to planning and managing agile workflows.",
     colorScheme: "yellow",
+    variant: "subtle",
     href: "https://miro.com/",
   },
 };

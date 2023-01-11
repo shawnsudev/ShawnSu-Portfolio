@@ -80,7 +80,7 @@ const Contact: NextPage = (props) => {
           <DecorativeTag content="h2">
             <PageTitle
               ref={ref}
-              pageTitle={["Contact me"]}
+              titleTexts={["Contact me"]}
               isInView={isInView}
             />
           </DecorativeTag>

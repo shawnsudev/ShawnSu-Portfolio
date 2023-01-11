@@ -6,6 +6,7 @@ import {
   Image,
   LinkBox,
   LinkOverlay,
+  StackDivider,
   Tag,
   Text,
   VStack,
@@ -16,6 +17,7 @@ import ToolStack from "./ToolStack";
 type CardData = {
   name: string;
   img: string;
+  focus: string;
   description: string;
   tools: string[];
   highlights: string[];
@@ -52,19 +54,34 @@ const Card = ({ card, w }: CardProps) => {
           <Box h="3rem" />
           <NextLink href={card.link} passHref>
             <LinkOverlay isExternal>
-              <Heading as="h4" size="md" margin="1rem">
+              <Heading as="h4" size="md" margin="1rem" textTransform={"uppercase"}>
                 {card.name}
               </Heading>
             </LinkOverlay>
           </NextLink>
-          <VStack spacing="1rem" textAlign="left" align="left">
+          <VStack
+            divider={<StackDivider />}
+            spacing="1rem"
+            textAlign="left"
+            align="left"
+          >
             <Text>{card.description}</Text>
             <Box>
-              Tech stack:{" "}
+              <Heading size="xs" textTransform="uppercase">
+                Focus
+              </Heading>
+              {card.focus}
+            </Box>
+            <Box>
+              <Heading size="xs" textTransform="uppercase" mb={2}>
+                Tech Stack
+              </Heading>
               <ToolStack toolNames={card.tools} />
             </Box>
             <Box>
-              Learning highlights:{" "}
+              <Heading size="xs" textTransform="uppercase" mb={2}>
+                Learning Highlights
+              </Heading>
               <HStack spacing=".3rem" wrap="wrap">
                 {card.highlights.map((hl) => (
                   <Tag>{hl}</Tag>

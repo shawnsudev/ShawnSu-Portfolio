@@ -21,7 +21,7 @@ const About: NextPage = (props) => {
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
         <Box>
           <DecorativeTag content="h2">
-            <PageTitle ref={ref} pageTitle={pageTitle} isInView={isInView} />
+            <PageTitle ref={ref} titleTexts={pageTitle} isInView={isInView} />
           </DecorativeTag>
 
           <FadeInContainer>
