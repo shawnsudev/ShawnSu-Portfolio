@@ -8,7 +8,7 @@ import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
-import Card from "../components/Card";
+import Card, { CardData } from "../components/Card/Card";
 import projects from "../data/projects.json";
 import { randomUUID } from "crypto";
 import { v4 as uuidv4 } from "uuid";
@@ -38,7 +38,7 @@ const Projects: NextPage = () => {
                 <Flex justify={"space-around"}>
                   {personalProjects.map((project, i) => (
                     <FadeInItem key={i}>
-                      <Card card={project} w="20rem" />
+                      <Card card={project as CardData} w="20rem" />
                     </FadeInItem>
                   ))}
                 </Flex>
@@ -50,7 +50,7 @@ const Projects: NextPage = () => {
                 <Flex justify="space-around">
                   {schoolProjects.map((project, i) => (
                     <FadeInItem key={i}>
-                      <Card card={project} w="20rem" />
+                      <Card card={project as CardData} w="20rem" />
                     </FadeInItem>
                   ))}
                 </Flex>

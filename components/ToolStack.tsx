@@ -1,4 +1,4 @@
-import { Text, TextProps } from "@chakra-ui/react";
+import { ColorHues, Text, TextProps } from "@chakra-ui/react";
 import React from "react";
 import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
 //prettier-ignore
@@ -6,6 +6,7 @@ import { SiNextdotjs, SiFramer, SiChakraui, SiRedux, SiVisualstudio, SiInsomnia,
 import { DiVim, DiGit, DiMongodb } from "react-icons/di";
 import LinkTag, { LinkTagProps } from "./LinkTag";
 import { IconType } from "react-icons";
+import { Url } from "url";
 
 type Tool = LinkTagProps & {
   content: string;
@@ -15,11 +16,12 @@ type Tool = LinkTagProps & {
   variant: "subtle" | "solid" | "outline";
   href: string;
 };
-// type Tools = {
-//   [name: string]: Tool;
-// };
+type Tools = {
+  [name: string]: Tool;
+};
 
 // I would prefer to store tools data separately as json file but there's a problem with the icon property storing an imported IconType data from React Icon. I don't know yet how to store that in JSON file.
+// Solution: only declare tools type as Tools (i.e. by appending `:Tools` to `const tools`) ad hoc, but remove it after adding new data is complete. This can help address the problem of ToolNames type being too general - as in, type becomes string[] instead of a tuple (a set of prefefined tool names).
 const tools = {
   mongodb: {
     content: "MongoDB",
@@ -247,7 +249,9 @@ const tools = {
   },
 };
 
-type ToolNames = keyof typeof tools;
+// Use keyof to extract all keys from tools object to form a new type - this type is more narrowed than a simple string[], which can help to prevent users choosing tool names that do not exist in the tools data.
+export type ToolNames = keyof typeof tools
+// I've come to realise that best way to prevent type issue with Next.js component/page is to choose the prop type for the highest level of element being returned. E.g. here the top level element being returned is <Text /> (Chakra), so use Chakra TextProps type for forming the base for the parameter type.
 type ToolStackProps = TextProps & { toolNames: ToolNames[] };
 
 const ToolStack = ({ toolNames }: ToolStackProps) => {
