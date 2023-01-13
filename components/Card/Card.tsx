@@ -1,20 +1,30 @@
 // prettier-ignore
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, BoxProps, Heading, HStack, Image, LinkBox, LinkOverlay, StackDivider, Tag, Text, VStack, } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, BoxProps, Button, Collapse, Flex, Heading, HStack, Image, Link, LinkBox, LinkOverlay, StackDivider, Tag, TagLabel, TagRightIcon, Text, useDisclosure, VStack, } from "@chakra-ui/react";
 import NextLink from "next/link";
+import React from "react";
+import { SiGithub } from "react-icons/si";
 import ToolStack, { ToolNames } from "../ToolStack";
+import Accordion_ from "./AccordionItem";
+
+type AccordionItem = { title: string; content: string };
 
 export type CardData = {
+  [index: string]: string | ToolNames[] | AccordionItem[];
   name: string;
   img: string;
   focus: string;
   description: string;
   tools: ToolNames[];
-  highlights: string[];
   link: string;
+  source: string;
+  details: AccordionItem[];
+  highlights: AccordionItem[];
 };
 type CardProps = BoxProps & { card: CardData };
 
 const Card = ({ card, w }: CardProps) => {
+  const { isOpen, onToggle } = useDisclosure();
+
   return (
     <Box position="relative" top="-3rem">
       <Image
@@ -41,17 +51,15 @@ const Card = ({ card, w }: CardProps) => {
           boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
         >
           <Box h="3rem" />
-          <NextLink href={card.link} passHref>
-            <LinkOverlay isExternal>
-              <Heading
-                as="h4"
-                size="md"
-                margin="1rem"
-                textTransform={"uppercase"}
-              >
-                {card.name}
-              </Heading>
-            </LinkOverlay>
+          <NextLink href={card.link}>
+            <Heading
+              as="h4"
+              size="md"
+              margin="1rem"
+              textTransform={"uppercase"}
+            >
+              {card.name}
+            </Heading>
           </NextLink>
           <VStack
             divider={<StackDivider />}
@@ -61,9 +69,21 @@ const Card = ({ card, w }: CardProps) => {
           >
             <Box>
               <Text>{card.description}</Text>
-              <Text size="xs" textTransform="uppercase" color="purple.300">
-                check it out ➤
-              </Text>
+              <Flex justify={"space-between"} mt="1rem">
+                <Link href={card.link} isExternal>
+                  <Text size="xs" textTransform="uppercase" color="purple.400">
+                    check it out ➤
+                  </Text>
+                </Link>
+                <Link href={card["source"]} isExternal>
+                  <Text size="xs" textTransform="uppercase" color="purple.400">
+                    <Flex align="center">
+                      <Box marginRight={"0.3rem"}>Source Code </Box>
+                      {React.createElement(SiGithub)}
+                    </Flex>
+                  </Text>
+                </Link>
+              </Flex>
             </Box>
             <Box>
               <Heading size="xs" textTransform="uppercase">
@@ -77,56 +97,27 @@ const Card = ({ card, w }: CardProps) => {
               </Heading>
               <ToolStack toolNames={card.tools} />
             </Box>
-            <Box>
-              <Heading size="xs" textTransform="uppercase" mb={2}>
-                Details
-              </Heading>
-              <Accordion allowToggle>
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box as="span" flex="1" textAlign="left">
-                        Section 1 title
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </AccordionPanel>
-                </AccordionItem>
 
-                <AccordionItem>
-                  <h2>
-                    <AccordionButton>
-                      <Box as="span" flex="1" textAlign="left">
-                        Section 2 title
-                      </Box>
-                      <AccordionIcon />
-                    </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-            </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase" mb={2}>
-                Learning Highlights
-              </Heading>
-              <HStack spacing=".3rem" wrap="wrap">
-                {/* use Accordion component to organise learning highlights so that I can write a lot of stuff but won't crowd the UI */}
-                {card.highlights.map((hl) => (
-                  <Tag>{hl}</Tag>
-                ))}
-              </HStack>
+              <Button onClick={onToggle} colorScheme="purple" bg="purple.300">
+                {isOpen ? "Read Less" : "Read More"}
+              </Button>
+              <Collapse in={isOpen} animateOpacity>
+                <Box mt="4" rounded="md" shadow="md">
+                  <Box>
+                    <Heading size="xs" textTransform="uppercase" mb={2}>
+                      Details
+                    </Heading>
+                    <Accordion_ card={card} section="details" />
+                  </Box>
+                  <Box>
+                    <Heading size="xs" textTransform="uppercase" mt={6} mb={2}>
+                      Learning Highlights
+                    </Heading>
+                    <Accordion_ card={card} section="highlights" />
+                  </Box>
+                </Box>
+              </Collapse>
             </Box>
           </VStack>
         </Box>

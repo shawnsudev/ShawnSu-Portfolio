@@ -19,6 +19,7 @@ const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
   const pageTitle = ["Portfolio / My Projects",];
+  const cardWidth = "30rem"
 
   return (
     <Box id="projects" className={styles.main}>
@@ -35,10 +36,10 @@ const Projects: NextPage = () => {
                 <Heading as="h3" size="lg">
                   Personal Projects
                 </Heading>
-                <Flex justify={"space-around"}>
+                <Flex justify={"space-around"} wrap="wrap">
                   {personalProjects.map((project, i) => (
                     <FadeInItem key={i}>
-                      <Card card={project as CardData} w="20rem" />
+                      <Card card={project as CardData} w={cardWidth} />
                     </FadeInItem>
                   ))}
                 </Flex>
@@ -50,7 +51,7 @@ const Projects: NextPage = () => {
                 <Flex justify="space-around">
                   {schoolProjects.map((project, i) => (
                     <FadeInItem key={i}>
-                      <Card card={project as CardData} w="20rem" />
+                      <Card card={project as CardData} w={cardWidth} />
                     </FadeInItem>
                   ))}
                 </Flex>
