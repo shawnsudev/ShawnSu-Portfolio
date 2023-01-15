@@ -46,7 +46,7 @@ const Projects: NextPage = () => {
               </Box>
 
               {/* School Projects */}
-              <Box>
+              {/* <Box>
                 <Heading as="h3">School Projects</Heading>
                 <Flex justify="space-around">
                   {schoolProjects.map((project, i) => (
@@ -55,7 +55,7 @@ const Projects: NextPage = () => {
                     </FadeInItem>
                   ))}
                 </Flex>
-              </Box>
+              </Box> */}
             </FadeInContainer>
           </DecorativeTag>
         </Box>

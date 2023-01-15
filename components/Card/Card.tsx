@@ -3,6 +3,7 @@ import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPane
 import NextLink from "next/link";
 import React from "react";
 import { SiGithub } from "react-icons/si";
+import { FiExternalLink } from "react-icons/fi";
 import ToolStack, { ToolNames } from "../ToolStack";
 import Accordion_ from "./AccordionItem";
 
@@ -40,88 +41,94 @@ const Card = ({ card, w }: CardProps) => {
         boxShadow="-0.5rem 0.5rem .5rem lightgray, 0.5rem 0.5rem .5rem lightgray"
         zIndex="2"
       />
-      <LinkBox as="div">
-        <Box
-          w={w}
-          // border="1px solid lightgray"
-          borderRadius=".5rem"
-          bg="white"
-          padding="2rem"
-          textAlign={"center"}
-          boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
+      <Box
+        w={w}
+        // border="1px solid lightgray"
+        borderRadius=".5rem"
+        bg="white"
+        padding="2rem"
+        textAlign={"center"}
+        boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
+      >
+        <Box h="3rem" />
+        <NextLink href={card.link}>
+          <Heading as="h4" size="md" margin="1rem" textTransform={"uppercase"}>
+            <Link>{card.name}</Link>
+          </Heading>
+        </NextLink>
+        <VStack
+          divider={<StackDivider />}
+          spacing="1rem"
+          textAlign="left"
+          align="left"
         >
-          <Box h="3rem" />
-          <NextLink href={card.link}>
-            <Heading
-              as="h4"
-              size="md"
-              margin="1rem"
-              textTransform={"uppercase"}
-            >
-              {card.name}
+          <Box>
+            <Box>{card.description}</Box>
+            <Flex justify={"space-between"} mt="1rem">
+              <Link href={card.link} isExternal>
+                <Text
+                  as="div"
+                  size="xs"
+                  textTransform="uppercase"
+                  color="purple.400"
+                >
+                  <Flex align="center">
+                    <Text marginRight={"0.3rem"}>check it out</Text>
+                    {React.createElement(FiExternalLink)}
+                  </Flex>
+                </Text>
+              </Link>
+              <Link href={card["source"]} isExternal>
+                <Text
+                  as="div"
+                  size="xs"
+                  textTransform="uppercase"
+                  color="purple.400"
+                >
+                  <Flex align="center">
+                    <Text marginRight={"0.3rem"}>Source Code </Text>
+                    {React.createElement(SiGithub)}
+                  </Flex>
+                </Text>
+              </Link>
+            </Flex>
+          </Box>
+          <Box>
+            <Heading size="xs" textTransform="uppercase">
+              Focus
             </Heading>
-          </NextLink>
-          <VStack
-            divider={<StackDivider />}
-            spacing="1rem"
-            textAlign="left"
-            align="left"
-          >
-            <Box>
-              <Text>{card.description}</Text>
-              <Flex justify={"space-between"} mt="1rem">
-                <Link href={card.link} isExternal>
-                  <Text size="xs" textTransform="uppercase" color="purple.400">
-                    check it out ➤
-                  </Text>
-                </Link>
-                <Link href={card["source"]} isExternal>
-                  <Text size="xs" textTransform="uppercase" color="purple.400">
-                    <Flex align="center">
-                      <Box marginRight={"0.3rem"}>Source Code </Box>
-                      {React.createElement(SiGithub)}
-                    </Flex>
-                  </Text>
-                </Link>
-              </Flex>
-            </Box>
-            <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Focus
-              </Heading>
-              {card.focus}
-            </Box>
-            <Box>
-              <Heading size="xs" textTransform="uppercase" mb={2}>
-                Tech Stack
-              </Heading>
-              <ToolStack toolNames={card.tools} />
-            </Box>
+            {card.focus}
+          </Box>
+          <Box>
+            <Heading size="xs" textTransform="uppercase" mb={2}>
+              Tech Stack
+            </Heading>
+            <ToolStack toolNames={card.tools} />
+          </Box>
 
-            <Box>
-              <Button onClick={onToggle} colorScheme="purple" bg="purple.300">
-                {isOpen ? "Read Less" : "Read More"}
-              </Button>
-              <Collapse in={isOpen} animateOpacity>
-                <Box mt="4" rounded="md" shadow="md">
-                  <Box>
-                    <Heading size="xs" textTransform="uppercase" mb={2}>
-                      Details
-                    </Heading>
-                    <Accordion_ card={card} section="details" />
-                  </Box>
-                  <Box>
-                    <Heading size="xs" textTransform="uppercase" mt={6} mb={2}>
-                      Learning Highlights
-                    </Heading>
-                    <Accordion_ card={card} section="highlights" />
-                  </Box>
+          <Box>
+            <Button onClick={onToggle} colorScheme="purple" bg="purple.300">
+              {isOpen ? "Read Less" : "Read More"}
+            </Button>
+            <Collapse in={isOpen} animateOpacity>
+              <Box mt="4" rounded="md" shadow="md">
+                <Box>
+                  <Heading size="xs" textTransform="uppercase" mb={2}>
+                    Details
+                  </Heading>
+                  <Accordion_ card={card} section="details" />
                 </Box>
-              </Collapse>
-            </Box>
-          </VStack>
-        </Box>
-      </LinkBox>
+                <Box>
+                  <Heading size="xs" textTransform="uppercase" mt={6} mb={2}>
+                    Learning Highlights
+                  </Heading>
+                  <Accordion_ card={card} section="highlights" />
+                </Box>
+              </Box>
+            </Collapse>
+          </Box>
+        </VStack>
+      </Box>
     </Box>
   );
 };

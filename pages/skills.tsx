@@ -16,7 +16,7 @@ import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
-import ToolStack from "../components/ToolStack";
+import ToolStack, { ToolNames } from "../components/ToolStack";
 
 type Stack = {
   name: string;
@@ -94,7 +94,7 @@ const Skills: NextPage = (props) => {
                             // marginBottom={".3rem"}
                           >
                             <Text as="b">{stack.name}: </Text>
-                            <ToolStack toolNames={stack.tools} />
+                            <ToolStack toolNames={stack.tools as ToolNames[]} />
                           </ListItem>
                         ))}
                       </UnorderedList>
