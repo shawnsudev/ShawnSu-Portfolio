@@ -17,7 +17,7 @@ const { personalProjects, schoolProjects } = projects;
 
 const Projects: NextPage = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3 });
+  const isInView = useInView(ref, { amount: 0.1 });
   const pageTitle = ["Portfolio / My Projects",];
   const cardWidth = "30rem"
 
@@ -46,7 +46,7 @@ const Projects: NextPage = () => {
               </Box>
 
               {/* School Projects */}
-              {/* <Box>
+              <Box>
                 <Heading as="h3">School Projects</Heading>
                 <Flex justify="space-around">
                   {schoolProjects.map((project, i) => (
@@ -55,7 +55,7 @@ const Projects: NextPage = () => {
                     </FadeInItem>
                   ))}
                 </Flex>
-              </Box> */}
+              </Box>
             </FadeInContainer>
           </DecorativeTag>
         </Box>
