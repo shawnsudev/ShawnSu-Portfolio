@@ -2,7 +2,7 @@ import { ColorHues, Text, TextProps } from "@chakra-ui/react";
 import React from "react";
 import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
 //prettier-ignore
-import { SiNextdotjs, SiFramer, SiChakraui, SiRedux, SiVisualstudio, SiInsomnia, SiAuth0, SiExpress, SiGithub, SiNetlify, SiHeroku, SiVercel, SiGooglemeet, SiSlack, SiNotion, SiMiro, SiPostman, } from "react-icons/si";
+import { SiNextdotjs, SiFramer, SiChakraui, SiRedux, SiVisualstudio, SiInsomnia, SiAuth0, SiExpress, SiGithub, SiNetlify, SiHeroku, SiVercel, SiGooglemeet, SiSlack, SiNotion, SiMiro, SiPostman, SiStripe } from "react-icons/si";
 import { DiVim, DiGit, DiMongodb } from "react-icons/di";
 import LinkTag, { LinkTagProps } from "./LinkTag";
 import { IconType } from "react-icons";
@@ -247,10 +247,19 @@ const tools = {
     variant: "subtle",
     href: "https://miro.com/",
   },
+  stripe: {
+    content: "Stripe",
+    icon: SiStripe,
+    tooltip:
+      "Millions of businesses of all sizes—from startups to large enterprises—use Stripe’s software and APIs to accept payments, send payouts, and manage their businesses online.",
+    colorScheme: "purple",
+    variant: "subtle",
+    href: "https://stripe.com/en-nz",
+  },
 };
 
 // Use keyof to extract all keys from tools object to form a new type - this type is more narrowed than a simple string[], which can help to prevent users choosing tool names that do not exist in the tools data.
-export type ToolNames = keyof typeof tools
+export type ToolNames = keyof typeof tools;
 // I've come to realise that best way to prevent type issue with Next.js component/page is to choose the prop type for the highest level of element being returned. E.g. here the top level element being returned is <Text /> (Chakra), so use Chakra TextProps type for forming the base for the parameter type.
 type ToolStackProps = TextProps & { toolNames: ToolNames[] };
 

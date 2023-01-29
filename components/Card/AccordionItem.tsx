@@ -19,7 +19,14 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
-              <AccordionPanel pb={4}>{item.content}</AccordionPanel>
+              <AccordionPanel pb={4}>
+                {item.content.map((text, i) => (
+                  <>
+                    <p>{text}</p>
+                    {(i=== item.content.length-1? null: <br />)}
+                  </>
+                ))}
+              </AccordionPanel>
             </AccordionItem>
           ))
         : null}

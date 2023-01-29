@@ -11,54 +11,56 @@
         "vercel",
         "github"
       ],
-      "focus": "Frontend",
+      "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
       "link": "https://sudoku-shawnsu.netlify.app/",
-      "link-source": "https://sudoku-shawnsu.netlify.app/",
+      "source": "https://sudoku-shawnsu.netlify.app/",
       "details": [
-        { "title": "Overview", "content": "" },
-        { "title": "Animation & Transition", "content": "" },
-        { "title": "Overview", "content": "" }
+        { "title": "Overview", "content": ["", ""] },
+        { "title": "Animation & Transition", "content": [""] },
+        { "title": "Overview", "content": [""] }
       ],
       "highlights": [
-        { "title": "Themeable UI Framework", "content": "" },
-        { "title": "Animation & Transition", "content": "Learning how to do page transition/animation was pretty fun for me" },
-        { "title": "Composition", "content": "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. " }
+        { "title": "Themeable UI Framework", "content": [""] },
+        {
+          "title": "Animation & Transition",
+          "content": [
+            "Learning how to do page transition/animation was pretty fun for me"
+          ]
+        },
+        {
+          "title": "Composition",
+          "content": [
+            "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. "
+          ]
+        }
       ]
     },
     {
       "name": "Game of Life",
       "img": "https://play-lh.googleusercontent.com/Ia1Pt7lUxyCpjMYBhurg3hl-s7dx8Mf-uv-vbwRHPjXmnhYTIvtMyDzMfgOZLIE4f1w",
       "tools": ["mongodb", "express", "react", "node"],
-      "focus": "Frontend",
+      "focus": "Frontend Development",
       "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
       "link": "https://game-of-life-by-shawn-su.netlify.app/",
-     "details": [
-        { "title": "Overview", "content": "" },
-        { "title": "Animation & Transition", "content": "" },
-        { "title": "Overview", "content": "" }
-      ],
+      "details": [{ "title": "Overview", "content": [""] }],
       "highlights": [
-        { "title": "useEffect", "content": "" },
-        { "title": "useReducer", "content": "Learning how to do page transition/animation was pretty fun for me" },
-        { "title": "canvas animation", "content": "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. " }
+        { "title": "useEffect", "content": [""] },
+        {
+          "title": "useReducer",
+          "content": [
+            "Learning how to do page transition/animation was pretty fun for me"
+          ]
+        }
       ]
     },
     {
       "name": "Sudoku",
       "img": "https://cdn-icons-png.flaticon.com/512/5731/5731711.png",
       "tools": ["mongodb", "express", "react", "node"],
-      "focus": "Fullstack",
-      "details": [
-        { "title": "Overview", "content": "" },
-        { "title": "Animation & Transition", "content": "" },
-        { "title": "Overview", "content": "" }
-      ],
-      "highlights": [
-        { "title": "useEffect", "content": "" },
-        { "title": "useReducer", "content": "Learning how to do page transition/animation was pretty fun for me" },
-        { "title": "canvas animation", "content": "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. " }
-      ],
+      "focus": "Fullstack Development",
+      "details": [{ "title": "Overview", "content": [] }],
+      "highlights": [],
       "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
       "link": "https://sudoku-shawnsu.netlify.app/"
     }
@@ -69,36 +71,79 @@
       "img": "https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/reservation-icon.png",
       "tools": ["mongodb", "express", "react", "node"],
       "details": [
-        { "title": "Overview", "content": "" },
-        { "title": "Animation & Transition", "content": "" },
-        { "title": "Overview", "content": "" }
+        { "title": "Overview", "content": [""] }
       ],
       "highlights": [
-        { "title": "useEffect", "content": "" },
-        { "title": "useReducer", "content": "Learning how to do page transition/animation was pretty fun for me" },
-        { "title": "canvas animation", "content": "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. " }
+        { "title": "useEffect", "content": [""] },
+        {
+          "title": "useReducer",
+          "content": [
+            "Learning how to do page transition/animation was pretty fun for me"
+          ]
+        },
+        {
+          "title": "canvas animation",
+          "content": [
+            "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. "
+          ]
+        }
       ],
-      "focus": "Backend",
+      "focus": "Backend Development",
       "description": "School project",
       "link": "https://reservationizr-app-wwsdi.vercel.app/"
     },
     {
       "name": "No.7 Board Game Shop",
       "img": "https://cdn.iconscout.com/icon/premium/png-256-thumb/game-shop-3765597-3140495.png",
-      "tools": ["mongodb", "express", "react", "node"],
+      "tools": ["react", "node", "github", "stripe", "netlify", "vscode"],
       "details": [
-        { "title": "Overview", "content": "" },
-        { "title": "Animation & Transition", "content": "" },
-        { "title": "Overview", "content": "" }
+        {
+          "title": "Overview",
+          "content": [
+            "Frontend - developed on React, deployed to Netlify.",
+            "Backend - API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com. ",
+            "Main features: display items; filter, sort, or search items; purchase items and make online payment."
+          ]
+        },
+        {
+          "title": "Managing Project with GitHub",
+          "content": [
+            "GitHub has great Project management feature. We were able to utilise it and divide the project into 16 small tasks and divvied them all up among the three of us. We also used GitHub's Kanban-style UI to track the progress."
+          ]
+        },
+        {
+          "title": "Collaborating Remotely",
+          "content": [
+            "Most of the students attended school online, so we had to learn how to collaborate on projects remotely by utilising all sorts of communication and productivity tools such as Slack, Google Meet, Google Classroom, Google Docs etc.",
+            "We also heavily relied on GitHub's pull requests feature so that we could work on our tasks individually, then reviewed them as group and merged them when completed and tested."
+          ]
+        }
       ],
       "highlights": [
-        { "title": "useEffect", "content": "" },
-        { "title": "useReducer", "content": "Learning how to do page transition/animation was pretty fun for me" },
-        { "title": "canvas animation", "content": "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. " }
+        {
+          "title": "GitHub",
+          "content": [
+            "Using GitHub was a great learning experience. This school project gave me a bit of taste of how powerful this technology is in terms of allowing developers to collaborate remotely on projects. I now understand how much bigger projects such as Linux kernel were made possible."
+          ]
+        },
+        {
+          "title": "Pull Requests",
+          "content": [
+            "This was a brand new concept to me at the time, and a bit intimidating at first - we did mess up the main branch and polluted it a couple of times, and had to learn how to fix it. But it turned out to be an incredible feature once you get it.",
+            "This feature enables and forces you to think of development in modular way - each teammate is in charge of a feature that is a complete module which can be connected to another one like LEGO. Therefore, as long as everyone follows predefined input/output requirements for their module, all merged modules (result of pull requests) should come together nicely and form a functioning system."
+          ]
+        },
+        {
+          "title": "Regex",
+          "content": [
+            "I was responsible for developing the search feature, so I had to learn how to use Regex in order to match user's search input to product's title and description. I learned that Regex is a very powerful technology, although rather complex to use at first, and making mistakes is all too easy."
+          ]
+        }
       ],
-      "focus": "Frontend",
-      "description": "School project",
-      "link": "https://no7boardgameshop.netlify.app/"
+      "focus": "Frontend Development",
+      "description": "This is the first major group project I did in school. This project aims to build a simple e-commerce site (only Frontend) for Board Games with online payment function. We mainly utilised GitHub's Project & Pull Request features to organise the project and collaborate among 3 students.",
+      "link": "https://no7boardgameshop.netlify.app/",
+      "source": "https://github.com/WWSDI/stripeapi-group7-boardgame-onlineshop"
     }
   ]
 }

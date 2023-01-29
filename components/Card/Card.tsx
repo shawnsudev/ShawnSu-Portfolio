@@ -7,7 +7,7 @@ import { FiExternalLink } from "react-icons/fi";
 import ToolStack, { ToolNames } from "../ToolStack";
 import Accordion_ from "./AccordionItem";
 
-type AccordionItem = { title: string; content: string };
+type AccordionItem = { title: string; content: string[] };
 
 export type CardData = {
   [index: string]: string | ToolNames[] | AccordionItem[];
@@ -114,7 +114,7 @@ const Card = ({ card, w }: CardProps) => {
               <Box mt="4" rounded="md" shadow="md">
                 <Box>
                   <Heading size="xs" textTransform="uppercase" mb={2}>
-                    Details
+                    Project Details
                   </Heading>
                   <Accordion_ card={card} section="details" />
                 </Box>
