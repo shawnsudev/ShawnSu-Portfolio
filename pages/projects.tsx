@@ -18,8 +18,8 @@ const { personalProjects, schoolProjects } = projects;
 const Projects: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.1 });
-  const pageTitle = ["Portfolio / My Projects",];
-  const cardWidth = "30rem"
+  const pageTitle = ["Portfolio / My Projects"];
+  const cardWidth = "30rem";
 
   return (
     <Box id="projects" className={styles.main}>
@@ -44,7 +44,9 @@ const Projects: NextPage = () => {
                   ))}
                 </Flex>
               </Box>
+            </FadeInContainer>
 
+            <FadeInContainer>
               {/* School Projects */}
               <Box>
                 <Heading as="h3">School Projects</Heading>
