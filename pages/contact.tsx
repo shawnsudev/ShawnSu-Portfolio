@@ -31,11 +31,11 @@ import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
   const initMessage = {
-    name: "",
-    company: "",
-    email: "",
-    subject: "",
-    message: "",
+    name: "test name",
+    company: "test company",
+    email: "test@email.com",
+    subject: "test subject",
+    message: "testing testing message",
   };
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState(initMessage);
@@ -62,12 +62,57 @@ const Contact: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
+  const __handleSubmit = (e) => {
+    const allRequiredFieldsAreValid =
+      message.name && message.email && message.subject && message.message;
+
+    if (allRequiredFieldsAreValid) {
+      setIsError(false);
+    } else {
+      setIsError(true);
+      console.log("⛔️", "not all the fields are filled");
+    }
+
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 10000);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Eventually handle form Validation here
+    // let isValidForm = handleValidation();
+
+    const body = JSON.stringify({
+      email: message.email,
+      fullname: message.name,
+      subject: message.subject,
+      message: message.message,
+      company: message.company,
+    });
+    console.log("🚀",message);
+
+    const res = await fetch("/api/", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+      method: "POST",
+    });
+
+    const result = await res.json();
+    if (result.error) {
+      console.log(result.error);
+      return;
+    }
+    console.log("📦", result);
+  };
+
   useEffect(() => {
     // console.log("😅 useEffect running!");
     // console.log(isError);
     // if (isError) console.log("something is wrong!");
     // else console.log("everything is in order");
-    console.log(message);
+    // console.log(message);
 
     if (submitted) setMessageDisplay(isError ? errorMessage : successMessage);
     else setMessageDisplay(<></>);
@@ -169,26 +214,7 @@ const Contact: NextPage = (props) => {
                   </FadeInItem>
 
                   <FadeInItem>
-                    <Button
-                      maxWidth="25vw"
-                      onClick={(e) => {
-                        const allRequiredFieldsAreValid =
-                          message.name &&
-                          message.email &&
-                          message.subject &&
-                          message.message;
-
-                        if (allRequiredFieldsAreValid) {
-                          setIsError(false);
-                        } else {
-                          setIsError(true);
-                          console.log("⛔️", "not all the fields are filled");
-                        }
-
-                        setSubmitted(true);
-                        setTimeout(() => setSubmitted(false), 10000);
-                      }}
-                    >
+                    <Button maxWidth="25vw" onClick={handleSubmit}>
                       Submit
                     </Button>
                   </FadeInItem>
