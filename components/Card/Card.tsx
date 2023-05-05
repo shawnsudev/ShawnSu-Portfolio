@@ -63,7 +63,7 @@ const Card = ({ card, w }: CardProps) => {
           align="left"
         >
           <Box>
-            <Box>{card.description}</Box>
+            <Text dangerouslySetInnerHTML={{ __html: card.description }} />
             <Flex justify={"space-between"} mt="1rem">
               <Link href={card.link} isExternal>
                 <Text
