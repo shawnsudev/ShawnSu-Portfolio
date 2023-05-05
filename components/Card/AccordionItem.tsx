@@ -23,7 +23,7 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
                 {item.content.map((text, i) => (
                   <>
                     {/* use React dangerouslySetInnerHTML property to allow customised html formatting */}
-                    {<p dangerouslySetInnerHTML={{ __html: text }} />}
+                    {<div dangerouslySetInnerHTML={{ __html: text }} />}
 
                     {/* add line break between paragraphs */}
                     {i === item.content.length - 1 ? null : <br />}
