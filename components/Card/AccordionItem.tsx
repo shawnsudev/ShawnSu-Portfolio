@@ -1,5 +1,5 @@
 // prettier-ignore
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionItemProps, AccordionPanel, Box,  } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionItemProps, AccordionPanel, Box, Text,  } from "@chakra-ui/react";
 import React from "react";
 import { CardData } from "./Card";
 
@@ -13,17 +13,20 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box as="span" flex="1" textAlign="left">
+                  <Text as="span" flex="1" textAlign="left" fontFamily="Times New Roman" fontWeight="500">
                     {item.title}
-                  </Box>
+                  </Text>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
                 {item.content.map((text, i) => (
                   <>
-                    <p>{text}</p>
-                    {(i=== item.content.length-1? null: <br />)}
+                    {/* use React dangerouslySetInnerHTML property to allow customised html formatting */}
+                    {<p dangerouslySetInnerHTML={{ __html: text }} />}
+
+                    {/* add line break between paragraphs */}
+                    {i === item.content.length - 1 ? null : <br />}
                   </>
                 ))}
               </AccordionPanel>

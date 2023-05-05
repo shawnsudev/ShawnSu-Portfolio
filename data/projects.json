@@ -69,52 +69,94 @@
     {
       "name": "Reservationizr",
       "img": "https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/reservation-icon.png",
-      "tools": ["mongodb", "express", "react", "node"],
-      "details": [
-        { "title": "Overview", "content": [""] }
-      ],
-      "highlights": [
-        { "title": "useEffect", "content": [""] },
-        {
-          "title": "useReducer",
-          "content": [
-            "Learning how to do page transition/animation was pretty fun for me"
-          ]
-        },
-        {
-          "title": "canvas animation",
-          "content": [
-            "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. "
-          ]
-        }
+      "tools": [
+        "mongodb",
+        "express",
+        "react",
+        "node",
+        "docker",
+        "github",
+        "netlify",
+        "heroku",
+        "insomnia",
+        "notion",
+        "miro"
       ],
       "focus": "Backend Development",
-      "description": "School project",
-      "link": "https://reservationizr-app-wwsdi.vercel.app/"
-    },
-    {
-      "name": "No.7 Board Game Shop",
-      "img": "https://cdn.iconscout.com/icon/premium/png-256-thumb/game-shop-3765597-3140495.png",
-      "tools": ["react", "node", "github", "stripe", "netlify", "vscode"],
+      "description": "This is the final school project in the Backend development term. This project aims to build & deploy a simple backend for a ready-made restaurant reservation booking app, and stich up the frontend and backend. Users are able to view restaurant info, sign up/log in, make new or view exsiting reservations.",
       "details": [
         {
           "title": "Overview",
           "content": [
             "Frontend - developed on React, deployed to Netlify.",
-            "Backend - API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com. ",
-            "Main features: display items; filter, sort, or search items; purchase items and make online payment."
+            "Backend - API server is hosted on Render.com (originally on Heroku.com); database is hosted on MongoDB Atlas; Auth0 is used for user authentication."
+          ]
+        },
+        { "title": "User Authentication", "content": [""] },
+        {
+          "title": "Docker",
+          "content": [
+            "Docker is mainly used for local development. Specifically, a mongodb database is created using Docker image, saving the trouble of installing mongodb locally."
+          ]
+        }
+      ],
+      "highlights": [
+        { "title": "Middleware", "content": [""] },
+        {
+          "title": "REST API",
+          "content": [
+            "Learning how to do page transition/animation was pretty fun for me"
+          ]
+        },
+        {
+          "title": "Docker",
+          "content": [""]
+        },
+        {
+          "title": "Unit Testing",
+          "content": [""]
+        },
+        {
+          "title": "Docker Compose",
+          "content": [""]
+        }
+      ],
+      "link": "https://reservationizr-app-wwsdi.vercel.app/",
+      "source": "https://github.com/WWSDI/02-project---reservationizr-app-part-2---manage-reservations-WWSDI"
+    },
+    {
+      "name": "No.7 Board Game Shop",
+      "img": "https://cdn.iconscout.com/icon/premium/png-256-thumb/game-shop-3765597-3140495.png",
+      "tools": [
+        "react",
+        "node",
+        "github",
+        "stripe",
+        "netlify",
+        "vscode",
+        "slack",
+        "google-meet"
+      ],
+
+      "focus": "Frontend Development",
+      "description": "This is the final school project in the Frontend Development term. This group project aims to build & deploy a simple e-commerce site (only Frontend) for Board Games with online payment function. Users are able to view store items, filter/sort/search for certain items, purchase items and make payments online.",
+      "details": [
+        {
+          "title": "Overview",
+          "content": [
+            "<ul><li><strong>Frontend</strong> - developed on React, deployed to Netlify.</li> <li><strong>Backend</strong> - API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com.</li> <li><strong>Main features</strong>: display items; filter, sort, or search items; purchase items and make online payments.</li></ul>"
           ]
         },
         {
           "title": "Managing Project with GitHub",
           "content": [
-            "GitHub has great Project management feature. We were able to utilise it and divide the project into 16 small tasks and divvied them all up among the three of us. We also used GitHub's Kanban-style UI to track the progress."
+            "GitHub has great Project management feature. We were able to utilise it and divide the project into 16 small tasks and divvied them all up among the three of us. We also used GitHub's Kanban-style UI to track progress. Pull Requests features is used to help teammates review each other's work and merge individual module/work into the main branch."
           ]
         },
         {
           "title": "Collaborating Remotely",
           "content": [
-            "Most of the students attended school online, so we had to learn how to collaborate on projects remotely by utilising all sorts of communication and productivity tools such as Slack, Google Meet, Google Classroom, Google Docs etc.",
+            "Most of the students attended the course online, so we had to learn how to collaborate on projects remotely by utilising all sorts of communication and productivity tools such as <em>Slack, Google Meet, Google Classroom, Google Docs</em> etc.",
             "We also heavily relied on GitHub's pull requests feature so that we could work on our tasks individually, then reviewed them as group and merged them when completed and tested."
           ]
         }
@@ -140,8 +182,6 @@
           ]
         }
       ],
-      "focus": "Frontend Development",
-      "description": "This is the first major group project I did in school. This project aims to build a simple e-commerce site (only Frontend) for Board Games with online payment function. We mainly utilised GitHub's Project & Pull Request features to organise the project and collaborate among 3 students.",
       "link": "https://no7boardgameshop.netlify.app/",
       "source": "https://github.com/WWSDI/stripeapi-group7-boardgame-onlineshop"
     }
