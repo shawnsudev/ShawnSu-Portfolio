@@ -21,7 +21,22 @@
         { "title": "Overview", "content": [""] }
       ],
       "highlights": [
-        { "title": "Themeable UI Framework", "content": [""] },
+        {
+          "title": "Orchestration",
+          "content": [
+            "Previous projects all focused more on learning certain technologies and overcoming certain technical barriers. This is the first project that I truly learned orchestration - how to <strong>get all the moving parts work seamlessly together</strong>, and how to adjust and change them in a much more <em>declarative and abstract</em> way.",
+            "With bigger projects, you have to think on a higher level, and using more ready-made tools to help you achieve that <strong>'Big Picture'</strong> view, otherwise you get bogged down by too many technical details. Coincidentally, this is also the core thinking of <em>Functional Programming</em> over <em>Imperative Programming</em>.",
+            "One example is adopting <em>Next.js framework</em>. Previously I applied what I learned from school - manually building and configuring the techstack. I would install React, Express and other packages one by one, then manually write docker compose configuration file. It is a flexible and highly customisable process but tedious. Using Next.js saves lots of overhead in time as the framework makes many choices for you so you have more brain processing power for the Big Picture."
+          ]
+        },
+        {
+          "title": "Themeable UI Framework",
+          "content": [
+            "One example is the adoption of Chakra for UI. Previously I mainly relied on plain CSS to do UI work as I wanted to challenge myself to learn more about low-level CSS.",
+            "Admittedly, it quickly became tediously, time-consuming and error-prone once the project grew bigger than a simple webpage with a few components. ",
+            "Using a UI Framework is like switching from <em>building a house on your own with handtools</em> to overseeing a group of builders with powertools. Being freed from having to wrangle unruly low-level CSS properties allows you the freedom to <strong>compose code</strong>."
+          ]
+        },
         {
           "title": "Animation & Transition",
           "content": [
@@ -88,8 +103,7 @@
         {
           "title": "Overview",
           "content": [
-            "Frontend - developed on React, deployed to Netlify.",
-            "Backend - API server is hosted on Render.com (originally on Heroku.com); database is hosted on MongoDB Atlas; Auth0 is used for user authentication."
+            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                          <li><strong>Backend</strong>: API server is hosted on Render.com (originally on Heroku.com); database is hosted on MongoDB Atlas; Auth0 is used for user authentication.</li></ul>"
           ]
         },
         { "title": "User Authentication", "content": [""] },
@@ -144,7 +158,7 @@
         {
           "title": "Overview",
           "content": [
-            "<ul><li><strong>Frontend</strong> - developed on React, deployed to Netlify.</li> <li><strong>Backend</strong> - API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com.</li> <li><strong>Main features</strong>: display items; filter, sort, or search items; purchase items and make online payments.</li></ul>"
+            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li> <li><strong>Backend</strong>: API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com.</li> <li><strong>Main features</strong>: display items; filter, sort, or search items; purchase items and make online payments.</li></ul>"
           ]
         },
         {
