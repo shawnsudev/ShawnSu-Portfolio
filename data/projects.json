@@ -165,20 +165,23 @@
         {
           "title": "GitHub",
           "content": [
-            "Using GitHub was a great learning experience. This school project gave me a bit of taste of how powerful this technology is in terms of allowing developers to collaborate remotely on projects. I now understand how much bigger projects such as Linux kernel were made possible."
+            "Git is essentially a <strong>Time Machine + Multiverse</strong> with which you can go back and forth on a project and creating <em>multiple braching reality</em>. And GitHub expands that capability with Cloud Computing.",
+            "Using GitHub was a great learning experience. This school project gave me a bit of taste of how powerful this technology is in terms of allowing developers to collaborate remotely on projects. I now understand how much bigger projects such as <em>Linux kernel</em> with thousands of participants around the world were made possible."
           ]
         },
         {
           "title": "Pull Requests",
           "content": [
             "This was a brand new concept to me at the time, and a bit intimidating at first - we did mess up the main branch and polluted it a couple of times, and had to learn how to fix it. But it turned out to be an incredible feature once you get it.",
-            "This feature enables and forces you to think of development in modular way - each teammate is in charge of a feature that is a complete module which can be connected to another one like LEGO. Therefore, as long as everyone follows predefined input/output requirements for their module, all merged modules (result of pull requests) should come together nicely and form a functioning system."
+            "This feature enables and forces you to think of development in <em>modular</em> way - each teammate is in charge of a feature that is a complete module which can be connected to another one like <em>LEGO</em>. Therefore, as long as everyone follows predefined input/output requirements for their module, all merged modules (result of pull requests) should come together nicely and form a functioning system.",
+            "But Pull Requests are not without faults. As our team lacked a project manager who oversaw the overall structure, sometimes we got into a situation where one's impending task depended on the another's unmerged branch, thus creating a <strong>bottleneck effect</strong> for team overall productivity."
           ]
         },
         {
           "title": "Regex",
           "content": [
-            "I was responsible for developing the search feature, so I had to learn how to use Regex in order to match user's search input to product's title and description. I learned that Regex is a very powerful technology, although rather complex to use at first, and making mistakes is all too easy."
+            "I was responsible for developing the search feature, so I had to learn how to use Regex in order to match user's search input to product's title and description. I learned that Regex is a very powerful technology, although rather complex to use at first, and making mistakes is all too easy.",
+            "Although I only dabbled in Regex a bit, but I could tell it's an extremely <strong>concise and precise way</strong> of describing letter/symbol patterns, and is something that could play an important role in <em>data validation</em>."
           ]
         }
       ],
