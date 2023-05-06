@@ -3,7 +3,7 @@ import {
   Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
@@ -46,17 +46,29 @@ const Contact: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
+  // The type of the event seems wrong, hence the error on target.name and .value, but I don't know which one to use.
+  const handleChange = ({ target }: ChangeEvent) => {
+    // if (target) {
+    setMessage((prev) => {
+      return {
+        ...prev,
+        [target.name]: target.value,
+      };
+    });
+    // }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Eventually handle form Validation here
     // let isValidForm = handleValidation();
 
-    const res = await sendContactForm(message)
+    const res = await sendContactForm(message);
 
     const result = await res.json();
     if (result.error) {
       console.log(result.error);
-      return; 
+      return;
     }
     console.log("📦", result);
   };
@@ -94,27 +106,21 @@ const Contact: NextPage = (props) => {
                         <InputLeftElement color="red.300" children="*" />
                         <Input
                           type="text"
+                          name="name"
                           placeholder="Name"
                           variant="filled"
-                          value={message.name}
-                          onChange={(e) => {
-                            const newMessage = { ...message };
-                            newMessage.name = e.target.value;
-                            setMessage(newMessage);
-                          }}
+                          // value={message.name}
+                          onChange={handleChange}
                         />
                       </InputGroup>
                     </FadeInItem>
                     <FadeInItem>
                       <Input
                         type="text"
+                        name="company"
                         placeholder="Company"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.company = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        onChange={handleChange}
                       />
                     </FadeInItem>
                   </SimpleGrid>
@@ -124,13 +130,10 @@ const Contact: NextPage = (props) => {
                       <InputLeftElement color="red.300" children="*" />
                       <Input
                         type="email"
+                        name="email"
                         placeholder="Email"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.email = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        onChange={handleChange}
                       />
                     </InputGroup>
                   </FadeInItem>
@@ -140,13 +143,10 @@ const Contact: NextPage = (props) => {
                       <InputLeftElement color="red.300" children="*" />
                       <Input
                         type="text"
+                        name="subject"
                         placeholder="Subject"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.subject = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        onChange={handleChange}
                       />
                     </InputGroup>
                   </FadeInItem>
@@ -157,14 +157,11 @@ const Contact: NextPage = (props) => {
                       <Textarea
                         // type="textarea"
                         h="8rem"
-                        placeholder={" " + " " + "Message"}
-                        pl="2rem"
+                        name="message"
+                        placeholder="Message"
+                        pl="2.5rem"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.message = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        onChange={handleChange}
                       />
                     </InputGroup>
                   </FadeInItem>
