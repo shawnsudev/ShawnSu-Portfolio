@@ -1,7 +1,7 @@
 import { contactFormData } from "./types";
 
 export const sendContactForm = async (data: contactFormData) => {
-  fetch("/api/contact", {
+  return fetch("/api/contact", {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
