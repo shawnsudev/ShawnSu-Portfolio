@@ -1,6 +1,6 @@
 //prettier-ignore
 import {
-  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
+  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { ChangeEvent, forwardRef, useEffect, useRef, useState } from "react";
@@ -14,15 +14,22 @@ import { contactFormData } from "../utils/types";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
-  const initMessage: contactFormData = {
+  const testMessage: contactFormData = {
     name: "test name",
     company: "test company",
     email: "test@email.com",
     subject: "test subject",
     message: "testing testing message",
   };
+  const emptyMessage: contactFormData = {
+    name: "",
+    company: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
   const [isError, setIsError] = useState(false);
-  const [message, setMessage] = useState(initMessage);
+  const [message, setMessage] = useState(emptyMessage);
   const [messageDisplay, setMessageDisplay] = useState(<></>);
   const [submitted, setSubmitted] = useState(false);
   const errorMessage = (
@@ -98,10 +105,10 @@ const Contact: NextPage = (props) => {
 
           <DecorativeTag content="form">
             <FadeInContainer>
-              <FormControl>
-                <Stack spacing={2}>
-                  <SimpleGrid columns={2} spacing={2}>
-                    <FadeInItem>
+              <Stack spacing={2}>
+                <SimpleGrid columns={2} spacing={2}>
+                  <FadeInItem>
+                    <FormControl isRequired isInvalid={!message.name}>
                       <InputGroup>
                         <InputLeftElement color="red.300" children="*" />
                         <Input
@@ -109,23 +116,27 @@ const Contact: NextPage = (props) => {
                           name="name"
                           placeholder="Name"
                           variant="filled"
-                          // value={message.name}
+                          value={message.name}
                           onChange={handleChange}
                         />
                       </InputGroup>
-                    </FadeInItem>
-                    <FadeInItem>
-                      <Input
-                        type="text"
-                        name="company"
-                        placeholder="Company"
-                        variant="filled"
-                        onChange={handleChange}
-                      />
-                    </FadeInItem>
-                  </SimpleGrid>
-
+                      <FormErrorMessage>Name is required.</FormErrorMessage>
+                    </FormControl>
+                  </FadeInItem>
                   <FadeInItem>
+                    <Input
+                      type="text"
+                      name="company"
+                      placeholder="Company"
+                      variant="filled"
+                      value={message.company}
+                      onChange={handleChange}
+                    />
+                  </FadeInItem>
+                </SimpleGrid>
+
+                <FadeInItem>
+                  <FormControl isRequired isInvalid={!message.email}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -133,12 +144,16 @@ const Contact: NextPage = (props) => {
                         name="email"
                         placeholder="Email"
                         variant="filled"
+                        value={message.email}
                         onChange={handleChange}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
+                <FadeInItem>
+                  <FormControl isRequired isInvalid={!message.subject}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -146,12 +161,16 @@ const Contact: NextPage = (props) => {
                         name="subject"
                         placeholder="Subject"
                         variant="filled"
+                        value={message.subject}
                         onChange={handleChange}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Subject is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
+                <FadeInItem>
+                  <FormControl isRequired isInvalid={!message.message}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Textarea
@@ -161,19 +180,21 @@ const Contact: NextPage = (props) => {
                         placeholder="Message"
                         pl="2.5rem"
                         variant="filled"
+                        value={message.message}
                         onChange={handleChange}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Message is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
-                    <Button maxWidth="25vw" onClick={handleSubmit}>
-                      ✉️ Send
-                    </Button>
-                  </FadeInItem>
-                  <FadeInItem>{messageDisplay}</FadeInItem>
-                </Stack>
-              </FormControl>
+                <FadeInItem>
+                  <Button maxWidth="25vw" onClick={handleSubmit}>
+                    ✉️ Send
+                  </Button>
+                </FadeInItem>
+                <FadeInItem>{messageDisplay}</FadeInItem>
+              </Stack>
             </FadeInContainer>
           </DecorativeTag>
         </Box>
