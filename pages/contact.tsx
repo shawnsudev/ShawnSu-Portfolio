@@ -1,38 +1,20 @@
+//prettier-ignore
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Button,
-  CloseButton,
-  EditableTextarea,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputLeftElement,
-  SimpleGrid,
-  Stack,
-  StylesProvider,
-  Textarea,
+  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
+import { sendContactForm } from "../utils/api";
+import { contactFormData } from "../utils/types";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
-  const initMessage = {
+  const initMessage: contactFormData = {
     name: "test name",
     company: "test company",
     email: "test@email.com",
@@ -64,47 +46,17 @@ const Contact: NextPage = (props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
-  const __handleSubmit = (e) => {
-    const allRequiredFieldsAreValid =
-      message.name && message.email && message.subject && message.message;
-
-    if (allRequiredFieldsAreValid) {
-      setIsError(false);
-    } else {
-      setIsError(true);
-      console.log("⛔️", "not all the fields are filled");
-    }
-
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 10000);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Eventually handle form Validation here
     // let isValidForm = handleValidation();
 
-    const body = JSON.stringify({
-      email: message.email,
-      fullname: message.name,
-      subject: message.subject,
-      message: message.message,
-      company: message.company,
-    });
-    console.log("🚀", message);
-
-    const res = await fetch("/api/", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: body,
-      method: "POST",
-    });
+    const res = await sendContactForm(message)
 
     const result = await res.json();
     if (result.error) {
       console.log(result.error);
-      return;
+      return; 
     }
     console.log("📦", result);
   };
