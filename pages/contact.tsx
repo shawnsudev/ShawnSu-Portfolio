@@ -30,6 +30,12 @@ const Contact: NextPage = (props) => {
   };
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState(emptyMessage);
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    subject: false,
+    message: false,
+  });
   const [messageDisplay, setMessageDisplay] = useState(<></>);
   const [submitted, setSubmitted] = useState(false);
   const errorMessage = (
@@ -63,6 +69,14 @@ const Contact: NextPage = (props) => {
       };
     });
     // }
+  };
+
+  // Handler for onBlur property, triggered when input field is out of focus
+  const handleBlur = ({ target }: ChangeEvent) => {
+    setTouched((prev) => ({
+      ...prev,
+      [target.name]: true,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -108,7 +122,10 @@ const Contact: NextPage = (props) => {
               <Stack spacing={2}>
                 <SimpleGrid columns={2} spacing={2}>
                   <FadeInItem>
-                    <FormControl isRequired isInvalid={!message.name}>
+                    <FormControl
+                      isRequired
+                      isInvalid={touched.name && !message.name}
+                    >
                       <InputGroup>
                         <InputLeftElement color="red.300" children="*" />
                         <Input
@@ -118,6 +135,7 @@ const Contact: NextPage = (props) => {
                           variant="filled"
                           value={message.name}
                           onChange={handleChange}
+                          onBlur={handleBlur}
                         />
                       </InputGroup>
                       <FormErrorMessage>Name is required.</FormErrorMessage>
@@ -136,7 +154,7 @@ const Contact: NextPage = (props) => {
                 </SimpleGrid>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={!message.email}>
+                  <FormControl isRequired isInvalid={touched.email &&!message.email}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -146,6 +164,7 @@ const Contact: NextPage = (props) => {
                         variant="filled"
                         value={message.email}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
                     <FormErrorMessage>Email is required.</FormErrorMessage>
@@ -153,7 +172,7 @@ const Contact: NextPage = (props) => {
                 </FadeInItem>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={!message.subject}>
+                  <FormControl isRequired isInvalid={touched.subject &&!message.subject}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -163,6 +182,7 @@ const Contact: NextPage = (props) => {
                         variant="filled"
                         value={message.subject}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
                     <FormErrorMessage>Subject is required.</FormErrorMessage>
@@ -170,7 +190,7 @@ const Contact: NextPage = (props) => {
                 </FadeInItem>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={!message.message}>
+                  <FormControl isRequired isInvalid={touched.message &&!message.message}>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Textarea
@@ -182,6 +202,7 @@ const Contact: NextPage = (props) => {
                         variant="filled"
                         value={message.message}
                         onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
                     <FormErrorMessage>Message is required.</FormErrorMessage>
