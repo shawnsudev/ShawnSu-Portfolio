@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   CloseButton,
+  EditableTextarea,
   Flex,
   FormControl,
   FormErrorMessage,
@@ -18,6 +19,7 @@ import {
   SimpleGrid,
   Stack,
   StylesProvider,
+  Textarea,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { forwardRef, useEffect, useRef, useState } from "react";
@@ -89,7 +91,7 @@ const Contact: NextPage = (props) => {
       message: message.message,
       company: message.company,
     });
-    console.log("🚀",message);
+    console.log("🚀", message);
 
     const res = await fetch("/api/", {
       headers: {
@@ -200,9 +202,11 @@ const Contact: NextPage = (props) => {
                   <FadeInItem>
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
-                      <Input
-                        type="textarea"
-                        placeholder="Message"
+                      <Textarea
+                        // type="textarea"
+                        h="8rem"
+                        placeholder={" " + " " + "Message"}
+                        pl="2rem"
                         variant="filled"
                         onChange={(e) => {
                           const newMessage = { ...message };
@@ -215,7 +219,7 @@ const Contact: NextPage = (props) => {
 
                   <FadeInItem>
                     <Button maxWidth="25vw" onClick={handleSubmit}>
-                      Submit
+                      ✉️ Send
                     </Button>
                   </FadeInItem>
                   <FadeInItem>{messageDisplay}</FadeInItem>
