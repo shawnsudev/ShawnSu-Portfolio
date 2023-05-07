@@ -154,7 +154,10 @@ const Contact: NextPage = (props) => {
                 </SimpleGrid>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={touched.email &&!message.email}>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.email && !message.email}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -172,7 +175,10 @@ const Contact: NextPage = (props) => {
                 </FadeInItem>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={touched.subject &&!message.subject}>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.subject && !message.subject}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
@@ -190,7 +196,10 @@ const Contact: NextPage = (props) => {
                 </FadeInItem>
 
                 <FadeInItem>
-                  <FormControl isRequired isInvalid={touched.message &&!message.message}>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.message && !message.message}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Textarea
@@ -210,7 +219,18 @@ const Contact: NextPage = (props) => {
                 </FadeInItem>
 
                 <FadeInItem>
-                  <Button maxWidth="25vw" onClick={handleSubmit}>
+                  <Button
+                    variant="solid"
+                    colorScheme="purple"
+                    maxWidth="30vw"
+                    onClick={handleSubmit}
+                    disabled={
+                      !message.name ||
+                      !message.email ||
+                      !message.subject ||
+                      !message.message
+                    }
+                  >
                     ✉️ Send
                   </Button>
                 </FadeInItem>
