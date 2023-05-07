@@ -22,6 +22,13 @@
       ],
       "highlights": [
         {
+          "title": "Serverless Function",
+          "content": [
+            "One of the benefits of using Next.js is the abiltiy to use Serverless Function to perform serverside tasks without having to build & manage a server yourself, which saves a lot of time."
+          ]
+        },
+        { "title": "Serverless Function", "content": [] },
+        {
           "title": "Orchestration",
           "content": [
             "Previous projects all focused more on learning certain technologies and overcoming certain technical barriers. This is the first project that I truly learned orchestration - how to <strong>get all the moving parts work seamlessly together</strong>, and how to adjust and change them in a much more <em>declarative and abstract</em> way.",
@@ -40,7 +47,8 @@
         {
           "title": "Animation & Transition",
           "content": [
-            "Learning how to do page transition/animation was pretty fun for me"
+            "Learning how to do page transition/animation using Framer was pretty fun for me. Having previously learned how to do some basic animations with vanilla CSS, I know well how difficult and cumbersome it can be when animation becomes too complex. Using a framework like Framer give you higher level control.",
+            "I used Framer for all the FadeIn effects, but I also used plain CSS for page title rubberbanding animation. Plain CSS gives you granualar control."
           ]
         },
         {
@@ -58,13 +66,37 @@
       "focus": "Frontend Development",
       "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
       "link": "https://game-of-life-by-shawn-su.netlify.app/",
-      "details": [{ "title": "Overview", "content": [""] }],
+      "details": [
+        {
+          "title": "Overview",
+          "content": [
+            "<li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                                            <li><strong>Backend</strong>: NA                            <li><strong>Main features</strong>: speed & seed sliders, colour themes, play/pause/step game, draw custom shapes, play demos, change screen size.</li>"
+          ]
+        },
+        {
+          "title": "Development Path",
+          "content": [
+            "This project started as a simple implementation of John Conway's Game of Life invented in 1970. It was relatively simple to implement the basic features in React, such as randomly seed the board and run the game.",
+            "Then I got more ambitious and wanted to add more features into the game such as using the board as a drawing pad so users can experiment with various custom shapes. Then with the drawing feature at hand, I got inspired to create a demo feature which allows users to play ready-made shapes in realtime.",
+            "The good thing about doing this project is that I challenged myself to build features I wasn't taught how to do, so I had to resort to creative thinking and research to help with implementation solution. The downside is lots of time wasted due to lack of structured planning."
+          ]
+        }
+      ],
+
       "highlights": [
         { "title": "useEffect", "content": [""] },
         {
           "title": "useReducer",
           "content": [
             "Learning how to do page transition/animation was pretty fun for me"
+          ]
+        },
+        {
+          "title": "Development VS Production Build",
+          "content": [
+            "A strange problem I came across during development was performance issue - the game runs very slowly locally compared to other people's implementions I've seen online.",
+            "I thought I had done something wrong, it could be incorrect use of React useEffect hooks resulted in redundant rendering. So I fiddled with it a lot to no avail. Eventually I gave up and deployed the 'slow' version, and to my surprise, it ran blazing fast. It dawned on me then it was because I had always ran development build locally which must have had some performance loss due to non-optimised code.",
+            "I gained two new insights from this mistake - one is there's differences between development and production build; the other is it pays to adopt Agile Development. Errors (or non-errors in this case) can be quickly discovered through continuous development & deployment and quickly addressed in the next iteration."
           ]
         }
       ]
@@ -75,7 +107,17 @@
       "tools": ["mongodb", "express", "react", "node"],
       "focus": "Fullstack Development",
       "details": [{ "title": "Overview", "content": [] }],
-      "highlights": [],
+      "highlights": [
+        {
+          "title": "Typescript",
+          "content": [
+            "JS is a dynamically typed language which makes it easy to learn, but its limitation starts to show when projects get bigger. A common mistake I make during development is <strong>making wrong assumptions of the shape of some data</strong> and thus end up using the wrong functions to handle it.",
+            "Typescript brings order and certainty into the world of JS. The language forces you to be mindful of the shape of inputs and outputs, this is particularly helpful when you have to program both frontend and backend where data structure may differ.",
+            "I used Typescript throughout the whole Sudoku project in defining all kinds of data shapes like the puzzles, puzzle sets etc. Admittedly, my utilisation was minimal, but I already saw the benefits of much less runtime error.",
+            "But using Typescript has its challenges. Your code gets longer and more difficult to read. React Elements have their own types which if you get wrong, you get many annoying red squiggly lines indicating errors."
+          ]
+        }
+      ],
       "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
       "link": "https://sudoku-shawnsu.netlify.app/"
     }
@@ -176,6 +218,7 @@
         }
       ],
       "highlights": [
+        { "title": "React", "content": [] },
         {
           "title": "GitHub",
           "content": [
