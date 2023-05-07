@@ -15,11 +15,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         subject: data.subject,
         text: data.message,
         html: `
-        <h1>📨 Portfolio Site Message</h1>
-        <h2>Subject: ${data.subject}</h2>
-        <p>From: ${data.email}</p>
-        <p>Name: ${data.name}</p>
-        <p>Message: ${data.message}</p>
+        <h1>📨New Message From Portfolio Site</h1>
+        <h2>From: </h2>
+        <p>${data.email}</p>
+        <h2>Name:</h2>
+        <p>${data.name}</p>
+        <h2>Subject:</h2>
+        <p>${data.subject}</p>
+        <h2>Message:</h2>
+        <p>${data.message}</p>
         `,
       });
 
