@@ -11,6 +11,7 @@ import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 import { sendContactForm } from "../utils/api";
 import { contactFormData } from "../utils/types";
+import { awaitTimeout } from "../utils/animation";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -28,7 +29,7 @@ const Contact: NextPage = (props) => {
     subject: "",
     message: "",
   };
-  const [isError, setIsError] = useState(false);
+  // const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState(emptyMessage);
   const [touched, setTouched] = useState({
     name: false,
@@ -37,15 +38,13 @@ const Contact: NextPage = (props) => {
     message: false,
   });
   const [messageDisplay, setMessageDisplay] = useState(<></>);
-  const [submitted, setSubmitted] = useState(false);
+  const [messageState, setMessageState] = useState("idle");
   const errorMessage = (
     <Alert status="error">
       <AlertIcon />
-      <AlertTitle mr={2}>Missing fields!</AlertTitle>
-      <AlertDescription>
-        Please fill in all required fields marked with '*'
-      </AlertDescription>
-      <CloseButton position="absolute" right="8px" top="8px" />
+      <AlertTitle mr={2}>Some wrong!</AlertTitle>
+      <AlertDescription>Please make sure all required fields are correctly filled and try send again later.</AlertDescription>
+      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
     </Alert>
   );
   const successMessage = (
@@ -53,7 +52,7 @@ const Contact: NextPage = (props) => {
       <AlertIcon />
       <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
       <AlertDescription></AlertDescription>
-      <CloseButton position="absolute" right="8px" top="8px" />
+      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
     </Alert>
   );
   const ref = useRef(null);
@@ -81,29 +80,33 @@ const Contact: NextPage = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessageState("pending");
     // Eventually handle form Validation here
     // let isValidForm = handleValidation();
 
     const res = await sendContactForm(message);
-
     const result = await res.json();
+
+    if (res.status === 200) {
+      setMessageState("success");
+    }
     if (result.error) {
+      setMessageState("error");
       console.log(result.error);
       return;
     }
-    console.log("📦", result);
+    console.log("📦", res.ok, res.status);
   };
 
   useEffect(() => {
-    // console.log("😅 useEffect running!");
-    // console.log(isError);
-    // if (isError) console.log("something is wrong!");
-    // else console.log("everything is in order");
-    // console.log(message);
-
-    if (submitted) setMessageDisplay(isError ? errorMessage : successMessage);
-    else setMessageDisplay(<></>);
-  }, [isError, message, submitted]);
+    if (messageState === "success") {
+      setMessageDisplay(successMessage);
+      setTimeout(() => setMessageState("idle"), 5000);
+    } else if (messageState === "error") {
+      setMessageDisplay(errorMessage);
+      setTimeout(() => setMessageState("idle"), 5000);
+    } else setMessageDisplay(<></>);
+  }, [messageState]);
 
   return (
     <Box id="contact" className={styles.main}>
@@ -228,12 +231,15 @@ const Contact: NextPage = (props) => {
                       !message.name ||
                       !message.email ||
                       !message.subject ||
-                      !message.message
+                      !message.message ||
+                      messageState !== "idle"
                     }
+                    isLoading={messageState === "pending" ? true : false}
                   >
                     ✉️ Send
                   </Button>
                 </FadeInItem>
+                {/* <FadeInItem>{messageDisplay}</FadeInItem> */}
                 <FadeInItem>{messageDisplay}</FadeInItem>
               </Stack>
             </FadeInContainer>
