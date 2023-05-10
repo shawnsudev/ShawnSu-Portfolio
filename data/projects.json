@@ -9,7 +9,8 @@
         "framer-motion",
         "node",
         "vercel",
-        "github"
+        "github",
+        "typescript"
       ],
       "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
@@ -104,7 +105,7 @@
     {
       "name": "Sudoku",
       "img": "https://cdn-icons-png.flaticon.com/512/5731/5731711.png",
-      "tools": ["mongodb", "express", "react", "node"],
+      "tools": ["mongodb", "express", "react", "node", "typescript", "netlify"],
       "focus": "Fullstack Development",
       "details": [{ "title": "Overview", "content": [] }],
       "highlights": [
@@ -132,49 +133,74 @@
         "react",
         "node",
         "docker",
+        "reactrouter",
+        "jest",
         "github",
         "netlify",
         "heroku",
+        "render",
         "insomnia",
         "notion",
-        "miro"
+        "miro",
+        "slack",
+        "google-meet"
       ],
       "focus": "Backend Development",
-      "description": "This is the final school project in the Backend development term. This project aims to build & deploy a simple backend for a ready-made restaurant reservation booking app, and stich up the frontend and backend. Users are able to view restaurant info, sign up/log in, make new or view exsiting reservations.",
+      "description": "Final school project in the Backend development term. This project aims to build & deploy a simple backend for a ready-made restaurant reservation booking app, and stich up the frontend and backend. Users are able to view restaurant info, sign up/log in, make new or view exsiting reservations.",
       "details": [
         {
           "title": "Overview",
           "content": [
-            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                          <li><strong>Backend</strong>: API server is hosted on Render.com (originally on Heroku.com); database is hosted on MongoDB Atlas; Auth0 is used for user authentication.</li></ul>"
+            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                          <li><strong>Backend</strong>: API server is hosted on Render.com (originally on Heroku.com); database is hosted on MongoDB Atlas; Auth0 is used for user authentication.</li>                                               <li><strong>Main features</strong>: any users can browse restaurant info; only <em>authenticated users</em> can make new reservations and view previously made reservations.</li></ul>"
           ]
         },
-        { "title": "User Authentication", "content": [""] },
         {
-          "title": "Docker",
+          "title": "User Authentication",
           "content": [
-            "Docker is mainly used for local development. Specifically, a mongodb database is created using Docker image, saving the trouble of installing mongodb locally."
+            "Learning how to incorporate User Authentication is a main focus of this project. Auth0 was selected for the role.",
+            "Essentially, our job was to <strong>set up certain checkpoints</strong>, e.g. the login button, reservation hyperlink, across the site so when user get to them we can decice the content to show them based on their identity.",
+            "On the Backend, <em>Auth0 middleware</em> is used to authenticate the users. On the Frontend, <em>React Router</em> is used to perform the content switching once users' identity is confirmed."
+          ]
+        },
+        {
+          "title": "Docker Compose",
+          "content": [
+            "Docker is mainly used for local development. Specifically, a mongodb database is created using Docker image, saving the trouble of installing/configuring mongodb locally.",
+            "Docker Compose yaml file is used to configure docker commands as to avoid manual inputs."
           ]
         }
       ],
       "highlights": [
-        { "title": "Middleware", "content": [""] },
+        {
+          "title": "Middleware",
+          "content": [
+            "Middleware is a very powerful concept. It works just like functions in JS, except for on a larger scale and in this instance HTTP requests-related - you get a certain input, you manipulate it a little with every layer of middleware until you get the exactly output you want. Essentially the whole Express framework is a stack of middleware.",
+            "Auth0 middleware's purpose is to check if the JWT from user request matches the one stored on Auth0 account. Our job was to insert Auth0 ready-made code snippets into our frontend and backend app in the right places.",
+            "To be honest, the concept was easy to grasp, but the implementation wasn't as there were too many moving parts to keep track. It takes many more practices to get comfortable with it."
+          ]
+        },
         {
           "title": "REST API",
           "content": [
-            "Learning how to do page transition/animation was pretty fun for me"
+            "REST API is probably the most fundamental aspect of Backend development. During this project, we learned to write API server that conforms with REST principles which is the standard of web development.",
+            "REST API conventions are well defined and relatively easy to follow. E.g. /restaurants route returns data of all restaurants; whereas /restaurants/:id route return data of a specific restaurant.",
+            "However, I found REST API too rigid and potentially quite wasteful. Say, if you have a large data set of 10,000 restaurants, should /restaurants route still return all restaurant data even though on the frontend they will never be displayed to the user all at once? Sadly, this is one of the questions unanswered in class. In my own research, I find GraphQL is probably a better solution for large web applications as you can tailor your HTTP requests in ways that the server only returns exactly what the users ask for, even the shape of the data."
           ]
         },
         {
           "title": "Docker",
-          "content": [""]
+          "content": [
+            "I personally consider Docker Virtual Machine Lite even though there are more nuances. It is a powerful technology that affords total isolation of running environment and requirements of any apps - package them all up as a single container and run them on any host machines.",
+            "My experience with docker is mixed. On one hand, I think docker gives web dev incredible certainty and convenience, the result you get locally is guaranteed when deployed. On the other hand, it is complex to understand and use. Writing/configuring docker compose yaml file with multiple services is not at all intuitive, on top of that you have to know different concepts like container, image, volume, layer etc. I guess complexity is a necessary tradeoff for flexibility and control."
+          ]
         },
         {
           "title": "Unit Testing",
-          "content": [""]
-        },
-        {
-          "title": "Docker Compose",
-          "content": [""]
+          "content": [
+            "With the help of <em>supertest</em>, we wrote many unit tests while building the backend to ensure every route worked as expected, e.g. an authenticated user should get access to all their reservations but not other users'.",
+            "Unit testing does save a lot of time due to automating the manual testing processes. I found it mostly a delight to use when project got bigger and manual testing became a chore and difficult to keep track.",
+            "But unit testing also has drawbacks. For one thing, it is very easy to be manipulated if the testing is white box instead of black box, meaning if you write both the server app and the tests, then you know exactly what to/not to test, so it's easy to be lazy/cheeky and omit certain things you should be testing for better results. I think it's a better idea to separate the job of writting the app and the tests so it remain black box testing, for the sake of the integrity of the tests."
+          ]
         }
       ],
       "link": "https://reservationizr-app-wwsdi.vercel.app/",
@@ -195,12 +221,12 @@
       ],
 
       "focus": "Frontend Development",
-      "description": "This is the final school project in the Frontend Development term. This group project aims to build & deploy a simple e-commerce site (only Frontend) for Board Games with online payment function. Users are able to view store items, filter/sort/search for certain items, purchase items and make payments online.",
+      "description": "Final school project in the Frontend Development term. This group project aims to build & deploy a simple e-commerce site (only Frontend) for Board Games with online payment function. Users are able to view store items, filter/sort/search for certain items, purchase items and make payments online.",
       "details": [
         {
           "title": "Overview",
           "content": [
-            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li> <li><strong>Backend</strong>: API server is hosted on Begin.com; online payment and store items data are hosted on Stripe.com.</li> <li><strong>Main features</strong>: display items; filter, sort, or search items; purchase items and make online payments.</li></ul>"
+            "<ul><li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li> <li><strong>Backend</strong>: API server is hosted on <em>Begin.com</em>; online payment system and shop items data are hosted on <em>Stripe.com</em>.</li> <li><strong>Main features</strong>: display items; filter, sort, or search items; purchase items and make online payments.</li></ul>"
           ]
         },
         {
@@ -218,7 +244,6 @@
         }
       ],
       "highlights": [
-        { "title": "React", "content": [] },
         {
           "title": "GitHub",
           "content": [
