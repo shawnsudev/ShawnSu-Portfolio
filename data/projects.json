@@ -14,8 +14,8 @@
       ],
       "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
-      "link": "https://sudoku-shawnsu.netlify.app/",
-      "source": "https://sudoku-shawnsu.netlify.app/",
+      "link": "",
+      "source": "",
       "details": [
         { "title": "Overview", "content": ["", ""] },
         { "title": "Animation & Transition", "content": [""] },
@@ -63,15 +63,25 @@
     {
       "name": "Game of Life",
       "img": "https://play-lh.googleusercontent.com/Ia1Pt7lUxyCpjMYBhurg3hl-s7dx8Mf-uv-vbwRHPjXmnhYTIvtMyDzMfgOZLIE4f1w",
-      "tools": ["mongodb", "express", "react", "node"],
+      "tools": [
+        "mongodb",
+        "express",
+        "react",
+        "node",
+        "github",
+        "netlify",
+        "render",
+        "insomnia"
+      ],
       "focus": "Frontend Development",
-      "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
+      "description": "My implementation of Conway's Game of Life.User can play/pause/step forward game, change speed or seed number with a slider, change colour themes & screen size, draw custom shapes, or play demos.",
       "link": "https://game-of-life-by-shawn-su.netlify.app/",
+      "source": "https://github.com/WWSDI/game-of-life",
       "details": [
         {
           "title": "Overview",
           "content": [
-            "<li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                                            <li><strong>Backend</strong>: NA                            <li><strong>Main features</strong>: speed & seed sliders, colour themes, play/pause/step game, draw custom shapes, play demos, change screen size.</li>"
+            "<li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                                            <li><strong>Backend</strong>: NA                                             <li><strong>Main features</strong>: speed & seed sliders, colour themes, play/pause/step game, draw custom shapes, play demos, change screen size.</li>"
           ]
         },
         {
@@ -79,25 +89,25 @@
           "content": [
             "This project started as a simple implementation of John Conway's Game of Life invented in 1970. It was relatively simple to implement the basic features in React, such as randomly seed the board and run the game.",
             "Then I got more ambitious and wanted to add more features into the game such as using the board as a drawing pad so users can experiment with various custom shapes. Then with the drawing feature at hand, I got inspired to create a demo feature which allows users to play ready-made shapes in realtime.",
-            "The good thing about doing this project is that I challenged myself to build features I wasn't taught how to do, so I had to resort to creative thinking and research to help with implementation solution. The downside is lots of time wasted due to lack of structured planning."
+            "The good thing about doing this project is that I challenged myself to build features I didn't learn in class how to do, so I had to <strong>resort to creative thinking and research</strong> to help with implementation solution. The downside is lots of time wasted due to lack of structured planning."
           ]
         }
       ],
-
       "highlights": [
-        { "title": "useEffect", "content": [""] },
         {
-          "title": "useReducer",
+          "title": "Organising Project Files",
           "content": [
-            "Learning how to do page transition/animation was pretty fun for me"
+            "As this project grew bigger as I added more features, every <em>.tsx Component file</em> got pretty lengthy, and I realised it was not sustainable to keep all logic in one file. It became clear that some less relevant/important logic has to be extracted into other files and hidden away from sight. Otherwise readability suffers.",
+            "I guess that's why developers use so many different folders such as <em>utils, lib, styles, type</em> etc. to store different code snippets so their main logic files are concise and readable.",
+            "Honestly, I haven't done such a great job at organising files in this project, but I did get a taste of the wonderful feeling when you clean up a file crammed with hundreds of lines of code and turn it into a readable, elegantly presented 30-line code file."
           ]
         },
         {
           "title": "Development VS Production Build",
           "content": [
-            "A strange problem I came across during development was performance issue - the game runs very slowly locally compared to other people's implementions I've seen online.",
-            "I thought I had done something wrong, it could be incorrect use of React useEffect hooks resulted in redundant rendering. So I fiddled with it a lot to no avail. Eventually I gave up and deployed the 'slow' version, and to my surprise, it ran blazing fast. It dawned on me then it was because I had always ran development build locally which must have had some performance loss due to non-optimised code.",
-            "I gained two new insights from this mistake - one is there's differences between development and production build; the other is it pays to adopt Agile Development. Errors (or non-errors in this case) can be quickly discovered through continuous development & deployment and quickly addressed in the next iteration."
+            "A strange problem I came across during development was performance issue - <strong>the game runs very slowly locally</strong> compared to other people's implementions I've seen online.",
+            "I thought I had done something wrong, it could be incorrect use of React useEffect hooks resulted in redundant rendering. So I fiddled with it a lot to no avail. Eventually I gave up and deployed the 'slow' version, and to my surprise, it ran blazing fast. It dawned on me then it was because I had always ran development build locally which must have had some <em>performance loss</em> due to non-optimised code.",
+            "I gained two new insights from this mistake - one is there's differences between development and production build, if you want to see the end result, you need to deploy it; the other is <strong>it pays to adopt Agile Development</strong>. Errors (or non-errors in this case) can be quickly discovered through <em>continuous development & deployment</em> and quickly addressed in the next iteration."
           ]
         }
       ]
@@ -105,9 +115,21 @@
     {
       "name": "Sudoku",
       "img": "https://cdn-icons-png.flaticon.com/512/5731/5731711.png",
-      "tools": ["mongodb", "express", "react", "node", "typescript", "netlify"],
+      "tools": [
+        "mongodb",
+        "express",
+        "react",
+        "node",
+        "github",
+        "typescript",
+        "netlify",
+        "render",
+        "insomnia"
+      ],
       "focus": "Fullstack Development",
       "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game. Users can choose from various difficulty levels to start a new game. Users can close the webpage and come back later and resume playing.",
+      "link": "https://sudoku-shawnsu.netlify.app/",
+      "source": "https://github.com/WWSDI/sudoku-SPA",
       "details": [
         {
           "title": "Overview",
@@ -152,8 +174,7 @@
             "But using Typescript has its challenges. Your code gets longer and more difficult to read. React Elements have their own types which if you get wrong, you get many annoying red squiggly lines indicating errors."
           ]
         }
-      ],
-      "link": "https://sudoku-shawnsu.netlify.app/"
+      ]
     }
   ],
   "schoolProjects": [
