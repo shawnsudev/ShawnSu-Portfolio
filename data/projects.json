@@ -107,8 +107,42 @@
       "img": "https://cdn-icons-png.flaticon.com/512/5731/5731711.png",
       "tools": ["mongodb", "express", "react", "node", "typescript", "netlify"],
       "focus": "Fullstack Development",
-      "details": [{ "title": "Overview", "content": [] }],
+      "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game. Users can choose from various difficulty levels to start a new game. Users can close the webpage and come back later and resume playing.",
+      "details": [
+        {
+          "title": "Overview",
+          "content": [
+            "<li><strong>Frontend</strong>: developed on React, deployed to Netlify.</li>                                            <li><strong>Backend</strong>: developed on Express; deployed on Render.com; database is hosted on MongoDB Atlas.                                      <li><strong>Main features</strong>: start new game & difficulty selection; same-number highlighting (in gray); duplicate highlighting (in red); resume game progress; win-game animation.</li>"
+          ]
+        },
+        {
+          "title": "Development Path",
+          "content": [
+            "The idea of developing a Sudoku game formed when I was doing a sudoku solution validation coding challenge on Codewars.com. The task was sufficiently challenging I thought it could be fun to expand on the sudoku solver and make a full game as a personal project. Turned out that solution validation was about the easiest part of the project.",
+            "Firstly, I wrote solution generator in plain JS, then used it to generate 10,000 solutions. Then I wrote a puzzle generator that turns a solution into a puzzle based on difficulty level - a puzzle is simply a solution of which a certain number of cells are omitted randomly.",
+            "The second phase was to build a project with frontend, backend and a database - I borrowed the structure from previous school projects. Backend was very lean - only one route, which returns a puzzle when a GET request hits, was needed. Database holds the 10,000 solutions which are simply one dimentional arrays. Frontend is the main focus as it hold most of the business logic.",
+            "I started building Frontend in React, after a few weeks, through tons of trial and error, eventually got the game to work. This project was originally deployed in 2021."
+          ]
+        }
+      ],
       "highlights": [
+        {
+          "title": "Declarative VS Imperative",
+          "content": [
+            "I got stuck for many days over the duplicate highlighting feature - if a user filled in a number that is already used in the row/column/block, then the number cells in the active region is highlighted as red.",
+            "Sounds simple in theory, but when I implemented, it felt very overwhelming because there's so many different conditions to check, and I had to use many 'if' conditional clauses so that the duplicate cells will be 'manually' highlighted. To make things worse, the previously highlighted cells have to be 'manually' turned off if the user changed the input number. <strong>Things started to break down from here as there were too many conditions to keep track.</strong>",
+            "After left it off for a few days, it finally dawned on me, instead of checking the duplicates in the active region and tracking their change of states, I should simply do a 'stateless' check, not unlike the concept of <em>RESTful API</em>, to the whole board. Regardless of the cell's previous state (highlighted or not), I just check every cell, if it fits the criteria, it is highlighted, if not, then dimmed.",
+            "This was a thinking process revolution for me - switching from <strong>imperative to declarative</strong> or <strong>procedural to functional</strong> thinking. Functional programming actually leaves more work for the computer to do, so your program might run slower, but you as the human developer is saved from being bogged down by hundreds of chores, hence much faster development and easy to read logic."
+          ]
+        },
+        {
+          "title": "useEffect Hook",
+          "content": [
+            "useEffect hook is a fundamental React Hook to learn yet it can be tricky. My understanding of its use was not up to scratch at first, coupled with the amount of side effects the app needs to perform, I had a lot of trouble getting it to work properly.",
+            "Eventually I realised that you can't just lump all the side effects into one useEffect hook, because different side effect may have <em>different dependencies</em>. Lumping them together may mean <strong>some side effects overrun while others underrun</strong>.",
+            "So I used <strong>multiple useEffect hooks</strong> in <Board/> to perform all necessary side effects with difference dependency arrays. This way, not only did the side effects perform correctly, different business logic were also kept separate as to increase readablity."
+          ]
+        },
         {
           "title": "Typescript",
           "content": [
@@ -119,7 +153,6 @@
           ]
         }
       ],
-      "description": "My implementation of the classic Sudoku (logic-based, combinatorial number puzzle) game.",
       "link": "https://sudoku-shawnsu.netlify.app/"
     }
   ],
