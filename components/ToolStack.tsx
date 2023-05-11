@@ -1,8 +1,7 @@
-import { ColorHues, Text, TextProps } from "@chakra-ui/react";
+import { ColorHues, Flex, Text, TextProps } from "@chakra-ui/react";
 import React from "react";
 import LinkTag, { LinkTagProps } from "./LinkTag";
 import { IconType } from "react-icons";
-import { Url } from "url";
 import { tools } from "../data/tools";
 
 type Tool = LinkTagProps & {
@@ -25,30 +24,24 @@ type ToolStackProps = TextProps & { toolNames: ToolNames[] };
 const ToolStack = ({ toolNames }: ToolStackProps) => {
   const stack = toolNames.map((tool) => tools[tool]);
 
+  // I used {" "} to create a gap between each <LinkTag/> which was a terrible mistake that caused key prop issue in the .map().
+  //  Takeaway: leave format to format components like <Flex>
   return (
-    <Text
-      // as="span"
-      key={Math.random()}
-      lineHeight={"1.75rem"}
-    >
+    <Flex gap="0.25rem" flexWrap="wrap">
       {stack.map(
         ({ content, icon, tooltip, colorScheme, variant, href }, i) => (
-          // <span key={i}>
-          <>
-            <LinkTag
-              key={i}
-              content={content}
-              icon={icon}
-              tooltip={tooltip}
-              colorScheme={colorScheme}
-              variant={variant}
-              href={href}
-            />{" "}
-          </>
-          // </span>
+          <LinkTag
+            key={i}
+            content={content}
+            icon={icon}
+            tooltip={tooltip}
+            colorScheme={colorScheme}
+            variant={variant}
+            href={href}
+          />
         )
       )}
-    </Text>
+    </Flex>
   );
 };
 export default ToolStack;
