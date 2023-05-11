@@ -17,18 +17,22 @@
       "link": "",
       "source": "",
       "details": [
-        { "title": "Overview", "content": ["", ""] },
-        { "title": "Animation & Transition", "content": [""] },
-        { "title": "Overview", "content": [""] }
+        {
+          "title": "Overview",
+          "content": [
+            "<li><strong>Frontend</strong>: developed on Next, deployed to Vercel.</li>                                            <li><strong>Backend</strong>: serverless function developed on Next.</li>                                             <li><strong>Main features</strong>: self-introduction,  projects I've done, my skills and toolset, contact me page.</li>"
+          ]
+        }
       ],
       "highlights": [
         {
           "title": "Serverless Function",
           "content": [
-            "One of the benefits of using Next.js is the abiltiy to use Serverless Function to perform serverside tasks without having to build & manage a server yourself, which saves a lot of time."
+            "One of the benefits of using Next.js is the abiltiy to use Serverless Function to perform serverside tasks <strong>without having to build & manage a server yourself</strong>, which saves a lot of overhead and time - no need to install Express, configure the server and deploy it.",
+            "It feels refreshing, like using <em>Create-React-App</em> instead of manually building a React project from the ground up.",
+            "I'm sure there are situations that you would still want to build & manage your own server, but Serverless Function can probably replace the traditional way in many cases."
           ]
         },
-        { "title": "Serverless Function", "content": [] },
         {
           "title": "Orchestration",
           "content": [
@@ -40,8 +44,7 @@
         {
           "title": "Themeable UI Framework",
           "content": [
-            "One example is the adoption of Chakra for UI. Previously I mainly relied on plain CSS to do UI work as I wanted to challenge myself to learn more about low-level CSS.",
-            "Admittedly, it quickly became tediously, time-consuming and error-prone once the project grew bigger than a simple webpage with a few components. ",
+            "Previously I mainly relied on plain CSS to do UI work as I wanted to challenge myself to learn more about low-level CSS. You have a lot of low-level control this way, however, admittedly, it quickly became tediously, time-consuming and error-prone once the project grew bigger than a simple webpage with a few components. ",
             "Using a UI Framework is like switching from <em>building a house on your own with handtools</em> to overseeing a group of builders with powertools. Being freed from having to wrangle unruly low-level CSS properties allows you the freedom to <strong>compose code</strong>."
           ]
         },
@@ -49,13 +52,15 @@
           "title": "Animation & Transition",
           "content": [
             "Learning how to do page transition/animation using Framer was pretty fun for me. Having previously learned how to do some basic animations with vanilla CSS, I know well how difficult and cumbersome it can be when animation becomes too complex. Using a framework like Framer give you higher level control.",
-            "I used Framer for all the FadeIn effects, but I also used plain CSS for page title rubberbanding animation. Plain CSS gives you granualar control."
+            "I used Framer for all the FadeIn effects which could be a lot more difficult to orchestrate without the help of a framework.",
+            "I also used plain CSS for page title rubberbanding animation. Plain CSS gives you granualar control - different tools for different situations."
           ]
         },
         {
           "title": "Composition",
           "content": [
-            "Building a project like this really helped deepening the concept of composition and how to create and reuse components. Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app. "
+            "Building a project like this really helped deepened the concept of <strong>composition and how to create and reuse components</strong>.",
+            "Initially I write a lot of code in one component to the point it becomes hundreds of line and too unwieldy, the structure of the code becomes blurry, you have to go through layers of tags to see what's inside. It becomes clear that the best way to handle this kind of situation is to create lower level components for storing repeating logic/code, then use higher level components to compose the app."
           ]
         }
       ]
