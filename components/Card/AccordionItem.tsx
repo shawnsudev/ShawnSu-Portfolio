@@ -13,21 +13,27 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
             <AccordionItem key={i}>
               <h2>
                 <AccordionButton>
-                  <Text as="span" flex="1" textAlign="left" fontFamily="Times New Roman" fontWeight="500">
+                  <Text
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    fontFamily="Times New Roman"
+                    fontWeight="500"
+                  >
                     {item.title}
                   </Text>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               <AccordionPanel pb={4}>
-                {item.content.map((text, i) => (
-                  <>
+                {item.content.map((text, j) => (
+                  <Box key={j}>
                     {/* use React dangerouslySetInnerHTML property to allow customised html formatting */}
                     {<div dangerouslySetInnerHTML={{ __html: text }} />}
 
                     {/* add line break between paragraphs */}
-                    {i === item.content.length - 1 ? null : <br />}
-                  </>
+                    {j === item.content.length - 1 ? null : <br />}
+                  </Box>
                 ))}
               </AccordionPanel>
             </AccordionItem>
