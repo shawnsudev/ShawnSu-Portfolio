@@ -1,9 +1,18 @@
 //prettier-ignore
 import {
-  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
+  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputElementProps, InputGroup, InputLeftElement, NumberInputFieldProps, SimpleGrid, Stack, StylesProvider, Textarea, UsePinInputFieldProps,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { ChangeEvent, forwardRef, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  EventHandler,
+  InputHTMLAttributes,
+  SyntheticEvent,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
@@ -11,7 +20,7 @@ import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 import { sendContactForm } from "../utils/api";
 import { contactFormData } from "../utils/types";
-import { awaitTimeout } from "../utils/animation";
+import { InputType } from "zlib";
 
 const errorMessage = (
   <Alert status="error">
@@ -64,7 +73,7 @@ const Contact: NextPage = (props) => {
   const isInView = useInView(ref, { amount: 0.3 });
 
   // The type of the event seems wrong, hence the error on target.name and .value, but I don't know which one to use.
-  const handleChange = ({ target }: ChangeEvent) => {
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement> |ChangeEvent<HTMLTextAreaElement>) => {
     // if (target) {
     setMessage((prev) => {
       return {
@@ -76,14 +85,16 @@ const Contact: NextPage = (props) => {
   };
 
   // Handler for onBlur property, triggered when input field is out of focus
-  const handleBlur = ({ target }: ChangeEvent) => {
+  const handleBlur = ({
+    target,
+  }: SyntheticEvent & { target: { name: string } }) => {
     setTouched((prev) => ({
       ...prev,
-      [target.name]: true,
+      [target!.name]: true,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     setMessageState("pending");
     // Eventually handle form Validation here
