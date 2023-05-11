@@ -111,7 +111,7 @@ const Contact: NextPage = (props) => {
       setMessageDisplay(errorMessage);
       setTimeout(() => setMessageState("idle"), 5000);
     } else setMessageDisplay(<></>);
-  }, [messageState, errorMessage, successMessage]);
+  }, [messageState]);
 
   return (
     <Box id="contact" className={styles.main}>
