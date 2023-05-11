@@ -1,54 +1,50 @@
+//prettier-ignore
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  Box,
-  Button,
-  CloseButton,
-  Flex,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputLeftElement,
-  SimpleGrid,
-  Stack,
-  StylesProvider,
+  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, StylesProvider, Textarea,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { forwardRef, useEffect, useRef, useState } from "react";
-import { rubberband } from "../utils/animation";
+import { ChangeEvent, forwardRef, useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
+import { sendContactForm } from "../utils/api";
+import { contactFormData } from "../utils/types";
+import { awaitTimeout } from "../utils/animation";
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
-  const initMessage = {
+  const testMessage: contactFormData = {
+    name: "test name",
+    company: "test company",
+    email: "test@email.com",
+    subject: "test subject",
+    message: "testing testing message",
+  };
+  const emptyMessage: contactFormData = {
     name: "",
     company: "",
     email: "",
     subject: "",
     message: "",
   };
-  const [isError, setIsError] = useState(false);
-  const [message, setMessage] = useState(initMessage);
+  // const [isError, setIsError] = useState(false);
+  const [message, setMessage] = useState(emptyMessage);
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    subject: false,
+    message: false,
+  });
   const [messageDisplay, setMessageDisplay] = useState(<></>);
-  const [submitted, setSubmitted] = useState(false);
+  const [messageState, setMessageState] = useState("idle");
   const errorMessage = (
     <Alert status="error">
       <AlertIcon />
-      <AlertTitle mr={2}>Missing fields!</AlertTitle>
-      <AlertDescription>
-        Please fill in all required fields marked with '*'
-      </AlertDescription>
-      <CloseButton position="absolute" right="8px" top="8px" />
+      <AlertTitle mr={2}>Some wrong!</AlertTitle>
+      <AlertDescription>Please make sure all required fields are correctly filled and try send again later.</AlertDescription>
+      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
     </Alert>
   );
   const successMessage = (
@@ -56,22 +52,61 @@ const Contact: NextPage = (props) => {
       <AlertIcon />
       <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
       <AlertDescription></AlertDescription>
-      <CloseButton position="absolute" right="8px" top="8px" />
+      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
     </Alert>
   );
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
-  useEffect(() => {
-    // console.log("😅 useEffect running!");
-    // console.log(isError);
-    // if (isError) console.log("something is wrong!");
-    // else console.log("everything is in order");
-    console.log(message);
+  // The type of the event seems wrong, hence the error on target.name and .value, but I don't know which one to use.
+  const handleChange = ({ target }: ChangeEvent) => {
+    // if (target) {
+    setMessage((prev) => {
+      return {
+        ...prev,
+        [target.name]: target.value,
+      };
+    });
+    // }
+  };
 
-    if (submitted) setMessageDisplay(isError ? errorMessage : successMessage);
-    else setMessageDisplay(<></>);
-  }, [isError, message, submitted]);
+  // Handler for onBlur property, triggered when input field is out of focus
+  const handleBlur = ({ target }: ChangeEvent) => {
+    setTouched((prev) => ({
+      ...prev,
+      [target.name]: true,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessageState("pending");
+    // Eventually handle form Validation here
+    // let isValidForm = handleValidation();
+
+    const res = await sendContactForm(message);
+    const result = await res.json();
+
+    if (res.status === 200) {
+      setMessageState("success");
+    }
+    if (result.error) {
+      setMessageState("error");
+      console.log(result.error);
+      return;
+    }
+    console.log("📦", res.ok, res.status);
+  };
+
+  useEffect(() => {
+    if (messageState === "success") {
+      setMessageDisplay(successMessage);
+      setTimeout(() => setMessageState("idle"), 5000);
+    } else if (messageState === "error") {
+      setMessageDisplay(errorMessage);
+      setTimeout(() => setMessageState("idle"), 5000);
+    } else setMessageDisplay(<></>);
+  }, [messageState]);
 
   return (
     <Box id="contact" className={styles.main}>
@@ -87,114 +122,126 @@ const Contact: NextPage = (props) => {
 
           <DecorativeTag content="form">
             <FadeInContainer>
-              <FormControl>
-                <Stack spacing={2}>
-                  <SimpleGrid columns={2} spacing={2}>
-                    <FadeInItem>
+              <Stack spacing={2}>
+                <SimpleGrid columns={2} spacing={2}>
+                  <FadeInItem>
+                    <FormControl
+                      isRequired
+                      isInvalid={touched.name && !message.name}
+                    >
                       <InputGroup>
                         <InputLeftElement color="red.300" children="*" />
                         <Input
                           type="text"
+                          name="name"
                           placeholder="Name"
                           variant="filled"
                           value={message.name}
-                          onChange={(e) => {
-                            const newMessage = { ...message };
-                            newMessage.name = e.target.value;
-                            setMessage(newMessage);
-                          }}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
                         />
                       </InputGroup>
-                    </FadeInItem>
-                    <FadeInItem>
-                      <Input
-                        type="text"
-                        placeholder="Company"
-                        variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.company = e.target.value;
-                          setMessage(newMessage);
-                        }}
-                      />
-                    </FadeInItem>
-                  </SimpleGrid>
-
+                      <FormErrorMessage>Name is required.</FormErrorMessage>
+                    </FormControl>
+                  </FadeInItem>
                   <FadeInItem>
+                    <Input
+                      type="text"
+                      name="company"
+                      placeholder="Company"
+                      variant="filled"
+                      value={message.company}
+                      onChange={handleChange}
+                    />
+                  </FadeInItem>
+                </SimpleGrid>
+
+                <FadeInItem>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.email && !message.email}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
                         type="email"
+                        name="email"
                         placeholder="Email"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.email = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        value={message.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
+                <FadeInItem>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.subject && !message.subject}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
                       <Input
                         type="text"
+                        name="subject"
                         placeholder="Subject"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.subject = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        value={message.subject}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Subject is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
+                <FadeInItem>
+                  <FormControl
+                    isRequired
+                    isInvalid={touched.message && !message.message}
+                  >
                     <InputGroup>
                       <InputLeftElement color="red.300" children="*" />
-                      <Input
-                        type="textarea"
+                      <Textarea
+                        // type="textarea"
+                        h="8rem"
+                        name="message"
                         placeholder="Message"
+                        pl="2.5rem"
                         variant="filled"
-                        onChange={(e) => {
-                          const newMessage = { ...message };
-                          newMessage.message = e.target.value;
-                          setMessage(newMessage);
-                        }}
+                        value={message.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
                     </InputGroup>
-                  </FadeInItem>
+                    <FormErrorMessage>Message is required.</FormErrorMessage>
+                  </FormControl>
+                </FadeInItem>
 
-                  <FadeInItem>
-                    <Button
-                      maxWidth="25vw"
-                      onClick={(e) => {
-                        const allRequiredFieldsAreValid =
-                          message.name &&
-                          message.email &&
-                          message.subject &&
-                          message.message;
-
-                        if (allRequiredFieldsAreValid) {
-                          setIsError(false);
-                        } else {
-                          setIsError(true);
-                          console.log("⛔️", "not all the fields are filled");
-                        }
-
-                        setSubmitted(true);
-                        setTimeout(() => setSubmitted(false), 10000);
-                      }}
-                    >
-                      Submit
-                    </Button>
-                  </FadeInItem>
-                  <FadeInItem>{messageDisplay}</FadeInItem>
-                </Stack>
-              </FormControl>
+                <FadeInItem>
+                  <Button
+                    variant="solid"
+                    colorScheme="purple"
+                    maxWidth="30vw"
+                    onClick={handleSubmit}
+                    disabled={
+                      !message.name ||
+                      !message.email ||
+                      !message.subject ||
+                      !message.message ||
+                      messageState !== "idle"
+                    }
+                    isLoading={messageState === "pending" ? true : false}
+                  >
+                    ✉️ Send
+                  </Button>
+                </FadeInItem>
+                {/* <FadeInItem>{messageDisplay}</FadeInItem> */}
+                <FadeInItem>{messageDisplay}</FadeInItem>
+              </Stack>
             </FadeInContainer>
           </DecorativeTag>
         </Box>
