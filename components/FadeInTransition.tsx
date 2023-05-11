@@ -22,7 +22,10 @@ const fadeInItem = {
   },
 };
 
-type FadeInTransitionProps = BoxProps & { once?: boolean, key?: string | number };
+type FadeInTransitionProps = BoxProps & {
+  once?: boolean;
+  key?: string | number;
+};
 
 export const FadeInContainer = ({
   children,
@@ -41,5 +44,9 @@ export const FadeInContainer = ({
 };
 
 export const FadeInItem = ({ key, children }: FadeInTransitionProps) => {
-  return <motion.div key={key} variants={fadeInItem}>{children}</motion.div>;
+  return (
+    <motion.div key={key} variants={fadeInItem}>
+      {children}
+    </motion.div>
+  );
 };

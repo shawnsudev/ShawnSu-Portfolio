@@ -24,7 +24,6 @@ type ToolStackProps = TextProps & { toolNames: ToolNames[] };
 
 const ToolStack = ({ toolNames }: ToolStackProps) => {
   const stack = toolNames.map((tool) => tools[tool]);
-  console.log(stack);
 
   return (
     <Text

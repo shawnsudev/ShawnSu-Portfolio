@@ -43,7 +43,10 @@ const Contact: NextPage = (props) => {
     <Alert status="error">
       <AlertIcon />
       <AlertTitle mr={2}>Some wrong!</AlertTitle>
-      <AlertDescription>Please make sure all required fields are correctly filled and try send again later.</AlertDescription>
+      <AlertDescription>
+        Please make sure all required fields are correctly filled and try send
+        again later.
+      </AlertDescription>
       {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
     </Alert>
   );
@@ -106,7 +109,7 @@ const Contact: NextPage = (props) => {
       setMessageDisplay(errorMessage);
       setTimeout(() => setMessageState("idle"), 5000);
     } else setMessageDisplay(<></>);
-  }, [messageState]);
+  }, [messageState, errorMessage, successMessage]);
 
   return (
     <Box id="contact" className={styles.main}>
@@ -130,7 +133,7 @@ const Contact: NextPage = (props) => {
                       isInvalid={touched.name && !message.name}
                     >
                       <InputGroup>
-                        <InputLeftElement color="red.300" children="*" />
+                        <InputLeftElement color="red.300">*</InputLeftElement>
                         <Input
                           type="text"
                           name="name"
@@ -162,7 +165,7 @@ const Contact: NextPage = (props) => {
                     isInvalid={touched.email && !message.email}
                   >
                     <InputGroup>
-                      <InputLeftElement color="red.300" children="*" />
+                      <InputLeftElement color="red.300">*</InputLeftElement>
                       <Input
                         type="email"
                         name="email"
@@ -183,7 +186,7 @@ const Contact: NextPage = (props) => {
                     isInvalid={touched.subject && !message.subject}
                   >
                     <InputGroup>
-                      <InputLeftElement color="red.300" children="*" />
+                      <InputLeftElement color="red.300">*</InputLeftElement>
                       <Input
                         type="text"
                         name="subject"
@@ -204,7 +207,7 @@ const Contact: NextPage = (props) => {
                     isInvalid={touched.message && !message.message}
                   >
                     <InputGroup>
-                      <InputLeftElement color="red.300" children="*" />
+                      <InputLeftElement color="red.300">*</InputLeftElement>
                       <Textarea
                         // type="textarea"
                         h="8rem"

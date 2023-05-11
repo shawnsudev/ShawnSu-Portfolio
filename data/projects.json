@@ -14,8 +14,8 @@
       ],
       "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
-      "link": "",
-      "source": "",
+      "link": "/",
+      "source": "https://github.com/shawnsudev/shawnsu-portfolio",
       "details": [
         {
           "title": "Overview",

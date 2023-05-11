@@ -9,8 +9,8 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
   return (
     <Accordion allowToggle>
       {section === "details" || section === "highlights"
-        ? card[section].map((item) => (
-            <AccordionItem>
+        ? card[section].map((item, i) => (
+            <AccordionItem key={i}>
               <h2>
                 <AccordionButton>
                   <Text as="span" flex="1" textAlign="left" fontFamily="Times New Roman" fontWeight="500">

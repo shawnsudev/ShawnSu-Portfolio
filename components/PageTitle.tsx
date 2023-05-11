@@ -75,4 +75,7 @@ const PageTitle = forwardRef(
     );
   }
 );
+// Deployed failed due to an Error: Component definition is missing display name  react/display-name
+PageTitle.displayName = "PageTitle";
+
 export default PageTitle;
