@@ -13,6 +13,26 @@ import { sendContactForm } from "../utils/api";
 import { contactFormData } from "../utils/types";
 import { awaitTimeout } from "../utils/animation";
 
+const errorMessage = (
+  <Alert status="error">
+    <AlertIcon />
+    <AlertTitle mr={2}>Some wrong!</AlertTitle>
+    <AlertDescription>
+      Please make sure all required fields are correctly filled and try send
+      again later.
+    </AlertDescription>
+    {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
+  </Alert>
+);
+const successMessage = (
+  <Alert status="success">
+    <AlertIcon />
+    <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
+    <AlertDescription></AlertDescription>
+    {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
+  </Alert>
+);
+
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
   const testMessage: contactFormData = {
@@ -39,25 +59,7 @@ const Contact: NextPage = (props) => {
   });
   const [messageDisplay, setMessageDisplay] = useState(<></>);
   const [messageState, setMessageState] = useState("idle");
-  const errorMessage = (
-    <Alert status="error">
-      <AlertIcon />
-      <AlertTitle mr={2}>Some wrong!</AlertTitle>
-      <AlertDescription>
-        Please make sure all required fields are correctly filled and try send
-        again later.
-      </AlertDescription>
-      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
-    </Alert>
-  );
-  const successMessage = (
-    <Alert status="success">
-      <AlertIcon />
-      <AlertTitle mr={2}>Message sent successfully!</AlertTitle>
-      <AlertDescription></AlertDescription>
-      {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
-    </Alert>
-  );
+
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
