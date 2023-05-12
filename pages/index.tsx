@@ -14,10 +14,13 @@ import About from "./about";
 import PageTitle from "../components/PageTitle";
 import Landing from "./landing";
 import { Flex, Grid, GridItem } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer } from "../components/FadeInTransition";
 
 const Home: NextPage = () => {
+  
+
   return (
     <div>
       <Head>
@@ -33,13 +36,17 @@ const Home: NextPage = () => {
         gap={0}
       >
         <GridItem
-          display={{ base: "none", sm: "none", md:"flex" }}
+          display={{ base: "none", md: "block" }}
           w="8rem"
           rowSpan={10}
           colSpan={1}
           bg="gray"
         >
           <Navbar />
+        </GridItem>
+
+        <GridItem display={{ base: "inline-block", md: "none" }} w="4rem" h="4rem" position="fixed" right="1rem" top="0.5rem">
+          <HamburgerIcon boxSize="4rem"/>
         </GridItem>
 
         {/* Home Page */}
