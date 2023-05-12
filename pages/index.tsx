@@ -79,7 +79,7 @@ const Home: NextPage = () => {
               // (
               //   <CloseIcon boxSize="2.8rem" />
               // )
-              <HamburgerIcon boxSize="4rem" />
+              <HamburgerIcon boxSize={{ base: "3rem", sm: "4rem" }} />
             )}
           </Button>
         </GridItem>

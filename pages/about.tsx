@@ -23,7 +23,7 @@ const About: NextPage = (props) => {
           </DecorativeTag>
 
           <FadeInContainer>
-            <SimpleGrid columns={2} spacing={10}>
+            <SimpleGrid columns={{base:1, md:2}} spacing={{base:0, md:10}}>
               <DecorativeTag content="p">
                 <FadeInItem>
                   <Text as="p">

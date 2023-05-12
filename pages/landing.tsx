@@ -59,7 +59,7 @@ const Landing: NextPage = () => {
           animate="show"
         >
           <DecorativeTag content="h1" right="1.5rem">
-            <Heading as="h1" size={{ base: "3xl", sm: "3xl", md: "4xl" }}>
+            <Heading as="h1" size={{ base: "2xl", sm: "3xl", md: "4xl" }}>
               {title.map((line, idx) => (
                 <p key={"line" + idx}>
                   {line.split("").map((L, i) =>

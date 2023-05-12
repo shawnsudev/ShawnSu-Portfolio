@@ -31,10 +31,10 @@ const Card = ({ card, w }: CardProps) => {
       <Image
         src={card.img}
         alt={`Image of ${card.name}`}
-        w="10rem"
+        w={{ base: "7rem", md: "10rem" }}
         margin="1rem auto"
         position={"relative"}
-        top="6rem"
+        top={{ base: "4rem", md: "6rem" }}
         bg="white"
         border=".7rem solid white"
         borderRadius="1rem"

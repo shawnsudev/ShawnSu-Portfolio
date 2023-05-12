@@ -73,7 +73,9 @@ const Contact: NextPage = (props) => {
   const isInView = useInView(ref, { amount: 0.3 });
 
   // The type of the event seems wrong, hence the error on target.name and .value, but I don't know which one to use.
-  const handleChange = ({ target }: ChangeEvent<HTMLInputElement> |ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = ({
+    target,
+  }: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     // if (target) {
     setMessage((prev) => {
       return {
@@ -137,14 +139,16 @@ const Contact: NextPage = (props) => {
           </DecorativeTag>
 
           <DecorativeTag content="p">
-            <Text as="p">
-            Please leave me a message using this contact form if you want to get in touch regarding a job offer, or if you have any questions. Cheers 😊
+            <Text as="p" w={{ lg: "45rem" }} margin="0 auto">
+              Please leave me a message using this contact form if you want to
+              get in touch regarding a job offer, or if you have any questions.
+              Cheers 😊
             </Text>
           </DecorativeTag>
 
           <DecorativeTag content="form">
             <FadeInContainer>
-              <Stack spacing={2}>
+              <Stack spacing={2} w={{ lg: "45rem" }} margin="0 auto">
                 <SimpleGrid columns={2} spacing={2}>
                   <FadeInItem>
                     <FormControl
