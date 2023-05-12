@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useInView } from "framer-motion";
 import { NextPage } from "next";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PageTitle from "../components/PageTitle";
 import styles from "../styles/Home.module.css";
 import Continue from "../components/Continue";
@@ -26,15 +26,15 @@ type Stack = {
 const stacks: Stack[] = [
   {
     name: "Frontend",
-    tools: ["react", "next", "sass", "framer-motion", "chakra-ui", "redux"],
+    tools: ["react", "next", "sass", "framer-motion", "chakra-ui", "redux", "reactrouter"],
   },
   {
     name: "Backend",
-    tools: ["node", "express", "mongodb","docker", "auth0"],
+    tools: ["node", "express", "mongodb", "docker", "auth0","jest"],
   },
   {
     name: "Cloud Services",
-    tools: ["github", "netlify", "heroku", "vercel"],
+    tools: ["github", "netlify", "heroku", "vercel","render","stripe","auth0"],
   },
   {
     name: "DEV Tools",
@@ -46,15 +46,18 @@ const stacks: Stack[] = [
   },
 ];
 
+const mySkills = [
+  { name: "Frontend", value: 80, colorScheme: "purple" },
+  { name: "Backend", value: 60, colorScheme: "cyan" },
+  { name: "React", value: 70, colorScheme: "green" },
+  { name: "Next", value: 40, colorScheme: "yellow" },
+  { name: "Node", value: 60, colorScheme: "orange" },
+  { name: "Express", value: 50, colorScheme: "messenger" },
+  { name: "Typescript", value: 40, colorScheme: "red" },
+];
+
 const Skills: NextPage = (props) => {
-  const [skills, setSkills] = useState([
-    { name: "Frontend", value: 80, colorScheme: "purple" },
-    { name: "Backend", value: 60, colorScheme: "cyan" },
-    { name: "React.js", value: 70, colorScheme: "green" },
-    { name: "Express", value: 50, colorScheme: "messenger" },
-    { name: "Next.js", value: 40, colorScheme: "yellow" },
-    { name: "Typescript", value: 30, colorScheme: "red" },
-  ]);
+  const [skills, setSkills] = useState(mySkills);
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
@@ -73,12 +76,45 @@ const Skills: NextPage = (props) => {
 
           <FadeInContainer>
             <SimpleGrid columns={2} spacing={10}>
+              {/* Progress Bars */}
               <DecorativeTag content="p">
                 <Box>
                   <FadeInItem>
                     <Text as="p">
-                      My main skills include Frontend (React-based) & Backend
-                      development. Some of the libraries, frameworks, cloud
+                      My main skills are Frontend & Backend
+                      development:
+                      <br />
+                      <br />
+                    </Text>
+                  </FadeInItem>
+                  <DecorativeTag content="data">
+                    <FadeInItem>
+                      <Grid>
+                        {skills.map((skill, i) => (
+                          <GridItem key={"gr" + i}>
+                            <label>{skill.name}</label>
+                            <Progress
+                              id="frontends"
+                              colorScheme={skill.colorScheme}
+                              value={skill.value}
+                              hasStripe={true}
+                              isAnimated={true}
+                              size="xs"
+                            />
+                          </GridItem>
+                        ))}
+                      </Grid>
+                    </FadeInItem>
+                  </DecorativeTag>
+                </Box>
+              </DecorativeTag>
+
+              {/* Toolsets */}
+              <DecorativeTag content="p">
+                <Box>
+                  <FadeInItem>
+                    <Text as="p">
+                      Some of the libraries, frameworks, cloud
                       services I frequently use for both personal and school
                       projects include:
                       <br />
@@ -101,27 +137,6 @@ const Skills: NextPage = (props) => {
                     </FadeInItem>
                   </DecorativeTag>
                 </Box>
-              </DecorativeTag>
-
-              {/* Progress Bars */}
-              <DecorativeTag content="data">
-                <FadeInItem>
-                  <Grid>
-                    {skills.map((skill, i) => (
-                      <GridItem key={"gr" + i}>
-                        <label>{skill.name}</label>
-                        <Progress
-                          id="frontends"
-                          colorScheme={skill.colorScheme}
-                          value={skill.value}
-                          hasStripe={true}
-                          isAnimated={true}
-                          size="xs"
-                        />
-                      </GridItem>
-                    ))}
-                  </Grid>
-                </FadeInItem>
               </DecorativeTag>
             </SimpleGrid>
           </FadeInContainer>

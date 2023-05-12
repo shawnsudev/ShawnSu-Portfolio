@@ -1,6 +1,6 @@
 //prettier-ignore
 import {
-  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputElementProps, InputGroup, InputLeftElement, NumberInputFieldProps, SimpleGrid, Stack, StylesProvider, Textarea, UsePinInputFieldProps,
+  Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, CloseButton, FormControl, FormErrorMessage, Input, InputElementProps, InputGroup, InputLeftElement, NumberInputFieldProps, SimpleGrid, Stack, StylesProvider, Text, Textarea, UsePinInputFieldProps,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 import {
@@ -134,6 +134,12 @@ const Contact: NextPage = (props) => {
               titleTexts={["Contact me"]}
               isInView={isInView}
             />
+          </DecorativeTag>
+
+          <DecorativeTag content="p">
+            <Text as="p">
+            Please leave me a message using this contact form if you want to get in touch regarding a job offer, or if you have any questions. Cheers 😊
+            </Text>
           </DecorativeTag>
 
           <DecorativeTag content="form">
