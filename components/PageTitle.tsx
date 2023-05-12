@@ -1,21 +1,19 @@
-import { Heading, PropsOf, Text } from "@chakra-ui/react";
+import { Box, DividerProps, Heading, PropsOf, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { NextPage } from "next";
 import { ForwardedRef, forwardRef, MutableRefObject, useEffect } from "react";
 import { rubberband } from "../utils/animation";
 import { v4 as uuidv4 } from "uuid";
 
-type NextPagePropsWithTransition = NextPage & {
+type TitleAnimationProps = {
   titleTexts: string[];
   // ref: MutableRefObject<null>;
   isInView: boolean;
 };
 
+// Link for how to define type for forwardRef(): https://www.carlrippon.com/react-forwardref-typescript/
 const PageTitle = forwardRef(
-  (
-    { titleTexts, isInView }: NextPagePropsWithTransition,
-    ref: ForwardedRef<null>
-  ) => {
+  ({ titleTexts, isInView }: TitleAnimationProps, ref: ForwardedRef<null>) => {
     const fadeinRubberbandContainer = {
       hidden: { opacity: 0 },
       show: {
@@ -43,12 +41,8 @@ const PageTitle = forwardRef(
       },
     };
 
-    useEffect(() => {
-      // console.log("isInView of PageTitle:", isInView);
-    }, [isInView]);
-
     return (
-      <div ref={ref}>
+      <Box ref={ref}>
         <motion.div
           variants={fadeinRubberbandContainer}
           initial="hidden"
@@ -71,7 +65,7 @@ const PageTitle = forwardRef(
           </Heading>
           {/* ;<h1 className={`${styles.title} rubberband-group`}></h1> */}
         </motion.div>
-      </div>
+      </Box>
     );
   }
 );
