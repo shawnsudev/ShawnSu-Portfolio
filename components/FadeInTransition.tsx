@@ -43,9 +43,15 @@ export const FadeInContainer = ({
   );
 };
 
-export const FadeInItem = ({ key, children }: FadeInTransitionProps) => {
+export const FadeInItem = ({
+  // key,
+  children,
+}: FadeInTransitionProps) => {
   return (
-    <motion.div key={key} variants={fadeInItem}>
+    <motion.div
+      // key={key}
+      variants={fadeInItem}
+    >
       {children}
     </motion.div>
   );

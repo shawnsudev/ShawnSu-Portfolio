@@ -38,9 +38,13 @@ const Projects: NextPage = () => {
                 </Heading>
                 <Flex justify={"space-around"} wrap="wrap">
                   {personalProjects.map((project, i) => (
-                    <FadeInItem key={i}>
-                      <Card card={project as CardData} w={cardWidth} />
-                    </FadeInItem>
+                    <Box key={i}>
+                      <FadeInItem
+                      // key={i}
+                      >
+                        <Card card={project as CardData} w={cardWidth} />
+                      </FadeInItem>
+                    </Box>
                   ))}
                 </Flex>
               </Box>
