@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Skills from "./skills";
 import animation from "../styles/animation.module.scss";
-import { createRef, MouseEvent, useEffect, useRef } from "react";
+import { createRef, MouseEvent, useEffect, useRef, useState } from "react";
 import { rubberband, runRubberbandIn } from "../utils/animation";
 import Projects from "./projects";
 import Contact from "./contact";
@@ -13,13 +13,24 @@ import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
 import Landing from "./landing";
-import { Flex, Grid, GridItem } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer } from "../components/FadeInTransition";
 
 const Home: NextPage = () => {
-  
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -35,6 +46,7 @@ const Home: NextPage = () => {
         templateColumns="repeat(20, 1fr)"
         gap={0}
       >
+        {/* only shown on md or beyond */}
         <GridItem
           display={{ base: "none", md: "block" }}
           w="8rem"
@@ -42,12 +54,52 @@ const Home: NextPage = () => {
           colSpan={1}
           bg="gray"
         >
+          {/* use default buttonPadding value here */}
           <Navbar />
         </GridItem>
 
-        <GridItem display={{ base: "inline-block", md: "none" }} w="4rem" h="4rem" position="fixed" right="1rem" top="0.5rem">
-          <HamburgerIcon boxSize="4rem"/>
+        {/* only shown on base & sm */}
+        <GridItem
+          display={{ base: "inline-block", md: "none" }}
+          w="4rem"
+          h="4rem"
+          position="fixed"
+          right="1rem"
+        >
+          <Button
+            w="4rem"
+            h="4rem"
+            top="0.5rem"
+            bg="none"
+            _hover={{ bg: "none" }}
+            _active={{ bg: "none", opacity: "0.7" }}
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            {isOpen ? null : (
+              // (
+              //   <CloseIcon boxSize="2.8rem" />
+              // )
+              <HamburgerIcon boxSize="4rem" />
+            )}
+          </Button>
         </GridItem>
+
+        <Drawer
+          placement="bottom"
+          onClose={() => setIsOpen(false)}
+          isOpen={isOpen}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerBody>
+              <Navbar
+                buttonPadding="1rem 50vw"
+                onClick={() => setIsOpen(false)}
+              />
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
 
         {/* Home Page */}
         <GridItem colSpan={19} bg="mintcream">
