@@ -14,7 +14,7 @@
       ],
       "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",
-      "link": "/",
+      "link": "https://shawnsu-portfolio.vercel.app/",
       "source": "https://github.com/shawnsudev/shawnsu-portfolio",
       "details": [
         {
@@ -185,7 +185,7 @@
   "schoolProjects": [
     {
       "name": "Reservationizr",
-      "img": "https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/reservation-icon.png",
+      "img": "https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg",
       "tools": [
         "mongodb",
         "express",
