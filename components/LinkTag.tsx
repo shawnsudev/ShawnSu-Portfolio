@@ -45,10 +45,15 @@ const LinkTag = ({
   colorScheme = "gray",
   variant = "subtle",
   href = "https://reactjs.org/",
-  key,
-}: LinkTagProps) => {
+}: // key,
+LinkTagProps) => {
   return (
-    <Tooltip key={key} label={tooltip} hasArrow openDelay={1000}>
+    <Tooltip
+      // key={key}
+      label={tooltip}
+      hasArrow
+      openDelay={1000}
+    >
       <motion.span initial="initial" whileHover="hover" variants={spanVariant}>
         <Tag variant={variant} colorScheme={colorScheme}>
           {icon

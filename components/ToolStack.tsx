@@ -30,15 +30,17 @@ const ToolStack = ({ toolNames }: ToolStackProps) => {
     <Flex gap="0.25rem" flexWrap="wrap">
       {stack.map(
         ({ content, icon, tooltip, colorScheme, variant, href }, i) => (
-          <LinkTag
-            key={i}
-            content={content}
-            icon={icon}
-            tooltip={tooltip}
-            colorScheme={colorScheme}
-            variant={variant}
-            href={href}
-          />
+          <span key={i}>
+            <LinkTag
+              // key={i}
+              content={content}
+              icon={icon}
+              tooltip={tooltip}
+              colorScheme={colorScheme}
+              variant={variant}
+              href={href}
+            />
+          </span>
         )
       )}
     </Flex>

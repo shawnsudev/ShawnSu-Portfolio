@@ -42,8 +42,8 @@ const Home: NextPage = () => {
             <DecorativeTag content="body" hExpand="-1rem">
               <Flex flexDirection={"column"}>
                 <Landing />
-                <About />
-                <Projects />
+                {/* <About /> */}
+                {/* <Projects /> */}
                 <Skills />
                 <Contact />
               </Flex>
