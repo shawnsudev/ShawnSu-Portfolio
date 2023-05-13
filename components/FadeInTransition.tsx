@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const fadeInContainer = {
   show: {
     transition: {
-      delayChildren: 1,
-      staggerChildren: 0.3,
+      delayChildren: 0.6,
+      staggerChildren: 0.2,
     },
   },
 };
@@ -36,7 +36,8 @@ export const FadeInContainer = ({
       variants={fadeInContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount: 0.3 }}
+      // viewport={{ once, amount: 0.3 }}
+      viewport={{ once, amount: "some" }}
     >
       {children}
     </motion.div>
