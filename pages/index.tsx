@@ -29,6 +29,17 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer } from "../components/FadeInTransition";
 
+// const innerBoxStyles = {
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+//   textAlign: "center",
+//   boxSize: "full",
+//   textShadow: "0 0 20px black",
+//   fontWeight: "bold",
+//   fontSize: "20px",
+// };
+
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -65,6 +76,7 @@ const Home: NextPage = () => {
           h="4rem"
           position="fixed"
           right="1rem"
+          // zIndex={100}
         >
           <Button
             w="4rem"
@@ -74,6 +86,9 @@ const Home: NextPage = () => {
             _hover={{ bg: "none" }}
             _active={{ bg: "none", opacity: "0.7" }}
             onClick={() => setIsOpen((prev) => !prev)}
+            // sx={innerBoxStyles}
+            // backdropFilter="auto"
+            // backdropBlur="8px"
           >
             {isOpen ? null : (
               // (
@@ -102,7 +117,11 @@ const Home: NextPage = () => {
         </Drawer>
 
         {/* Home Page */}
-        <GridItem colSpan={19} bg="mintcream">
+        <GridItem
+          colSpan={19}
+          px={{ base: "1.5rem", sm: "3rem", md: "4rem" }}
+          bg="mintcream"
+        >
           <DecorativeTag content="html" hExpand="-0.5rem">
             <DecorativeTag content="body" hExpand="-1rem">
               <Flex flexDirection={"column"}>

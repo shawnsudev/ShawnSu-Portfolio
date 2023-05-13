@@ -28,6 +28,7 @@ const Card = ({ card, w }: CardProps) => {
 
   return (
     <Box position="relative" top="-3rem">
+      {/* Card image on top */}
       <Image
         src={card.img}
         alt={`Image of ${card.name}`}
@@ -41,12 +42,13 @@ const Card = ({ card, w }: CardProps) => {
         boxShadow="-0.5rem 0.5rem .5rem lightgray, 0.5rem 0.5rem .5rem lightgray"
         zIndex="2"
       />
+      {/* Card body */}
       <Box
         w={w}
         // border="1px solid lightgray"
         borderRadius=".5rem"
         bg="white"
-        padding="2rem"
+        padding={{base: "1rem", sm:"2rem"}}
         textAlign={"center"}
         boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
       >

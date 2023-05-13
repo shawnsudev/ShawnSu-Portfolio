@@ -4,7 +4,7 @@
 
 .landing {
   min-height: 100vh;
-  padding: 4rem ;
+  padding: 4rem;
   /* padding-left: 4rem; */
   flex: 1;
   display: flex;
@@ -16,7 +16,7 @@
 .main {
   min-height: 100vh;
   /* padding: 0 2rem; */
-  padding: 4rem;
+  /* padding: 4rem; */
   /* padding-left: 4rem; */
   flex: 1;
   display: flex;
@@ -147,3 +147,9 @@
     filter: invert(1);
   }
 }
+
+/* @media (max-width: 20rem) {
+  .landing {
+    padding: 1rem;
+  }
+} */
