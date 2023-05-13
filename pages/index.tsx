@@ -29,16 +29,16 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import DecorativeTag from "../components/DecorativeTag";
 import { FadeInContainer } from "../components/FadeInTransition";
 
-// const innerBoxStyles = {
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-//   textAlign: "center",
-//   boxSize: "full",
-//   textShadow: "0 0 20px black",
-//   fontWeight: "bold",
-//   fontSize: "20px",
-// };
+const innerBoxStyles = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  boxSize: "full",
+  textShadow: "0 0 20px black",
+  fontWeight: "bold",
+  fontSize: "20px",
+};
 
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
           h="4rem"
           position="fixed"
           right="1rem"
-          // zIndex={100}
+          zIndex={1000}
         >
           <Button
             w="4rem"
@@ -86,9 +86,9 @@ const Home: NextPage = () => {
             _hover={{ bg: "none" }}
             _active={{ bg: "none", opacity: "0.7" }}
             onClick={() => setIsOpen((prev) => !prev)}
-            // sx={innerBoxStyles}
-            // backdropFilter="auto"
-            // backdropBlur="8px"
+            sx={innerBoxStyles}
+            backdropFilter="auto"
+            backdropBlur="8px"
           >
             {isOpen ? null : (
               // (
