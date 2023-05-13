@@ -36,7 +36,12 @@ const Projects: NextPage = () => {
                 <Heading as="h3" size="lg">
                   Personal Projects
                 </Heading>
-                <Flex justify={"space-around"} wrap="wrap" gap="3rem">
+                <Flex
+                  justify={"space-around"}
+                  wrap="wrap"
+                  rowGap="3rem"
+                  columnGap="0"
+                >
                   {personalProjects.map((project, i) => (
                     <Box key={i}>
                       <FadeInItem
@@ -54,7 +59,12 @@ const Projects: NextPage = () => {
               {/* School Projects */}
               <Box>
                 <Heading as="h3">School Projects</Heading>
-                <Flex justify="space-around" wrap="wrap" gap="3rem">
+                <Flex
+                  justify="space-around"
+                  wrap="wrap"
+                  rowGap="3rem"
+                  columnGap="0"
+                >
                   {schoolProjects.map((project, i) => (
                     <FadeInItem key={i}>
                       <Card card={project as CardData} w={cardWidth} />
