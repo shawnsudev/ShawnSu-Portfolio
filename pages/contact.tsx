@@ -128,7 +128,7 @@ const Contact: NextPage = (props) => {
 
   return (
     <Box id="contact">
-      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
+      <DecorativeTag content="section" hExpand="1.5rem" vExpand="3rem">
         <Box>
           <DecorativeTag content="h2">
             <PageTitle

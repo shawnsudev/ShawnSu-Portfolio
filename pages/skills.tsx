@@ -79,7 +79,7 @@ const Skills: NextPage = (props) => {
 
   return (
     <Box id="skills">
-      <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
+      <DecorativeTag content="section" hExpand="1.5rem" vExpand="3rem">
         <Box>
           {/* Title */}
           <DecorativeTag content="h2">
@@ -160,6 +160,7 @@ const Skills: NextPage = (props) => {
           </FadeInContainer>
         </Box>
       </DecorativeTag>
+
       <Continue />
     </Box>
   );

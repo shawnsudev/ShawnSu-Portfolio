@@ -1,22 +1,13 @@
-import { Heading, PropsOf, Text } from "@chakra-ui/react";
+import { Box, Heading, PropsOf, Text } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
-import { NextPage } from "next";
-import {
-  ForwardedRef,
-  forwardRef,
-  MutableRefObject,
-  useEffect,
-  useRef,
-} from "react";
-import { rubberband } from "../utils/animation";
-import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
 
 const Continue = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
   return (
-    <div ref={ref}>
+    <Box ref={ref}>
       <motion.div
         // initial="hidden"
         animate={{
@@ -30,11 +21,11 @@ const Continue = () => {
           repeat: Infinity,
         }}
       >
-        <Text color="gray" size="xl" align={"center"} marginTop="10rem">
+        <Text color="gray" size="xl" align={"center"} marginY="8rem">
           ⇓
         </Text>
       </motion.div>
-    </div>
+    </Box>
   );
 };
 

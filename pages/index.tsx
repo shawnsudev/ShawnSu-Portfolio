@@ -123,8 +123,8 @@ const Home: NextPage = () => {
           px={{ base: "1.5rem", sm: "3rem", md: "4rem" }}
           bg="mintcream"
         >
-          <DecorativeTag content="html" hExpand="-0.5rem">
-            <DecorativeTag content="body" hExpand="-1rem">
+          <DecorativeTag content="html" hExpand="3rem" vExpand="0rem">
+            <DecorativeTag content="body" hExpand="2rem" vExpand="0rem">
               <Flex flexDirection={"column"}>
                 <Landing />
                 <About />
@@ -132,6 +132,9 @@ const Home: NextPage = () => {
                 <Skills />
                 <Contact />
               </Flex>
+
+              {/* Empty <Box/> correcting bottom DecorativeTag positioning */}
+              <Box marginBottom="3rem" />
             </DecorativeTag>
           </DecorativeTag>
         </GridItem>
