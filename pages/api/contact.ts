@@ -3,14 +3,16 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { contactFormData } from "../../utils/types";
 import { mailOptions, transporter } from "../../config/nodemailer";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     const data: contactFormData = req.body;
     if (!data.name || !data.email || !data.subject || !data.message) {
       return res.status(400).json({ message: "Bad request" });
     }
     try {
-      transporter.sendMail({
+      // Bug: local dev can send email, no problems; vercel.com production can't.
+      // Attemptable Solution: add 'await' to make sure promise resolved 
+      await transporter.sendMail({
         ...mailOptions,
         subject: data.subject,
         text: data.message,
