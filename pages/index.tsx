@@ -55,7 +55,7 @@ const Home: NextPage = () => {
       <Grid
         h="100%"
         templateRows="repeat(1, 1fr)"
-        templateColumns="repeat(20, 1fr)"
+        templateColumns={{ base: `repeat(19,1fr)`, md: `repeat(20, 1fr)` }}
         gap={0}
       >
         {/* only shown on md or beyond */}
