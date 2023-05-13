@@ -50,7 +50,10 @@ const Landing: NextPage = () => {
   };
 
   return (
-    <Box id="landing" className={styles.landing}>
+    <Box
+      id="landing"
+      // px={{ base: "1rem", sm: "2rem", md: "4rem" }}
+    >
       <Box>
         <motion.div
           ref={ref}

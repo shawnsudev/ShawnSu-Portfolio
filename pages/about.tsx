@@ -15,7 +15,7 @@ const About: NextPage = (props) => {
   const pageTitle = ["Me,", "Myself & I"];
 
   return (
-    <Box id="about" className={styles.main}>
+    <Box id="about">
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
         <Box>
           <DecorativeTag content="h2">

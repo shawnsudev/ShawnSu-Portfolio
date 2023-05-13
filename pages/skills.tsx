@@ -26,15 +26,31 @@ type Stack = {
 const stacks: Stack[] = [
   {
     name: "Frontend",
-    tools: ["react", "next", "sass", "framer-motion", "chakra-ui", "redux", "reactrouter"],
+    tools: [
+      "react",
+      "next",
+      "sass",
+      "framer-motion",
+      "chakra-ui",
+      "redux",
+      "reactrouter",
+    ],
   },
   {
     name: "Backend",
-    tools: ["node", "express", "mongodb", "docker", "auth0","jest"],
+    tools: ["node", "express", "mongodb", "docker", "auth0", "jest"],
   },
   {
     name: "Cloud Services",
-    tools: ["github", "netlify", "heroku", "vercel","render","stripe","auth0"],
+    tools: [
+      "github",
+      "netlify",
+      "heroku",
+      "vercel",
+      "render",
+      "stripe",
+      "auth0",
+    ],
   },
   {
     name: "DEV Tools",
@@ -62,7 +78,7 @@ const Skills: NextPage = (props) => {
   const isInView = useInView(ref, { amount: 0.3 });
 
   return (
-    <Box id="skills" className={styles.main}>
+    <Box id="skills">
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
         <Box>
           {/* Title */}
@@ -75,14 +91,16 @@ const Skills: NextPage = (props) => {
           </DecorativeTag>
 
           <FadeInContainer>
-            <SimpleGrid columns={{base:1, lg:2}} spacing={{base:0, lg:10}}>
+            <SimpleGrid
+              columns={{ base: 1, lg: 2 }}
+              spacing={{ base: 0, lg: 10 }}
+            >
               {/* Progress Bars */}
               <DecorativeTag content="p">
                 <Box>
                   <FadeInItem>
                     <Text as="p">
-                      My main skills are Frontend & Backend
-                      development:
+                      My main skills are Frontend & Backend development:
                       <br />
                       <br />
                     </Text>
@@ -114,9 +132,9 @@ const Skills: NextPage = (props) => {
                 <Box>
                   <FadeInItem>
                     <Text as="p">
-                      Some of the libraries, frameworks, cloud
-                      services I frequently use for both personal and school
-                      projects include:
+                      Some of the libraries, frameworks, cloud services I
+                      frequently use for both personal and school projects
+                      include:
                       <br />
                       <br />
                     </Text>

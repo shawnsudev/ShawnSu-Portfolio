@@ -22,7 +22,7 @@ const Projects: NextPage = () => {
   const cardWidth = { md: "30rem", lg: "35rem", xl: "30rem" };
 
   return (
-    <Box id="projects" className={styles.main}>
+    <Box id="projects">
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="0rem">
         <Box>
           <DecorativeTag content="h2">

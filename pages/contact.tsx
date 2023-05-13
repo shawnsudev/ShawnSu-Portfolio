@@ -127,7 +127,7 @@ const Contact: NextPage = (props) => {
   }, [messageState]);
 
   return (
-    <Box id="contact" className={styles.main}>
+    <Box id="contact">
       <DecorativeTag content="section" hExpand="2.5rem" vExpand="7rem">
         <Box>
           <DecorativeTag content="h2">
