@@ -20,6 +20,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         <p>${data.email}</p>
         <h2>Name:</h2>
         <p>${data.name}</p>
+        <h2>Company:</h2>
+        ${data.company ? "<p>" + data.company + "</p>" : "NA"}
         <h2>Subject:</h2>
         <p>${data.subject}</p>
         <h2>Message:</h2>
