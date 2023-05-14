@@ -41,6 +41,9 @@ const innerBoxStyles = {
   fontSize: "20px",
 };
 
+const navbarBgColor = "blackAlpha.300";
+const indexPageBgColor = "white";
+
 const Home: NextPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,7 +67,7 @@ const Home: NextPage = () => {
           w="8rem"
           rowSpan={10}
           colSpan={1}
-          bg="gray"
+          bg={navbarBgColor}
         >
           {/* use default buttonPadding value here */}
           <Navbar />
@@ -121,7 +124,7 @@ const Home: NextPage = () => {
         <GridItem
           colSpan={19}
           px={{ base: "1.5rem", sm: "3rem", md: "4rem" }}
-          bg="mintcream"
+          bg={indexPageBgColor}
         >
           <DecorativeTag content="html" hExpand="3rem" vExpand="0rem">
             <DecorativeTag content="body" hExpand="2rem" vExpand="0rem">

@@ -12,7 +12,13 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Text,
+  withDefaultVariant,
+} from "@chakra-ui/react";
 import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
@@ -70,12 +76,17 @@ const Landing: NextPage = () => {
                       " "
                     ) : L === "S" ? (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
-                        <span
-                          className={styles.logo2}
+                        <Text
+                          // className={styles.logo2}
+                          as="span"
+                          fontSize="6rem"
+                          fontWeight="bold"
+                          color="purple.300"
+                          textShadow=".85rem 0 #F6E05E"
                           onMouseEnter={rubberband}
                         >
                           {L}
-                        </span>
+                        </Text>
                       </motion.span>
                     ) : (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
@@ -101,7 +112,9 @@ const Landing: NextPage = () => {
           <DecorativeTag content="button">
             <FadeInItem>
               <Box>
-                <Button>Check Out My Portfolio</Button>
+                <Button variant="solid" colorScheme="yellow">
+                  Check Out My Portfolio
+                </Button>
               </Box>
             </FadeInItem>
           </DecorativeTag>
