@@ -11,6 +11,13 @@ type TitleAnimationProps = {
   isInView: boolean;
 };
 
+const scaleParams = {
+  type: "spring",
+  damping: 8,
+  stiffness: 800,
+  bounce: 1,
+};
+
 // Link for how to define type for forwardRef(): https://www.carlrippon.com/react-forwardref-typescript/
 const PageTitle = forwardRef(
   ({ titleTexts, isInView }: TitleAnimationProps, ref: ForwardedRef<null>) => {
@@ -18,25 +25,33 @@ const PageTitle = forwardRef(
       hidden: { opacity: 0 },
       show: {
         opacity: isInView ? 1 : 0,
-        // scale: 1.5,
         transition: isInView
           ? {
               delayChildren: 0.5,
-              staggerChildren: 0.08,
+              staggerChildren: 0.07,
             }
           : {},
       },
     };
     const fadeinRubberbandItem = {
-      hidden: { opacity: 0, scale: 1.2 },
+      hidden: {
+        opacity: 0,
+        scaleX: 1.5,
+        scaleY: 0.5,
+      },
+
       show: {
         opacity: isInView ? 1 : 0,
-        scale: isInView ? 1 : 1.2,
+        scaleX: isInView ? 1 : 0,
+        scaleY: isInView ? 1 : 0,
         display: "inline-block",
         transition: {
-          type: "spring",
-          damping: 5,
-          stiffness: 600,
+          opacity: {
+            type: "tween",
+            ease: "easeOut",
+          },
+          scaleX: scaleParams,
+          scaleY: scaleParams,
         },
       },
     };
