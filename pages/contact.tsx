@@ -250,8 +250,15 @@ const Contact: NextPage = (props) => {
                 <FadeInItem>
                   <Button
                     variant="solid"
-                    colorScheme="purple"
-                    maxWidth="30vw"
+                    colorScheme="yellow"
+                    letterSpacing={"0.2rem"}
+                    fontFamily={"Darumadrop One, cursive"}
+                    fontSize={"2xl"}
+                    verticalAlign={"top"}
+                    px="2rem"
+                    py="1.5rem"
+                    mt="2rem"
+                    _hover={{ color: "white"}}
                     onClick={handleSubmit}
                     disabled={
                       !message.name ||

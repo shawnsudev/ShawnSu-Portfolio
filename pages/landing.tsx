@@ -16,7 +16,9 @@ import {
   Box,
   Button,
   Heading,
+  Link,
   Text,
+  textDecoration,
   withDefaultVariant,
 } from "@chakra-ui/react";
 import DecorativeTag from "../components/DecorativeTag";
@@ -103,7 +105,12 @@ const Landing: NextPage = () => {
         <FadeInContainer once={false}>
           <DecorativeTag content="p">
             <FadeInItem>
-              <Text as="p" color="slate" size="2xl">
+              <Text
+                as="p"
+                color="blackAlpha.600"
+                size="sm"
+                letterSpacing={"0.3rem"}
+              >
                 New Frontend / React.JS Developer
               </Text>
             </FadeInItem>
@@ -112,8 +119,19 @@ const Landing: NextPage = () => {
           <DecorativeTag content="button">
             <FadeInItem>
               <Box>
-                <Button variant="solid" colorScheme="yellow">
-                  Check Out My Portfolio
+                <Button
+                  variant="solid"
+                  colorScheme="yellow"
+                  letterSpacing={"0.2rem"}
+                  fontFamily={"Darumadrop One, cursive"}
+                  fontSize={"2xl"}
+                  verticalAlign={"top"}
+                  p="2rem"
+                  _hover={{ color: "white" }}
+                >
+                  <Link href="/#projects" _hover={{ textDecoration: "none" }}>
+                    My Portfolio
+                  </Link>
                 </Button>
               </Box>
             </FadeInItem>
