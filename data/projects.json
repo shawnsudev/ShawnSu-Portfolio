@@ -10,7 +10,8 @@
         "node",
         "vercel",
         "github",
-        "typescript"
+        "typescript",
+        "nodemailer"
       ],
       "focus": "Frontend Development",
       "description": "My personal portfolio website (i.e. this site) that lists previous projects I have done and demostrates my coding skills.",

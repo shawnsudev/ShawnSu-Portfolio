@@ -2,8 +2,18 @@ import { FaReact, FaSass, FaApple, FaNodeJs, FaDocker } from "react-icons/fa";
 //prettier-ignore
 import { SiNextdotjs, SiFramer, SiChakraui, SiRedux, SiVisualstudio, SiInsomnia, SiAuth0, SiExpress, SiGithub, SiNetlify, SiHeroku, SiVercel, SiGooglemeet, SiSlack, SiNotion, SiMiro, SiPostman, SiStripe, SiTypescript, SiReactrouter, SiRender, SiJest } from "react-icons/si";
 import { DiVim, DiGit, DiMongodb } from "react-icons/di";
+import { HiMail } from "react-icons/hi";
 
 export const tools = {
+  nodemailer:{
+    content: "NodeMailer",
+    icon: HiMail,
+    tooltip:
+      "Nodemailer is a module for Node.js applications to allow easy as cake email sending. The project got started back in 2010 when there was no sane option to send email messages, today it is the solution most Node.js users turn to by default.",
+    colorScheme: "blue",
+    variant: "subtle",
+    href: "https://nodemailer.com/about/",
+  },
   mongodb: {
     content: "MongoDB",
     icon: DiMongodb,
