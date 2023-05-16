@@ -12,7 +12,15 @@ import { motion, useInView } from "framer-motion";
 import Navbar from "../components/Navbar";
 import About from "./about";
 import PageTitle from "../components/PageTitle";
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Link,
+  Text,
+  textDecoration,
+  withDefaultVariant,
+} from "@chakra-ui/react";
 import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
@@ -70,12 +78,17 @@ const Landing: NextPage = () => {
                       " "
                     ) : L === "S" ? (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
-                        <span
-                          className={styles.logo2}
+                        <Text
+                          // className={styles.logo2}
+                          as="span"
+                          fontSize="6rem"
+                          fontWeight="bold"
+                          color="purple.300"
+                          textShadow=".85rem 0 #F6E05E"
                           onMouseEnter={rubberband}
                         >
                           {L}
-                        </span>
+                        </Text>
                       </motion.span>
                     ) : (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
@@ -92,7 +105,12 @@ const Landing: NextPage = () => {
         <FadeInContainer once={false}>
           <DecorativeTag content="p">
             <FadeInItem>
-              <Text as="p" color="slate" size="2xl">
+              <Text
+                as="p"
+                color="blackAlpha.600"
+                size="sm"
+                letterSpacing={"0.3rem"}
+              >
                 New Frontend / React.JS Developer
               </Text>
             </FadeInItem>
@@ -101,7 +119,20 @@ const Landing: NextPage = () => {
           <DecorativeTag content="button">
             <FadeInItem>
               <Box>
-                <Button>Check Out My Portfolio</Button>
+                <Button
+                  variant="solid"
+                  colorScheme="yellow"
+                  letterSpacing={"0.2rem"}
+                  fontFamily={"Darumadrop One, cursive"}
+                  fontSize={"2xl"}
+                  verticalAlign={"top"}
+                  p="2rem"
+                  _hover={{ color: "white" }}
+                >
+                  <Link href="/#projects" _hover={{ textDecoration: "none" }}>
+                    My Portfolio
+                  </Link>
+                </Button>
               </Box>
             </FadeInItem>
           </DecorativeTag>

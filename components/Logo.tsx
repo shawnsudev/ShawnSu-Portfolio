@@ -11,8 +11,9 @@ const Logo: NextPage = () => {
         fontSize="6rem"
         fontWeight="bold"
         paddingEnd="0"
-        color="purple.400"
-        textShadow=".85rem 0 lime"
+        color="purple.300"
+        textShadow=".85rem 0 #F6E05E" 
+        // textShadowColor = "teal.300"
       >
         S
       </Text>

@@ -22,6 +22,8 @@ export type CardData = {
   highlights: AccordionItem[];
 };
 type CardProps = BoxProps & { card: CardData };
+const bgColor = "#F8F9F9";
+// const bgColor = "blackAlpha.50";
 
 const Card = ({ card, w }: CardProps) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -47,8 +49,8 @@ const Card = ({ card, w }: CardProps) => {
         w={w}
         // border="1px solid lightgray"
         borderRadius=".5rem"
-        bg="white"
-        padding={{base: "1rem", sm:"2rem"}}
+        bg={bgColor}
+        padding={{ base: "1rem", sm: "2rem" }}
         textAlign={"center"}
         boxShadow="-0.5rem 0.5rem .5rem whitesmoke, 0.5rem 0.5rem .5rem whitesmoke"
       >
