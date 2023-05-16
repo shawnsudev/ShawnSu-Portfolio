@@ -25,7 +25,7 @@ import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
-const title = ["Hello", "I'm Shawn,", "new web developer"];
+const title = ["Hello", "I'm Shawn Su,", "new web developer"];
 
 const Landing: NextPage = () => {
   const ref = useRef(null);
@@ -73,18 +73,32 @@ const Landing: NextPage = () => {
             <Heading as="h1" size={{ base: "2xl", sm: "3xl", md: "4xl" }}>
               {title.map((line, idx) => (
                 <p key={"line" + idx}>
-                  {line.split("").map((L, i) =>
+                  {line.split("").map((L, i, arr) =>
                     L === " " ? (
                       " "
-                    ) : L === "S" ? (
+                    ) : L === "S" && arr[i + 1] === "h" ? (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
                         <Text
                           // className={styles.logo2}
                           as="span"
-                          fontSize="6rem"
+                          fontSize={{ base: "4rem", md: "6rem" }}
                           fontWeight="bold"
                           color="purple.300"
                           textShadow=".85rem 0 #F6E05E"
+                          onMouseEnter={rubberband}
+                        >
+                          {L}
+                        </Text>
+                      </motion.span>
+                    ) : L === "S" && arr[i + 1] === "u" ? (
+                      <motion.span key={"hello" + i} variants={rubberbandItem}>
+                        <Text
+                          // className={styles.logo2}
+                          as="span"
+                          fontSize={{ base: "4rem", md: "6rem" }}
+                          fontWeight="bold"
+                          color="yellow.300"
+                          textShadow=".85rem 0 #B794F4"
                           onMouseEnter={rubberband}
                         >
                           {L}
