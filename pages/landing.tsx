@@ -26,6 +26,13 @@ import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 
 const title = ["Hello", "I'm Shawn Su,", "new web developer"];
+const scaleParams = {
+  type: "spring",
+  damping: 8,
+  stiffness: 500,
+  bounce: 1,
+};
+
 
 const Landing: NextPage = () => {
   const ref = useRef(null);
@@ -37,22 +44,30 @@ const Landing: NextPage = () => {
       transition: isInView
         ? {
             delayChildren: 0.5,
-            staggerChildren: 0.08,
+            staggerChildren: 0.07,
           }
         : {},
     },
   };
   const rubberbandItem = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0,
+      scaleX: 1.5,
+      scaleY: 0.5,
+    },
+
     show: {
       opacity: isInView ? 1 : 0,
-      scale: isInView ? 1 : 1.2,
-      // scale: isInView ? 1.2 : 1,
+      scaleX: isInView ? 1 : 0,
+      scaleY: isInView ? 1 : 0,
       display: "inline-block",
       transition: {
-        type: "spring",
-        damping: 5,
-        stiffness: 600,
+        opacity: {
+          type: "tween",
+          ease: "easeOut",
+        },
+        scaleX: scaleParams,
+        scaleY: scaleParams,
       },
     },
   };
