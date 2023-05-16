@@ -99,7 +99,7 @@ const Landing: NextPage = () => {
                           fontSize={{ base: "4rem", md: "6rem" }}
                           fontWeight="bold"
                           color="purple.300"
-                          textShadow=".85rem 0 #F6E05E"
+                          textShadow={{base:".55rem 0 #F6E05E", md:".85rem 0 #F6E05E"}}
                           onMouseEnter={rubberband}
                         >
                           {L}
@@ -113,7 +113,7 @@ const Landing: NextPage = () => {
                           fontSize={{ base: "4rem", md: "6rem" }}
                           fontWeight="bold"
                           color="yellow.300"
-                          textShadow=".85rem 0 #B794F4"
+                          textShadow={{base:".55rem 0 #B794F4", md:".85rem 0 #B794F4"}}
                           onMouseEnter={rubberband}
                         >
                           {L}
