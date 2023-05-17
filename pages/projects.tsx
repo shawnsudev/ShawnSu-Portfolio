@@ -44,11 +44,13 @@ const Projects: NextPage = () => {
                 >
                   {personalProjects.map((project, i) => (
                     <Box key={i}>
-                      <FadeInItem
-                      // key={i}
-                      >
-                        <Card card={project as CardData} w={cardWidth} />
-                      </FadeInItem>
+                      <DecorativeTag content="card">
+                        <FadeInItem
+                        // key={i}
+                        >
+                          <Card card={project as CardData} w={cardWidth} />
+                        </FadeInItem>
+                      </DecorativeTag>
                     </Box>
                   ))}
                 </Flex>
@@ -58,7 +60,9 @@ const Projects: NextPage = () => {
             <FadeInContainer>
               {/* School Projects */}
               <Box>
-                <Heading as="h3" size="lg">School Projects</Heading>
+                <Heading as="h3" size="lg">
+                  School Projects
+                </Heading>
                 <Flex
                   justify="space-around"
                   wrap="wrap"
@@ -66,9 +70,13 @@ const Projects: NextPage = () => {
                   columnGap="0"
                 >
                   {schoolProjects.map((project, i) => (
-                    <FadeInItem key={i}>
-                      <Card card={project as CardData} w={cardWidth} />
-                    </FadeInItem>
+                    <Box key={i}>
+                      <DecorativeTag content="card">
+                        <FadeInItem>
+                          <Card card={project as CardData} w={cardWidth} />
+                        </FadeInItem>
+                      </DecorativeTag>
+                    </Box>
                   ))}
                 </Flex>
               </Box>
