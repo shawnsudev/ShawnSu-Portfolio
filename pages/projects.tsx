@@ -58,7 +58,7 @@ const Projects: NextPage = () => {
             <FadeInContainer>
               {/* School Projects */}
               <Box>
-                <Heading as="h3">School Projects</Heading>
+                <Heading as="h3" size="lg">School Projects</Heading>
                 <Flex
                   justify="space-around"
                   wrap="wrap"

@@ -63,7 +63,7 @@ const PageTitle = forwardRef(
           initial="hidden"
           animate="show"
         >
-          <Heading as="h2" color="purple.500">
+          <Heading as="h2" color="purple.500" size="2xl">
             {titleTexts.map((line) => (
               <p key={uuidv4()}>
                 {line.split("").map((L) =>
