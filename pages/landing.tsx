@@ -33,7 +33,6 @@ const scaleParams = {
   bounce: 1,
 };
 
-
 const Landing: NextPage = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
@@ -85,7 +84,10 @@ const Landing: NextPage = () => {
           animate="show"
         >
           <DecorativeTag content="h1" right="1.5rem">
-            <Heading as="h1" size={{ base: "2xl", sm: "3xl", md: "4xl" }}>
+            <Heading
+              as="h1"
+              fontSize={{ base: "2rem", sm: "2.7rem", md: "3.6rem", lg:"4.5rem", xl: "5rem" }}
+            >
               {title.map((line, idx) => (
                 <p key={"line" + idx}>
                   {line.split("").map((L, i, arr) =>
@@ -96,10 +98,13 @@ const Landing: NextPage = () => {
                         <Text
                           // className={styles.logo2}
                           as="span"
-                          fontSize={{ base: "4rem", md: "6rem" }}
+                          fontSize={{ base: "4rem", md: "6rem", xl: "8rem" }}
                           fontWeight="bold"
                           color="purple.300"
-                          textShadow={{base:".55rem 0 #F6E05E", md:".85rem 0 #F6E05E"}}
+                          textShadow={{
+                            base: ".55rem 0 #F6E05E",
+                            md: ".85rem 0 #F6E05E",
+                          }}
                           onMouseEnter={rubberband}
                         >
                           {L}
@@ -110,10 +115,13 @@ const Landing: NextPage = () => {
                         <Text
                           // className={styles.logo2}
                           as="span"
-                          fontSize={{ base: "4rem", md: "6rem" }}
+                          fontSize={{ base: "4rem", md: "6rem", xl: "8rem" }}
                           fontWeight="bold"
                           color="yellow.300"
-                          textShadow={{base:".55rem 0 #B794F4", md:".85rem 0 #B794F4"}}
+                          textShadow={{
+                            base: ".55rem 0 #B794F4",
+                            md: ".85rem 0 #B794F4",
+                          }}
                           onMouseEnter={rubberband}
                         >
                           {L}
