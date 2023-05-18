@@ -21,6 +21,7 @@ import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
 import { sendContactForm } from "../utils/api";
 import { contactFormData } from "../utils/types";
 import { InputType } from "zlib";
+import * as Joi from "joi";
 
 const errorMessage = (
   <Alert status="error">
@@ -41,6 +42,7 @@ const successMessage = (
     {/* <CloseButton position="absolute" right="8px" top="8px" /> */}
   </Alert>
 );
+const emailSchema = Joi.string().email({ tlds: { allow: false } });
 
 const Contact: NextPage = (props) => {
   // May have to add message status (i.e. idle, pending, success, failure etc.)
@@ -185,7 +187,11 @@ const Contact: NextPage = (props) => {
                 <FadeInItem>
                   <FormControl
                     isRequired
-                    isInvalid={touched.email && !message.email}
+                    isInvalid={
+                      touched.email &&
+                      (!message.email ||
+                        emailSchema.validate(message.email).error !== undefined)
+                    }
                   >
                     <InputGroup>
                       <InputLeftElement color="red.300">*</InputLeftElement>
@@ -199,7 +205,11 @@ const Contact: NextPage = (props) => {
                         onBlur={handleBlur}
                       />
                     </InputGroup>
-                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                    <FormErrorMessage>
+                      {emailSchema.validate(message.email).error
+                        ? emailSchema.validate(message.email).error?.message
+                        : "Email is required."}
+                    </FormErrorMessage>
                   </FormControl>
                 </FadeInItem>
 
@@ -258,7 +268,7 @@ const Contact: NextPage = (props) => {
                     px="2rem"
                     py="1.5rem"
                     mt="2rem"
-                    _hover={{ color: "white"}}
+                    _hover={{ color: "white" }}
                     onClick={handleSubmit}
                     disabled={
                       !message.name ||
