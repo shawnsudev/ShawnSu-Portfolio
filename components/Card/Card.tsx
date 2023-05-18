@@ -6,6 +6,8 @@ import { SiGithub } from "react-icons/si";
 import { FiExternalLink } from "react-icons/fi";
 import ToolStack, { ToolNames } from "../ToolStack";
 import Accordion_ from "./AccordionItem";
+// use dompurify would cause some weird error: .sanitize is not a function etc.
+import * as DOMPurify from "isomorphic-dompurify";
 
 type AccordionItem = { title: string; content: string[] };
 
@@ -67,7 +69,11 @@ const Card = ({ card, w }: CardProps) => {
           align="left"
         >
           <Box>
-            <div dangerouslySetInnerHTML={{ __html: card.description }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(card.description),
+              }}
+            />
             <Flex justify={"space-between"} mt="1rem">
               <Link href={card.link} isExternal>
                 <Text

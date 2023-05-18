@@ -2,6 +2,8 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionItemProps, AccordionPanel, Box, Text,  } from "@chakra-ui/react";
 import React from "react";
 import { CardData } from "./Card";
+// use dompurify would cause some weird error: .sanitize is not a function etc.
+import * as DOMPurify from "isomorphic-dompurify";
 
 type AccordionProps_ = { card: CardData; section: string } & AccordionItemProps;
 
@@ -29,7 +31,13 @@ const Accordion_ = ({ card, section }: AccordionProps_) => {
                 {item.content.map((text, j) => (
                   <Box key={j}>
                     {/* use React dangerouslySetInnerHTML property to allow customised html formatting */}
-                    {<div dangerouslySetInnerHTML={{ __html: text }} />}
+                    {
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(text),
+                        }}
+                      />
+                    }
 
                     {/* add line break between paragraphs */}
                     {j === item.content.length - 1 ? null : <br />}
