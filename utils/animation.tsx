@@ -16,14 +16,15 @@ export const rubberband = (e: MouseEvent) => {
 export const awaitTimeout = (delay: number) =>
   new Promise((resolve) => setTimeout(resolve, delay));
 
+// NOT in use
 export const rubberbandIn = async (chars: NodeListOf<Element>) => {
   // console.log("running!");
-
+  
   for (let char of chars) {
     // console.log(char);
     char.classList.add(animation.rubberband);
     await awaitTimeout(100);
-
+    
   }
   await awaitTimeout(2000);
   for (let char of chars) {
@@ -31,6 +32,7 @@ export const rubberbandIn = async (chars: NodeListOf<Element>) => {
   }
 };
 
+// NOT in use
 export const runRubberbandIn = () => {
   if (process.browser) {
     rubberbandIn(document.querySelectorAll(".rubberband-group span"));
