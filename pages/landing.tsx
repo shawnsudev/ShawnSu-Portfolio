@@ -1,26 +1,8 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Skills from "./skills";
-import animation from "../styles/animation.module.scss";
-import { createRef, MouseEvent, useEffect, useRef } from "react";
-import { rubberband, runRubberbandIn } from "../utils/animation";
-import Projects from "./projects";
-import Contact from "./contact";
+import { useRef } from "react";
+import { rubberband } from "../utils/animation";
 import { motion, useInView } from "framer-motion";
-import Navbar from "../components/Navbar";
-import About from "./about";
-import PageTitle from "../components/PageTitle";
-import {
-  Box,
-  Button,
-  Heading,
-  Link,
-  Text,
-  textDecoration,
-  withDefaultVariant,
-} from "@chakra-ui/react";
+import { Box, Button, Heading, Link, Text } from "@chakra-ui/react";
 import DecorativeTag from "../components/DecorativeTag";
 import Continue from "../components/Continue";
 import { FadeInContainer, FadeInItem } from "../components/FadeInTransition";
@@ -31,6 +13,26 @@ const scaleParams = {
   damping: 8,
   stiffness: 500,
   bounce: 1,
+};
+const sInShawnProps = {
+  fontSize: { base: "4rem", md: "6rem", xl: "8rem" },
+  fontWeight: "bold",
+  color: "purple.300",
+  textShadow: {
+    base: ".55rem 0 #F6E05E",
+    md: ".85rem 0 #F6E05E",
+  },
+  // onMouseEnter: rubberband,
+};
+const sInSuProps = {
+  fontSize: { base: "4rem", md: "6rem", xl: "8rem" },
+  fontWeight: "bold",
+  color: "yellow.300",
+  textShadow: {
+    base: ".55rem 0 #B794F4",
+    md: ".85rem 0 #B794F4",
+  },
+  // onMouseEnter: rubberband,
 };
 
 const Landing: NextPage = () => {
@@ -62,7 +64,7 @@ const Landing: NextPage = () => {
       display: "inline-block",
       transition: {
         opacity: {
-          type: "tween",
+          type: "tween", //default setting
           ease: "easeOut",
         },
         scaleX: scaleParams,
@@ -86,50 +88,32 @@ const Landing: NextPage = () => {
           <DecorativeTag content="h1" right="1.5rem">
             <Heading
               as="h1"
-              fontSize={{ base: "2rem", sm: "2.7rem", md: "3.6rem", lg:"4.5rem", xl: "5rem" }}
+              fontSize={{
+                base: "2rem",
+                sm: "2.7rem",
+                md: "3.6rem",
+                lg: "4.5rem",
+                xl: "5rem",
+              }}
             >
               {title.map((line, idx) => (
                 <p key={"line" + idx}>
                   {line.split("").map((L, i, arr) =>
                     L === " " ? (
                       " "
-                    ) : L === "S" && arr[i + 1] === "h" ? (
-                      <motion.span key={"hello" + i} variants={rubberbandItem}>
-                        <Text
-                          // className={styles.logo2}
-                          as="span"
-                          fontSize={{ base: "4rem", md: "6rem", xl: "8rem" }}
-                          fontWeight="bold"
-                          color="purple.300"
-                          textShadow={{
-                            base: ".55rem 0 #F6E05E",
-                            md: ".85rem 0 #F6E05E",
-                          }}
-                          onMouseEnter={rubberband}
-                        >
-                          {L}
-                        </Text>
-                      </motion.span>
-                    ) : L === "S" && arr[i + 1] === "u" ? (
-                      <motion.span key={"hello" + i} variants={rubberbandItem}>
-                        <Text
-                          // className={styles.logo2}
-                          as="span"
-                          fontSize={{ base: "4rem", md: "6rem", xl: "8rem" }}
-                          fontWeight="bold"
-                          color="yellow.300"
-                          textShadow={{
-                            base: ".55rem 0 #B794F4",
-                            md: ".85rem 0 #B794F4",
-                          }}
-                          onMouseEnter={rubberband}
-                        >
-                          {L}
-                        </Text>
-                      </motion.span>
                     ) : (
                       <motion.span key={"hello" + i} variants={rubberbandItem}>
-                        <span onMouseEnter={rubberband}>{L}</span>
+                        <Text
+                          as="span"
+                          onMouseEnter={rubberband}
+                          {...(L === "S" && arr[i + 1] === "h"
+                            ? { ...sInShawnProps }
+                            : L === "S" && arr[i + 1] === "u"
+                            ? { ...sInSuProps }
+                            : null)}
+                        >
+                          {L}
+                        </Text>
                       </motion.span>
                     )
                   )}
