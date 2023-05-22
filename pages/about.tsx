@@ -41,7 +41,7 @@ const About: NextPage = (props) => {
                     in New Zealand.
                     <br />
                     <br />I also spent a lot of time to self-teach
-                    extra-curricular web dev/computer science knowledges. I have
+                    extra-curricular web dev/computer science knowledge. I have
                     a passion for learning new technologies and applying them to
                     create fluid and modern web UX for users.
                   </Text>

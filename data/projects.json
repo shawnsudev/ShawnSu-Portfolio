@@ -207,6 +207,8 @@
       ],
       "focus": "Backend Development",
       "description": "Final school project in the Backend development term. This project aims to build & deploy a simple backend for a ready-made restaurant reservation booking app, and stich up the frontend and backend. Users are able to view restaurant info, sign up/log in, make new or view exsiting reservations.",
+      "link": "https://reservationizr-app-wwsdi.vercel.app/",
+      "source": "https://github.com/WWSDI/02-project---reservationizr-app-part-2---manage-reservations-WWSDI",
       "details": [
         {
           "title": "Overview",
@@ -262,9 +264,7 @@
             "But unit testing also has drawbacks. For one thing, it is very easy to be manipulated if the testing is white box instead of black box, meaning if you write both the server app and the tests, then you know exactly what to/not to test, so it's easy to be lazy/cheeky and omit certain things you should be testing for better results. I think it's a better idea to separate the job of writting the app and the tests so it remain black box testing, for the sake of the integrity of the tests."
           ]
         }
-      ],
-      "link": "https://reservationizr-app-wwsdi.vercel.app/",
-      "source": "https://github.com/WWSDI/02-project---reservationizr-app-part-2---manage-reservations-WWSDI"
+      ]
     },
     {
       "name": "No.7 Board Game Shop",
@@ -279,9 +279,10 @@
         "slack",
         "google-meet"
       ],
-
       "focus": "Frontend Development",
       "description": "Final school project in the Frontend Development term. This group project aims to build & deploy a simple e-commerce site (only Frontend) for Board Games with online payment function. Users are able to view store items, filter/sort/search for certain items, purchase items and make payments online.",
+      "link": "https://no7boardgameshop.netlify.app/",
+      "source": "https://github.com/WWSDI/stripeapi-group7-boardgame-onlineshop",
       "details": [
         {
           "title": "Overview",
@@ -326,9 +327,7 @@
             "Although I only dabbled in Regex a bit, but I could tell it's an extremely <strong>concise and precise way</strong> of describing letter/symbol patterns, and is something that could play an important role in <em>data validation</em>."
           ]
         }
-      ],
-      "link": "https://no7boardgameshop.netlify.app/",
-      "source": "https://github.com/WWSDI/stripeapi-group7-boardgame-onlineshop"
+      ]
     }
   ]
 }
